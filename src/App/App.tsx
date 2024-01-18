@@ -1,11 +1,16 @@
 import React from 'react';
+import * as Styles from './App.Styled';
 import Layout from '../layout/Layout';
+import Navbar from '../layout/Header/Navbar';
+import Footer from '../layout/footer/Footer';
 
 const App = () => {
   return (
-    <div>
+    <Styles.App>
+      <Navbar />
       <Layout />
-    </div>
+      <Footer />
+    </Styles.App>
   );
 };
 
