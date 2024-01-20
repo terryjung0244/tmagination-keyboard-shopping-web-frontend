@@ -7,6 +7,7 @@ import Keycaps from './pages/keycaps/Keycaps';
 import Accessories from './pages/accessories/Accessories';
 import Footer from './footer/Footer';
 import AllProducts from './pages/allProducts/AllProducts';
+import Dashboard from './pages/dashboard/Dashboard';
 
 const Layout = () => {
   return (
@@ -18,6 +19,7 @@ const Layout = () => {
       <Route path="/keycaps" element={<Keycaps />} />
       <Route path="/accessories" element={<Accessories />} />
       <Route path="/footer" element={<Footer />} />
+      <Route path="/dashboard" element={<Dashboard />} />
     </Routes>
   );
 };

@@ -8,7 +8,10 @@ const App = () => {
   return (
     <Styles.App>
       <Navbar />
-      <Layout />
+      <div className="h-[calc(100vh-80px)]">
+        <Layout />
+      </div>
+
       <Footer />
     </Styles.App>
   );
