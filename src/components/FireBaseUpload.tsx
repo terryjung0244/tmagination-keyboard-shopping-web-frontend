@@ -12,6 +12,7 @@ const FireBaseUpload = ({ handleImageUrl }: IFireBaseUploadProps) => {
     if (e.target.files[0]) {
       // File upload면 무조건 if문으로 확인!
       handleImageUrl(e.target.files[0]);
+      // 임시 URL을 하나 만들어주는것 (blob)
       setPreviewImage(URL.createObjectURL(e.target.files[0]));
     }
   };
