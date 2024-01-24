@@ -23,19 +23,18 @@ const CreateKeyboard = () => {
     imagePath: '',
   });
 
-  const [createKeyboardInput, setCreateKeyboardInput] =
-    useState<IKeyboardInputStateType>({
-      keyboardName: '',
-      keyboardDesc: '',
-      keyboardPrice: '',
-      keyboardDiscountRate: 0,
-      keyboardStock: '',
-      keyboardFeatures: {
-        color: '',
-        switch: '',
-      },
-      keyboardImageUrl: '',
-    });
+  const [createKeyboardInput, setCreateKeyboardInput] = useState<IKeyboardInputStateType>({
+    keyboardName: '',
+    keyboardDesc: '',
+    keyboardPrice: '',
+    keyboardDiscountRate: 0,
+    keyboardStock: '',
+    keyboardFeatures: {
+      color: '',
+      switch: '',
+    },
+    keyboardImageUrl: '',
+  });
 
   const handleCreateKeyboard = async () => {
     console.log(createKeyboardInput);
@@ -75,9 +74,7 @@ const CreateKeyboard = () => {
     });
   };
 
-  const handleKeyboardSelectFeature = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
+  const handleKeyboardSelectFeature = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCreateKeyboardInput({
       ...createKeyboardInput,
       keyboardFeatures: {
