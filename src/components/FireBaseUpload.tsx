@@ -20,9 +20,7 @@ const FireBaseUpload = ({ handleImageUrl }: IFireBaseUploadProps) => {
   return (
     <div>
       <input type="file" onChange={handleFileUpload} />
-      {previewImage ? (
-        <img style={{ width: '100px' }} src={previewImage} />
-      ) : null}
+      {previewImage ? <img style={{ width: '100px' }} src={previewImage} /> : null}
     </div>
   );
 };
