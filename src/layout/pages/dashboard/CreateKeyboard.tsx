@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
@@ -17,53 +18,67 @@ const CreateKeyboard = () => {
     keyboardName: '',
     keyboardDesc: '',
     keyboardPrice: '',
-    keyboardDiscountRate: 0,
+    keyboardDiscountRate: '',
     keyboardStock: '',
     keyboardFeatures: {
       color: '',
       switch: '',
     },
-    keyboardImageUrl: '',
-    keyboardUploadImage: null, // 새로 만든거
   });
 
   const handleCreateKeyboard = async () => {
-    // 1. image upload to firebase storage
-    let uploadedImageUrl = '';
+    let uploadedImageUrl;
     try {
       const imageRef = ref(storage, imageInfo.imagePath);
-      const uploadResponse = await uploadBytes(imageRef, createKeyboardInput.keyboardUploadImage);
-      console.log('11');
+      // 1. image upload to firebase storage
+      const uploadResponse = await uploadBytes(imageRef, imageInfo.imageFile as File);
       if (uploadResponse) {
+        // 2. get image url
         uploadedImageUrl = await getDownloadURL(uploadResponse.ref);
         console.log('Successfully uploaded image');
       }
     } catch (err) {
-      alert(JSON.stringify(err));
+      JSON.stringify(err);
+    }
+    // 3. `validation`
+    const {
+      keyboardName,
+      keyboardDesc,
+      keyboardPrice,
+      keyboardDiscountRate,
+      keyboardStock,
+      keyboardFeatures,
+    } = createKeyboardInput;
+    if (
+      !keyboardName ||
+      !keyboardDesc ||
+      !keyboardPrice ||
+      !keyboardDiscountRate ||
+      !keyboardStock ||
+      !keyboardFeatures.color ||
+      !keyboardFeatures.switch ||
+      !uploadedImageUrl
+    ) {
+      alert('Please fill out all fields');
+      return;
     }
 
-    // 2. get image url
-    // 3. validation
     // 4. backend로 보내기 (input + imageurl)
 
-    // const response = await fetch(
-    //   'http://localhost:8070/api/keyboard/createKeyboard',
-    //   {
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     method: 'POST',
-    //     body: JSON.stringify({ name: 'hong' }),
-    //   },
-    // );
-    // const result = await response.json();
-    // console.log(result);
+    const response = await fetch('http://localhost:8070/api/keyboard/createKeyboard', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({ ...createKeyboardInput, uploadedImageUrl }),
+    });
+    const result = await response.json();
+    alert('Keyboard is added successfully!');
   };
 
   const handleImageUrl = (file: File) => {
     const fileName = file.name.split('.')[0];
     const imagePath = `tmKeyboards/${fileName}_${getUuid()}`;
-
     setImageInfo({ ...imageInfo, imageFile: file, imagePath: imagePath });
     // imagePath & file
   };
@@ -86,7 +101,7 @@ const CreateKeyboard = () => {
   };
 
   return (
-    <div>
+    <div className="py-10">
       <button onClick={handleCreateKeyboard}>Create Keyboard</button>
       <br />
       <input
@@ -102,16 +117,25 @@ const CreateKeyboard = () => {
         placeholder="keyboardDesc"
       />
       <input
+        type="number"
         name="keyboardPrice"
         value={createKeyboardInput.keyboardPrice}
         onChange={handleKeyboardInput}
         placeholder="keyboardPrice"
       />
       <input
+        type="number"
         name="keyboardStock"
         value={createKeyboardInput.keyboardStock}
         onChange={handleKeyboardInput}
         placeholder="keyboardStock"
+      />
+      <input
+        type="number"
+        name="keyboardDiscountRate"
+        value={createKeyboardInput.keyboardDiscountRate}
+        onChange={handleKeyboardInput}
+        placeholder="keyboardDiscountRate"
       />
       <br />
       <select name={'color'} onChange={handleKeyboardSelectFeature}>
