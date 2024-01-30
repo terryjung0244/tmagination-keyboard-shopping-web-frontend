@@ -42,7 +42,7 @@ const Keyboards = () => {
       }
 
       // Get All Keyboards List
-      // setKeyboards();
+      setKeyboards([]);
     } catch (err) {
       JSON.stringify(err);
       console.log(err);

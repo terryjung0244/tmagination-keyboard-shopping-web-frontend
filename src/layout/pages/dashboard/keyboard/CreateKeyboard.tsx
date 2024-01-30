@@ -2,11 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import FireBaseUpload from '../../../components/FireBaseUpload';
-import { getUuid } from '../../../util/uuid';
+import FireBaseUpload from '../../../../components/FireBaseUpload';
+import { getUuid } from '../../../../util/uuid';
 import { IImageInfoStateType, IKeyboardInputStateType } from './CreateKeyboard.interface';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { storage } from '../../../firebase';
+import { storage } from '../../../../firebase';
 
 const CreateKeyboard = () => {
   const [imageInfo, setImageInfo] = useState<IImageInfoStateType>({
@@ -101,59 +101,63 @@ const CreateKeyboard = () => {
   };
 
   return (
-    <div className="py-10">
-      <button onClick={handleCreateKeyboard}>Create Keyboard</button>
-      <br />
-      <input
-        name="keyboardName"
-        value={createKeyboardInput.keyboardName}
-        onChange={handleKeyboardInput}
-        placeholder="keyboardName"
-      />
-      <input
-        name="keyboardDesc"
-        value={createKeyboardInput.keyboardDesc}
-        onChange={handleKeyboardInput}
-        placeholder="keyboardDesc"
-      />
-      <input
-        type="number"
-        name="keyboardPrice"
-        value={createKeyboardInput.keyboardPrice}
-        onChange={handleKeyboardInput}
-        placeholder="keyboardPrice"
-      />
-      <input
-        type="number"
-        name="keyboardStock"
-        value={createKeyboardInput.keyboardStock}
-        onChange={handleKeyboardInput}
-        placeholder="keyboardStock"
-      />
-      <input
-        type="number"
-        name="keyboardDiscountRate"
-        value={createKeyboardInput.keyboardDiscountRate}
-        onChange={handleKeyboardInput}
-        placeholder="keyboardDiscountRate"
-      />
-      <br />
-      <select name={'color'} onChange={handleKeyboardSelectFeature}>
-        <option value={'default'}>Keyboard Colors</option>
-        <option>White</option>
-        <option>Black</option>
-        <option>Green</option>
-        <option>Silver</option>
-      </select>
-      <select name={'switch'} onChange={handleKeyboardSelectFeature}>
-        <option value={'default'}>Switches</option>
-        <option>Red Switch</option>
-        <option>Black Switch</option>
-        <option>Yellow Switch</option>
-        <option>Brown Switch</option>
-      </select>
-      <FireBaseUpload handleImageUrl={handleImageUrl} />
-    </div>
+    <>
+      <hr />
+      <h3 style={{ fontWeight: 'bold', margin: '15px 0' }}>[[ Create Keyboard ]]</h3>
+      <div>
+        <button onClick={handleCreateKeyboard}>Create Keyboard</button>
+        <br />
+        <input
+          name="keyboardName"
+          value={createKeyboardInput.keyboardName}
+          onChange={handleKeyboardInput}
+          placeholder="keyboardName"
+        />
+        <input
+          name="keyboardDesc"
+          value={createKeyboardInput.keyboardDesc}
+          onChange={handleKeyboardInput}
+          placeholder="keyboardDesc"
+        />
+        <input
+          type="number"
+          name="keyboardPrice"
+          value={createKeyboardInput.keyboardPrice}
+          onChange={handleKeyboardInput}
+          placeholder="keyboardPrice"
+        />
+        <input
+          type="number"
+          name="keyboardStock"
+          value={createKeyboardInput.keyboardStock}
+          onChange={handleKeyboardInput}
+          placeholder="keyboardStock"
+        />
+        <input
+          type="number"
+          name="keyboardDiscountRate"
+          value={createKeyboardInput.keyboardDiscountRate}
+          onChange={handleKeyboardInput}
+          placeholder="keyboardDiscountRate"
+        />
+        <br />
+        <select name={'color'} onChange={handleKeyboardSelectFeature}>
+          <option value={'default'}>Keyboard Colors</option>
+          <option>White</option>
+          <option>Black</option>
+          <option>Green</option>
+          <option>Silver</option>
+        </select>
+        <select name={'switch'} onChange={handleKeyboardSelectFeature}>
+          <option value={'default'}>Switches</option>
+          <option>Red Switch</option>
+          <option>Black Switch</option>
+          <option>Yellow Switch</option>
+          <option>Brown Switch</option>
+        </select>
+        <FireBaseUpload handleImageUrl={handleImageUrl} />
+      </div>
+    </>
   );
 };
 
