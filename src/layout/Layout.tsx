@@ -19,7 +19,7 @@ const Layout = () => {
       <Route path="/keycaps" element={<Keycaps />} />
       <Route path="/accessories" element={<Accessories />} />
       <Route path="/footer" element={<Footer />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard/*" element={<Dashboard />} />
     </Routes>
   );
 };
