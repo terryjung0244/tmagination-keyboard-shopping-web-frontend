@@ -2,11 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import FireBaseUpload from '../../../../components/FireBaseUpload';
-import { getUuid } from '../../../../util/uuid';
+import FireBaseUpload from '../../../../../components/FireBaseUpload';
+import { getUuid } from '../../../../../util/uuid';
 import { IImageInfoStateType, IKeyboardInputStateType } from './CreateKeyboard.interface';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import { storage } from '../../../../firebase';
+import { storage } from '../../../../../firebase';
 
 const CreateKeyboard = () => {
   const [imageInfo, setImageInfo] = useState<IImageInfoStateType>({
