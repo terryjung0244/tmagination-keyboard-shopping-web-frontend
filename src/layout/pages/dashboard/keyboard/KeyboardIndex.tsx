@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import CreateKeyboard from './CreateKeyboard';
-import DeleteKeyboard from './DeleteKeyboard';
+import CreateKeyboard from './create/CreateKeyboard';
+import DeleteKeyboard from './delete/DeleteKeyboard';
 
 const KeyboardIndex = () => {
   return (
