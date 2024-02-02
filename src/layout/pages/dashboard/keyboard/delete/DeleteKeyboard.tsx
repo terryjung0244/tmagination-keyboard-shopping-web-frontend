@@ -1,44 +1,34 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { deleteObject, getStorage, ref } from 'firebase/storage';
 import React from 'react';
-// import { deleteObject, getStorage, ref } from 'firebase/storage';
-import { useState } from 'react';
 
-const DeleteKeyboard = () => {
-  const [deleteKeyboardTitle, setDeleteKeyboardTitle] = useState<string>('');
+interface IDeleteKeyboardProps {
+  keyboardId: string;
+  keyboardPath: string;
+}
 
-  const handleDeleteKeyboard = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDeleteKeyboardTitle(e.target.value);
-  };
+const DeleteKeyboard = ({ keyboardId, keyboardPath }: IDeleteKeyboardProps) => {
+  const onClickDeleteKeyboard = async () => {
+    console.log(keyboardId);
+    console.log(keyboardPath);
+    // // storage 지우기
 
-  const handleSearchKeyboard = async () => {
-    if (!deleteKeyboardTitle) {
-      alert('Please input keyboard Title');
-      return;
-    }
+    const storage = getStorage();
+    const desertRef = ref(storage, keyboardPath);
 
     try {
-      await fetch(
-        `http://localhost:8070/api/keyboard/searchKeyboards?category=keyboard&title=${deleteKeyboardTitle}`,
-      );
+      await deleteObject(desertRef);
     } catch (err) {
       console.log(err);
     }
 
-    // Delete keyboard in mongoDB
-
-    // Delete image in Firebase Storage
+    // mongoDB 지우기
+    // a1 꺼 다시 부르고 위로 올리기 (a1 여기로 보내야 함.)
   };
 
   return (
     <div>
-      <hr />
-      <h3 style={{ fontWeight: 'bold', margin: '15px 0' }}>[[ Delete Keyboard ]]</h3>
-      <input
-        name="a"
-        value={deleteKeyboardTitle}
-        placeholder="Keyboard Title"
-        onChange={handleDeleteKeyboard}
-      />
-      <button onClick={handleSearchKeyboard}>Search Keyboard</button>
+      <button onClick={onClickDeleteKeyboard}>Delete</button>
     </div>
   );
 };
