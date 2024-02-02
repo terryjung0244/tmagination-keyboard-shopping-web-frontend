@@ -1,12 +1,15 @@
 export interface IKeyboardInputStateType {
+  keyboardId: string;
   keyboardName: string;
   keyboardDesc: string;
-  keyboardPrice: string;
-  keyboardDiscountRate: string;
-  keyboardStock: string;
+  keyboardPrice?: string;
+  keyboardDiscountRate?: string;
+  keyboardStock?: string;
+  keyboardImageUrl: string;
+  keyboardImagePath: string;
   keyboardFeatures: {
-    color: string;
-    switch: string;
+    color?: string;
+    switch?: string;
   };
 }
 

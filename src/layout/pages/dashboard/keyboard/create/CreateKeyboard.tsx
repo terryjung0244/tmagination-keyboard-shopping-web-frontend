@@ -7,19 +7,24 @@ import { getUuid } from '../../../../../util/uuid';
 import { IImageInfoStateType, IKeyboardInputStateType } from './CreateKeyboard.interface';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../../../../../firebase';
+import { useNavigate } from 'react-router-dom';
 
 const CreateKeyboard = () => {
+  const navigate = useNavigate();
   const [imageInfo, setImageInfo] = useState<IImageInfoStateType>({
     imageFile: null,
     imagePath: '',
   });
 
   const [createKeyboardInput, setCreateKeyboardInput] = useState<IKeyboardInputStateType>({
+    keyboardId: '',
     keyboardName: '',
     keyboardDesc: '',
     keyboardPrice: '',
     keyboardDiscountRate: '',
     keyboardStock: '',
+    keyboardImageUrl: '',
+    keyboardImagePath: '',
     keyboardFeatures: {
       color: '',
       switch: '',
@@ -70,10 +75,18 @@ const CreateKeyboard = () => {
         'Content-Type': 'application/json',
       },
       method: 'POST',
-      body: JSON.stringify({ ...createKeyboardInput, uploadedImageUrl }),
+      body: JSON.stringify({
+        ...createKeyboardInput,
+        uploadedImageUrl,
+        uploadedImagePath: imageInfo.imagePath,
+      }),
     });
     const result = await response.json();
     alert('Keyboard is added successfully!');
+  };
+
+  const handleCloseCreateKeyboard = () => {
+    navigate(-1);
   };
 
   const handleImageUrl = (file: File) => {
@@ -106,6 +119,7 @@ const CreateKeyboard = () => {
       <h3 style={{ fontWeight: 'bold', margin: '15px 0' }}>[[ Create Keyboard ]]</h3>
       <div>
         <button onClick={handleCreateKeyboard}>Create Keyboard</button>
+        <button onClick={handleCloseCreateKeyboard}>X</button>
         <br />
         <input
           name="keyboardName"
