@@ -91,7 +91,7 @@ const CreateKeyboard = () => {
 
   const handleImageUrl = (file: File) => {
     const fileName = file.name.split('.')[0];
-    const imagePath = `tmKeyboards/${fileName}_${getUuid()}`;
+    const imagePath = `tmKeyboards/keyboard/${fileName}_${getUuid()}`;
     setImageInfo({ ...imageInfo, imageFile: file, imagePath: imagePath });
     // imagePath & file
   };

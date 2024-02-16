@@ -9,14 +9,26 @@ import Keyboard from './show/Keyboard';
 const KeyboardIndex = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [showKeyboard, setShowKeyboard] = useState<IKeyboardInputStateType[]>([]);
+  const [searchKeyboardInfo, setSearchKeyboardInfo] = useState<string>('');
 
-  const onClickDeleteKeyboard = async (keyboardId: string) => {};
-
-  const handleShowKeyboard = (searchKeyboard: IKeyboardInputStateType[]) => {
-    setShowKeyboard(searchKeyboard);
+  const handleSearchKeyboardInfo = async (keyboardInfo: string) => {
+    setSearchKeyboardInfo(keyboardInfo);
+    const response = await fetch(
+      `http://localhost:8070/api/keyboard/searchKeyboards?keyboardInfo=${keyboardInfo}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    const result = await response.json();
+    setShowKeyboard(result.searchKeyboard);
   };
 
-  console.log(showKeyboard);
+  const deletedKeyboardFromKeyboard = () => {
+    handleSearchKeyboardInfo(searchKeyboardInfo);
+  };
+
   return (
     <div>
       <hr />
@@ -24,11 +36,18 @@ const KeyboardIndex = () => {
       <Link to="/dashboard/keyboard/create" style={{ border: '1px solid black' }}>
         Create New Keyboard
       </Link>
-      <SearchKeyboard handleShowKeyboard={handleShowKeyboard} />
+      <SearchKeyboard handleSearchKeyboardInfo={handleSearchKeyboardInfo} />
+      {/* <DeleteKeyboard searchKeyboardInfo={searchKeyboardInfo} keyboardId={''} keyboardPath={''} /> */}
 
       <div>
         {showKeyboard.map((keyboardInfo) => {
-          return <Keyboard key={keyboardInfo.keyboardId} keyboardInfo={keyboardInfo} />;
+          return (
+            <Keyboard
+              key={keyboardInfo.keyboardId}
+              keyboardInfo={keyboardInfo}
+              deletedKeyboardFromKeyboard={deletedKeyboardFromKeyboard}
+            />
+          );
         })}
       </div>
 

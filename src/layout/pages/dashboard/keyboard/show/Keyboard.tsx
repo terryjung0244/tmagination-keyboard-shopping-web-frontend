@@ -4,9 +4,14 @@ import DeleteKeyboard from '../delete/DeleteKeyboard';
 
 interface IKeyboardProps {
   keyboardInfo: IKeyboardInputStateType;
+  deletedKeyboardFromKeyboard: () => void;
 }
 
-const Keyboard = ({ keyboardInfo }: IKeyboardProps) => {
+const Keyboard = ({ keyboardInfo, deletedKeyboardFromKeyboard }: IKeyboardProps) => {
+  const deletedKeyboard = () => {
+    deletedKeyboardFromKeyboard();
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', width: '200px' }}>
       <div>KeyboardName : {keyboardInfo.keyboardName}</div>
@@ -15,6 +20,7 @@ const Keyboard = ({ keyboardInfo }: IKeyboardProps) => {
       <DeleteKeyboard
         keyboardId={keyboardInfo.keyboardId}
         keyboardPath={keyboardInfo.keyboardImagePath}
+        deletedKeyboard={deletedKeyboard}
       />
       <button>Update</button>
     </div>
