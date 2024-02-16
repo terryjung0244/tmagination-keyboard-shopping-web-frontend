@@ -5,25 +5,32 @@ import React from 'react';
 interface IDeleteKeyboardProps {
   keyboardId: string;
   keyboardPath: string;
+  deletedKeyboard: () => void;
+  // searchKeyboardInfo: string;
 }
 
-const DeleteKeyboard = ({ keyboardId, keyboardPath }: IDeleteKeyboardProps) => {
+const DeleteKeyboard = ({ keyboardId, keyboardPath, deletedKeyboard }: IDeleteKeyboardProps) => {
   const onClickDeleteKeyboard = async () => {
-    console.log(keyboardId);
-    console.log(keyboardPath);
-    // // storage 지우기
-
+    // Delete images in Firebase storage
     const storage = getStorage();
     const desertRef = ref(storage, keyboardPath);
-
     try {
       await deleteObject(desertRef);
     } catch (err) {
       console.log(err);
     }
-
     // mongoDB 지우기
-    // a1 꺼 다시 부르고 위로 올리기 (a1 여기로 보내야 함.)
+    try {
+      await fetch(`http://localhost:8070/api/keyboard/deleteKeyboard/?keyboardId=${keyboardId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    deletedKeyboard();
   };
 
   return (
