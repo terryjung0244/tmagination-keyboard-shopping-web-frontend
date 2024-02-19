@@ -21,7 +21,7 @@ const DeleteKeyboard = ({ keyboardId, keyboardPath, deletedKeyboard }: IDeleteKe
     }
     // mongoDB 지우기
     try {
-      await fetch(`http://localhost:8070/api/keyboard/deleteKeyboard/?keyboardId=${keyboardId}`, {
+      await fetch(`http://localhost:8070/api/keyboard/deleteKeyboard?keyboardId=${keyboardId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
