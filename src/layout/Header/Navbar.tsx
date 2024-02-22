@@ -1,21 +1,47 @@
 import React from 'react';
+// import Logo from './Logo';
+// import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import NavbarTop from 'react-bootstrap/Navbar';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from './Logo';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <div className="px-10 h-20 sticky top-0 z-[1] mx-auto  flex w-full max-w-7xl flex-wrap items-center justify-between border-b border-gray-100 bg-background font-sans font-bold uppercase text-text-primary backdrop-blur-[100px] dark:border-gray-800 dark:bg-d-background dark:text-d-text-primary">
-      <Logo />
-      <Link to="/dashboard">Dashboard</Link>
-      <div className="">
-        <Link to="/allproducts">All Products</Link>
-        <Link to="/keyboards">Keyboards</Link>
-        <Link to="/switches">Switches</Link>
-        <Link to="/keycaps">Keycaps</Link>
-        <Link to="/accessories">accessories</Link>
-      </div>
-    </div>
+    <NavbarTop expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
+      <Container>
+        <NavbarTop.Brand href="#home">
+          <Logo />
+        </NavbarTop.Brand>
+        <NavbarTop.Toggle aria-controls="basic-navbar-nav" />
+        <NavbarTop.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+            <Nav.Link href="/allproducts">All Products</Nav.Link>
+            <Nav.Link href="/keyboards">Keyboards</Nav.Link>
+            <Nav.Link href="/switches">Switches</Nav.Link>
+            <Nav.Link href="/keycaps">Keycaps</Nav.Link>
+            <Nav.Link href="/accessories">Accessories</Nav.Link>
+          </Nav>
+        </NavbarTop.Collapse>
+      </Container>
+    </NavbarTop>
   );
 };
 
 export default Navbar;
+
+{
+  /* <div>
+<Logo />
+<Link to="/dashboard">Dashboard</Link>
+<div className="">
+  <Link to="/allproducts">All Products</Link>
+  <Link to="/keyboards">Keyboards</Link>
+  <Link to="/switches">Switches</Link>
+  <Link to="/keycaps">Keycaps</Link>
+  <Link to="/accessories">accessories</Link>
+</div>
+</div> */
+}

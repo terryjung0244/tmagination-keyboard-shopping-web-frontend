@@ -6,6 +6,8 @@ import { ISwitch } from '../../switches/Switches.interface';
 import DeleteSwitch from './delete/DeleteSwitch';
 import ModalComp from '../../../../components/ModalComp';
 import UpdateSwitch from './update/UpdateSwitch';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 export interface UpdateSwitchModal {
   toggle: boolean;
@@ -50,49 +52,65 @@ const SwitchIndex = () => {
     <>
       <div>
         <h3 style={{ fontWeight: 'bold', margin: '15px 0' }}>[[ Switch ]]</h3>
-        <Link to="/dashboard/switch/create" style={{ border: '1px solid black' }}>
+        <Link
+          to="/dashboard/switch/create"
+          style={{
+            border: '1px solid black',
+            textDecoration: 'none',
+            color: 'black',
+            padding: '5px',
+            margin: '5px',
+          }}
+        >
           Create New Switch
         </Link>
         <Routes>
           <Route path="/create" element={<CreateSwitch />} />
         </Routes>
+
         <SearchSwitch searchInputSwitchValue={searchInputSwitchValue} />
+
         <div style={{ display: 'flex' }}>
           {showSearchedSwitch.map((filteredSwitches: ISwitch) => {
             return (
-              <div
-                key={filteredSwitches.switchId}
-                style={{
-                  marginTop: '20px',
-                  border: '1px solid black',
-                  padding: '10px',
-                  width: '200px',
-                }}
-              >
-                <div>Switch Name : {filteredSwitches.switchName}</div>
-                <div>Switch Desc : {filteredSwitches.switchDesc}</div>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                  }}
-                >
-                  <img src={filteredSwitches.switchImageUrl} alt="Switch" />
-                  <DeleteSwitch
-                    switchId={filteredSwitches.switchId}
-                    switchName={filteredSwitches.switchName}
-                    switchImagePath={filteredSwitches.switchImagePath}
-                    handleShowSwitch={handleShowSwitch}
-                  />
-                  <button onClick={() => showUpdateModal(filteredSwitches)}>Update</button>
-                </div>
+              <div key={filteredSwitches.switchId}>
+                <Card style={{ width: '10rem' }}>
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
+                    <img src={filteredSwitches.switchImageUrl} alt="Switch" />
+                  </div>
+                  <Card.Body>
+                    <Card.Title>
+                      <div>Name : {filteredSwitches.switchName}</div>
+                      <div>Desc : {filteredSwitches.switchDesc}</div>
+                      <div>Colour: {filteredSwitches.switchFeatures.color}</div>
+                    </Card.Title>
+
+                    <Button variant="primary" onClick={() => showUpdateModal(filteredSwitches)}>
+                      Update
+                    </Button>
+                    <DeleteSwitch
+                      switchId={filteredSwitches.switchId}
+                      switchName={filteredSwitches.switchName}
+                      switchImagePath={filteredSwitches.switchImagePath}
+                      handleShowSwitch={handleShowSwitch}
+                    />
+                  </Card.Body>
+                </Card>
               </div>
             );
           })}
         </div>
       </div>
       <ModalComp show={show} closeModal={closeUpdateModal}>
-        <UpdateSwitch selectedSwitch={show.selectedSwitch as ISwitch} />
+        <UpdateSwitch
+          selectedSwitch={show.selectedSwitch as ISwitch}
+          closeModal={closeUpdateModal}
+        />
       </ModalComp>
     </>
   );
