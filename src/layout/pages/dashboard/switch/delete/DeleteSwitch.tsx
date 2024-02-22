@@ -1,5 +1,6 @@
 import React from 'react';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
+import Button from 'react-bootstrap/Button';
 
 interface IDeleteSwitchProps {
   switchId: string;
@@ -41,7 +42,7 @@ const DeleteSwitch = ({
   };
   return (
     <div>
-      <button onClick={handleDeleteSwitch}>Delete</button>
+      <Button onClick={handleDeleteSwitch}>Delete</Button>
     </div>
   );
 };
