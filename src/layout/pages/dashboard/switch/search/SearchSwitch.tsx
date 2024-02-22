@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import { Col } from 'react-bootstrap';
+import * as Styles from './SearchSwitch.styled';
 
 interface ISearchSwitchProps {
   searchInputSwitchValue: (searchInput: string) => void;
@@ -24,21 +21,19 @@ const SearchSwitch = ({ searchInputSwitchValue }: ISearchSwitchProps) => {
   };
 
   return (
-    <div>
-      <InputGroup>
-        <Col sm={2}>
-          <Form.Control
-            name="searchInput"
-            value={searchInput}
-            onChange={onChangeSearchSwitch}
-            placeholder="Search Switches"
-          />
-        </Col>
-        <Button variant="danger" onClick={handleSearchSwitch}>
-          Search
-        </Button>
-      </InputGroup>
-    </div>
+    <Styles.SearchSwitch>
+      <input
+        name="searchInput"
+        value={searchInput}
+        onChange={onChangeSearchSwitch}
+        placeholder="Search Switches"
+        className="searchInput"
+      />
+
+      <button onClick={handleSearchSwitch} className="searchBtn">
+        Search
+      </button>
+    </Styles.SearchSwitch>
   );
 };
 

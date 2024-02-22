@@ -2,23 +2,31 @@ import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import KeyboardIndex from './keyboard/KeyboardIndex';
 import SwitchIndex from './switch/SwitchIndex';
+import * as Styles from './Dashboard.styled';
 
 const Dashboard = () => {
   return (
-    <>
-      <Link to="/dashboard/keyboard"> Keyboard</Link>
-      <br />
-      <Link to="/dashboard/switch"> Switch</Link>
-      <br />
-      <Link to="/dashboard/keycap"> Keycap</Link>
-      <br />
-      <Link to="/dashboard/accessory"> Accessory</Link>
-      <br />
+    <Styles.Dashboard>
+      <div className="linkContainer">
+        <Link to="/dashboard/keyboard" className="btnMain">
+          Keyboard
+        </Link>
+        <Link to="/dashboard/switch" className="btnMain">
+          Switch
+        </Link>
+        <Link to="/dashboard/keycap" className="btnMain">
+          Keycap
+        </Link>
+        <Link to="/dashboard/accessory" className="btnMain">
+          Accessory
+        </Link>
+      </div>
+
       <Routes>
         <Route path="/keyboard/*" element={<KeyboardIndex />} />
         <Route path="/switch/*" element={<SwitchIndex />} />
       </Routes>
-    </>
+    </Styles.Dashboard>
   );
 };
 

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { deleteObject, getStorage, ref } from 'firebase/storage';
 import React from 'react';
+import * as Styles from './DeleteKeyboard.styled';
+import { deleteObject, getStorage, ref } from 'firebase/storage';
 
 interface IDeleteKeyboardProps {
   keyboardId: string;
@@ -34,9 +35,9 @@ const DeleteKeyboard = ({ keyboardId, keyboardPath, deletedKeyboard }: IDeleteKe
   };
 
   return (
-    <div>
+    <Styles.DeleteKeyboard>
       <button onClick={onClickDeleteKeyboard}>Delete</button>
-    </div>
+    </Styles.DeleteKeyboard>
   );
 };
 

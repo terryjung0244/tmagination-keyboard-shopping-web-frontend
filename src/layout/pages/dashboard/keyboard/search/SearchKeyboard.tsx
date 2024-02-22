@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import * as Styles from './SearchKeyboard.styled';
 
 interface ISearchKeyboardProps {
   handleSearchKeyboardInfo: (searchKeyboardInfo: string) => void;
@@ -22,15 +23,18 @@ const SearchKeyboard = ({ handleSearchKeyboardInfo }: ISearchKeyboardProps) => {
   };
 
   return (
-    <div>
+    <Styles.SearchKeyboard>
       <input
+        className="searchInput"
         name="keyboardInfo"
         value={searchKeyboardInfo}
         onChange={handleSearchKeyboard}
         placeholder="Search Product"
       />
-      <button onClick={onClickSearchKeyboard}>Search</button>
-    </div>
+      <button className="searchBtn" onClick={onClickSearchKeyboard}>
+        Search
+      </button>
+    </Styles.SearchKeyboard>
   );
 };
 
