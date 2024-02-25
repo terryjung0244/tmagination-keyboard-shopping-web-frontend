@@ -29,7 +29,7 @@ const SearchKeyboard = ({ handleSearchKeyboardInfo }: ISearchKeyboardProps) => {
         name="keyboardInfo"
         value={searchKeyboardInfo}
         onChange={handleSearchKeyboard}
-        placeholder="Search Product"
+        placeholder="Search Products"
       />
       <button className="searchBtn" onClick={onClickSearchKeyboard}>
         Search

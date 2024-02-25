@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import FireBaseUpload from '../../../../../components/FireBaseUpload';
+import * as Styles from './CreateSwitch.styled';
+import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpload';
 import { getUuid } from '../../../../../util/uuid';
 import { IImageInfoStateType, ISwitchInputStateType } from './CreateSwitch.interface';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -109,24 +110,21 @@ const CreateSwitch = () => {
   };
 
   return (
-    <>
-      <hr />
-      <h3 style={{ fontWeight: 'bold', margin: '15px 0' }}>[[ Create Switch ]]</h3>
-      <div>
-        <button onClick={handleCreateSwitch}>Create Switch</button>
-        <button onClick={handleCloseCreateSwitch}>X</button>
-        <br />
+    <Styles.CreateSwitch>
+      <div className="inputMain">
         <input
           name="switchName"
           value={createSwitchInput.switchName}
           onChange={handleSwitchInput}
           placeholder="switchName"
+          className="input"
         />
         <input
           name="switchDesc"
           value={createSwitchInput.switchDesc}
           onChange={handleSwitchInput}
           placeholder="switchDesc"
+          className="input"
         />
         <input
           type="number"
@@ -134,6 +132,7 @@ const CreateSwitch = () => {
           value={createSwitchInput.switchPrice}
           onChange={handleSwitchInput}
           placeholder="switchPrice"
+          className="input"
         />
         <input
           type="number"
@@ -141,6 +140,7 @@ const CreateSwitch = () => {
           value={createSwitchInput.switchStock}
           onChange={handleSwitchInput}
           placeholder="switchStock"
+          className="input"
         />
         <input
           type="number"
@@ -148,18 +148,28 @@ const CreateSwitch = () => {
           value={createSwitchInput.switchDiscountRate}
           onChange={handleSwitchInput}
           placeholder="switchDiscountRate"
+          className="input"
         />
-        <br />
-        <select name={'color'} onChange={handleSwitchSelectFeature}>
+      </div>
+      <div className="selectMain">
+        <select className="selectColor" name={'color'} onChange={handleSwitchSelectFeature}>
           <option value={'default'}>Switch Colors</option>
           <option>red</option>
           <option>blue</option>
           <option>yellow</option>
           <option>brown</option>
         </select>
-        <FireBaseUpload handleImageUrl={handleImageUrl} />
       </div>
-    </>
+      <FireBaseUpload handleImageUrl={handleImageUrl} />
+      <div className="buttonMain">
+        <button className="createButton" onClick={handleCreateSwitch}>
+          Create
+        </button>
+        <button className="closeButton" onClick={handleCloseCreateSwitch}>
+          Close
+        </button>
+      </div>
+    </Styles.CreateSwitch>
   );
 };
 

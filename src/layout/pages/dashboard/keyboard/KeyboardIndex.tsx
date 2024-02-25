@@ -32,12 +32,12 @@ const KeyboardIndex = () => {
 
   return (
     <Styles.KeyboardIndex>
-      <Link to="/dashboard/keyboard/create" className="createNewKeyboardBtn">
-        Create New Keyboard
-      </Link>
       <SearchKeyboard handleSearchKeyboardInfo={handleSearchKeyboardInfo} />
-      {/* <DeleteKeyboard searchKeyboardInfo={searchKeyboardInfo} keyboardId={''} keyboardPath={''} /> */}
-
+      <div className="createBtnMain">
+        <Link to="/dashboard/keyboard/create" className="createNewKeyboardBtn">
+          Create New Keyboard
+        </Link>
+      </div>
       <div>
         {showKeyboard.map((keyboardInfo) => {
           return (

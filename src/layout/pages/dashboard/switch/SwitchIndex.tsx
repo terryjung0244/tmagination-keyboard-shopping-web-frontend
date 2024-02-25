@@ -50,15 +50,16 @@ const SwitchIndex = () => {
 
   return (
     <Styles.SwitchIndex>
-      <div>
+      <SearchSwitch searchInputSwitchValue={searchInputSwitchValue} />
+      <div className="createBtnMain">
         <Link to="/dashboard/switch/create" className="createNewSwitchBtn">
           Create New Switch
         </Link>
+      </div>
+      <div>
         <Routes>
           <Route path="/create" element={<CreateSwitch />} />
         </Routes>
-
-        <SearchSwitch searchInputSwitchValue={searchInputSwitchValue} />
 
         <div style={{ display: 'flex' }}>
           {showSearchedSwitch.map((filteredSwitches: ISwitch) => {
@@ -108,6 +109,7 @@ const SwitchIndex = () => {
         <UpdateSwitch
           selectedSwitch={show.selectedSwitch as ISwitch}
           closeModal={closeUpdateModal}
+          handleShowSwitch={handleShowSwitch}
         />
       </ModalComp>
     </Styles.SwitchIndex>

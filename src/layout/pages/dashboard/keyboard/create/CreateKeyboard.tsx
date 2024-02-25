@@ -2,7 +2,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import FireBaseUpload from '../../../../../components/FireBaseUpload';
+import * as Styles from './CreateKeyboard.styled';
+import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpload';
 import { getUuid } from '../../../../../util/uuid';
 import { IImageInfoStateType, IKeyboardInputStateType } from './CreateKeyboard.interface';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -114,64 +115,73 @@ const CreateKeyboard = () => {
   };
 
   return (
-    <>
-      <hr />
-      <h3 style={{ fontWeight: 'bold', margin: '15px 0' }}>[[ Create Keyboard ]]</h3>
-      <div>
-        <button onClick={handleCreateKeyboard}>Create Keyboard</button>
-        <button onClick={handleCloseCreateKeyboard}>X</button>
-        <br />
+    <Styles.Createkeyboard>
+      <div className="inputMain">
         <input
           name="keyboardName"
           value={createKeyboardInput.keyboardName}
           onChange={handleKeyboardInput}
-          placeholder="keyboardName"
+          placeholder="Name"
+          className="input"
         />
         <input
           name="keyboardDesc"
           value={createKeyboardInput.keyboardDesc}
           onChange={handleKeyboardInput}
-          placeholder="keyboardDesc"
+          placeholder="Description"
+          className="input"
         />
         <input
           type="number"
           name="keyboardPrice"
           value={createKeyboardInput.keyboardPrice}
           onChange={handleKeyboardInput}
-          placeholder="keyboardPrice"
+          placeholder="Price"
+          className="input"
         />
         <input
           type="number"
           name="keyboardStock"
           value={createKeyboardInput.keyboardStock}
           onChange={handleKeyboardInput}
-          placeholder="keyboardStock"
+          placeholder="Stock"
+          className="input"
         />
         <input
           type="number"
           name="keyboardDiscountRate"
           value={createKeyboardInput.keyboardDiscountRate}
           onChange={handleKeyboardInput}
-          placeholder="keyboardDiscountRate"
+          placeholder="Discount Rate (e.g., 0.1 = 10%)"
+          className="input"
         />
-        <br />
-        <select name={'color'} onChange={handleKeyboardSelectFeature}>
-          <option value={'default'}>Keyboard Colors</option>
+      </div>
+      <div className="selectMain">
+        <select className="selectColor" name={'color'} onChange={handleKeyboardSelectFeature}>
+          <option value={'default'}>Colors</option>
           <option>White</option>
           <option>Black</option>
           <option>Green</option>
           <option>Silver</option>
         </select>
-        <select name={'switch'} onChange={handleKeyboardSelectFeature}>
+        <select className="selectSwitch" name={'switch'} onChange={handleKeyboardSelectFeature}>
           <option value={'default'}>Switches</option>
           <option>Red Switch</option>
           <option>Black Switch</option>
           <option>Yellow Switch</option>
           <option>Brown Switch</option>
         </select>
-        <FireBaseUpload handleImageUrl={handleImageUrl} />
       </div>
-    </>
+      <FireBaseUpload handleImageUrl={handleImageUrl} />
+      <div className="buttonMain">
+        <button className="createButton" onClick={handleCreateKeyboard}>
+          Create
+        </button>
+        <button className="closeButton" onClick={handleCloseCreateKeyboard}>
+          Close
+        </button>
+      </div>
+    </Styles.Createkeyboard>
   );
 };
 

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { ISwitch } from './Switches.interface';
+import { calculateDiscountRate } from '../../../util/math';
 
 const Switches = () => {
   const [switches, setSwitches] = useState<ISwitch[]>([]);
@@ -25,6 +26,8 @@ const Switches = () => {
               style={{ width: '100px', height: '100px' }}
               alt={swit.switchName}
             />
+            <div>Price :{calculateDiscountRate(swit.switchPrice, swit.switchDiscountRate)}</div>
+            <div>DiscountRate : {swit.switchDiscountRate}</div>
           </div>
         );
       })}
