@@ -13,6 +13,3 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
-
-console.log(app);
-console.log(storage);

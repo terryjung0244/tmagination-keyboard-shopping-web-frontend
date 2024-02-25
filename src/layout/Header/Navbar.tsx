@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 // import Logo from './Logo';
 // import { Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ const Navbar = () => {
   return (
     <NavbarTop expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
       <Container>
-        <NavbarTop.Brand href="#home">
+        <NavbarTop.Brand>
           <Logo />
         </NavbarTop.Brand>
         <NavbarTop.Toggle aria-controls="basic-navbar-nav" />

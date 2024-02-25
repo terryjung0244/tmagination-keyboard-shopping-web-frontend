@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
+import * as Styles from './FireBaseUpload.styled';
 
 interface IFireBaseUploadProps {
   handleImageUrl: (file: File) => void;
@@ -18,10 +19,23 @@ const FireBaseUpload = ({ handleImageUrl }: IFireBaseUploadProps) => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {previewImage ? <img style={{ width: '100px' }} src={previewImage} /> : null}
-      <input type="file" onChange={handleFileUpload} />
-    </div>
+    <Styles.FireBaseUpload>
+      <div className="preview">
+        {previewImage ? <img style={{ width: '100px' }} src={previewImage} /> : null}
+      </div>
+      <div className="filebox">
+        <label className="uploadImageLabel" htmlFor="file">
+          Upload File
+        </label>
+        <input
+          className="uploadImage"
+          type="file"
+          name="file"
+          id="file"
+          onChange={handleFileUpload}
+        />
+      </div>
+    </Styles.FireBaseUpload>
   );
 };
 
