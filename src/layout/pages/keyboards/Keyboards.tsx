@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
-import { IKeyboardInputStateType } from '../dashboard/keyboard/create/CreateKeyboard.interface';
 import { calculateDiscountRate } from '../../../util/math';
+import { IProduct } from '../../../product.interface';
 
 const Keyboards = () => {
-  const [keyboards, setKeyboards] = useState<IKeyboardInputStateType[]>([]);
+  const [keyboards, setKeyboards] = useState<IProduct[]>([]);
   useEffect(() => {
     const getAllKeyboards = async () => {
       const response = await fetch('http://localhost:8070/api/keyboard/getAllKeyboards', {
@@ -20,20 +20,19 @@ const Keyboards = () => {
 
   return (
     <div>
-      {keyboards.map((keyboard: IKeyboardInputStateType) => {
+      {keyboards.map((keyboard: IProduct) => {
         return (
-          <div key={keyboard.keyboardId}>
-            <h3>{keyboard.keyboardName}</h3>
+          <div key={keyboard.id}>
+            <h3>{keyboard.name}</h3>
             <img
-              src={keyboard.keyboardImageUrl}
+              src={keyboard.imageUrl}
               style={{ width: '200px', height: '100px' }}
-              alt={keyboard.keyboardName}
+              alt={keyboard.name}
             />
             <div>
-              Keyboard Price :
-              {calculateDiscountRate(keyboard.keyboardPrice, keyboard.keyboardDiscountRate)}
+              Keyboard Price :{calculateDiscountRate(keyboard.price, keyboard.discountRate)}
             </div>
-            <div>keyboardDiscountRate : {keyboard.keyboardDiscountRate}</div>
+            <div>keyboardDiscountRate : {keyboard.discountRate}</div>
           </div>
         );
       })}

@@ -66,10 +66,10 @@ const CreateSwitch = () => {
     // 4. backend로 보내기 (input + imageurl)
 
     const response = await fetch('http://localhost:8070/api/switch/createSwitch', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      method: 'POST',
       body: JSON.stringify({
         ...createSwitchInput,
         uploadedImageUrl,
@@ -116,14 +116,14 @@ const CreateSwitch = () => {
           name="switchName"
           value={createSwitchInput.switchName}
           onChange={handleSwitchInput}
-          placeholder="switchName"
+          placeholder="Name"
           className="input"
         />
         <input
           name="switchDesc"
           value={createSwitchInput.switchDesc}
           onChange={handleSwitchInput}
-          placeholder="switchDesc"
+          placeholder="Description"
           className="input"
         />
         <input
@@ -131,7 +131,7 @@ const CreateSwitch = () => {
           name="switchPrice"
           value={createSwitchInput.switchPrice}
           onChange={handleSwitchInput}
-          placeholder="switchPrice"
+          placeholder="Price"
           className="input"
         />
         <input
@@ -139,7 +139,7 @@ const CreateSwitch = () => {
           name="switchStock"
           value={createSwitchInput.switchStock}
           onChange={handleSwitchInput}
-          placeholder="switchStock"
+          placeholder="Stock"
           className="input"
         />
         <input
@@ -147,17 +147,17 @@ const CreateSwitch = () => {
           name="switchDiscountRate"
           value={createSwitchInput.switchDiscountRate}
           onChange={handleSwitchInput}
-          placeholder="switchDiscountRate"
+          placeholder="Discount Rate (e.g., 0.1 = 10%)"
           className="input"
         />
       </div>
       <div className="selectMain">
         <select className="selectColor" name={'color'} onChange={handleSwitchSelectFeature}>
           <option value={'default'}>Switch Colors</option>
-          <option>red</option>
-          <option>blue</option>
-          <option>yellow</option>
-          <option>brown</option>
+          <option>Red</option>
+          <option>Blue</option>
+          <option>Yellow</option>
+          <option>Brown</option>
         </select>
       </div>
       <FireBaseUpload handleImageUrl={handleImageUrl} />
