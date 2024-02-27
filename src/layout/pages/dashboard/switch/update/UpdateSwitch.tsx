@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
-import { ISwitch } from '../../../switches/Switches.interface';
 import { IImageInfoStateType, ISwitchInputStateType } from '../create/CreateSwitch.interface';
 import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpload';
 import { getUuid } from '../../../../../util/uuid';
 import { Button } from 'react-bootstrap';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import { IProduct } from '../../../../../product.interface';
 
 interface IUpdateSwitchProps {
-  selectedSwitch: ISwitch;
+  selectedSwitch: IProduct;
   closeModal: () => void;
   handleShowSwitch: () => void;
 }
@@ -16,16 +16,16 @@ interface IUpdateSwitchProps {
 const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateSwitchProps) => {
   console.log(selectedSwitch);
   const [updateSwitchInput, setUpdateSwitchInput] = useState<ISwitchInputStateType>({
-    switchId: selectedSwitch.switchId,
-    switchName: selectedSwitch.switchName,
-    switchDesc: selectedSwitch.switchDesc,
-    switchPrice: selectedSwitch.switchPrice,
-    switchDiscountRate: selectedSwitch.switchDiscountRate,
-    switchStock: selectedSwitch.switchStock,
-    switchImageUrl: selectedSwitch.switchImageUrl,
-    switchImagePath: selectedSwitch.switchImagePath,
+    switchId: selectedSwitch.id,
+    switchName: selectedSwitch.name,
+    switchDesc: selectedSwitch.desc,
+    switchPrice: selectedSwitch.price,
+    switchDiscountRate: selectedSwitch.discountRate,
+    switchStock: selectedSwitch.stock,
+    switchImageUrl: selectedSwitch.imageUrl,
+    switchImagePath: selectedSwitch.imagePath,
     switchFeatures: {
-      color: selectedSwitch.switchFeatures.color,
+      color: selectedSwitch.features.color,
     },
   });
 

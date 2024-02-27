@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import * as Styles from './KeyboardIndex.styled';
 import CreateKeyboard from './create/CreateKeyboard';
-import { IKeyboardInputStateType } from './create/CreateKeyboard.interface';
 import SearchKeyboard from './search/SearchKeyboard';
 import Keyboard from './show/ShowKeyboard';
+import { IProduct } from '../../../../product.interface';
 
 const KeyboardIndex = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [showKeyboard, setShowKeyboard] = useState<IKeyboardInputStateType[]>([]);
+  const [showKeyboard, setShowKeyboard] = useState<IProduct[]>([]);
   const [searchKeyboardInfo, setSearchKeyboardInfo] = useState<string>('');
 
   const handleSearchKeyboardInfo = async (keyboardInfo: string) => {
@@ -23,6 +23,7 @@ const KeyboardIndex = () => {
       },
     );
     const result = await response.json();
+    console.log(result);
     setShowKeyboard(result.searchKeyboard);
   };
 
@@ -38,11 +39,14 @@ const KeyboardIndex = () => {
           Create New Keyboard
         </Link>
       </div>
+      <Routes>
+        <Route path="/create" element={<CreateKeyboard />} />
+      </Routes>
       <div>
-        {showKeyboard.map((keyboardInfo) => {
+        {showKeyboard.map((keyboardInfo: IProduct) => {
           return (
             <Keyboard
-              key={keyboardInfo.keyboardId}
+              key={keyboardInfo.id}
               keyboardInfo={keyboardInfo}
               deletedKeyboardFromKeyboard={deletedKeyboardFromKeyboard}
             />
@@ -63,9 +67,6 @@ const KeyboardIndex = () => {
       <br />
       <Link to="/dashboard/keyboard/delete"> Delete</Link>
       <br /> */}
-      <Routes>
-        <Route path="/create" element={<CreateKeyboard />} />
-      </Routes>
     </Styles.KeyboardIndex>
   );
 };

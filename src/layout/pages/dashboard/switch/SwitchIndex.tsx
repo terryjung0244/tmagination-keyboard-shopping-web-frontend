@@ -3,19 +3,19 @@ import { Link, Route, Routes } from 'react-router-dom';
 import * as Styles from './SwitchIndex.styled';
 import CreateSwitch from './create/CreateSwitch';
 import SearchSwitch from './search/SearchSwitch';
-import { ISwitch } from '../../switches/Switches.interface';
 import DeleteSwitch from './delete/DeleteSwitch';
 import ModalComp from '../../../../components/ModalComp';
 import UpdateSwitch from './update/UpdateSwitch';
 import Card from 'react-bootstrap/Card';
+import { IProduct } from '../../../../product.interface';
 
 export interface UpdateSwitchModal {
   toggle: boolean;
-  selectedSwitch: ISwitch | null;
+  selectedSwitch: IProduct | null;
 }
 
 const SwitchIndex = () => {
-  const [showSearchedSwitch, setShowSearchedSwitch] = useState<ISwitch[]>([]);
+  const [showSearchedSwitch, setShowSearchedSwitch] = useState<IProduct[]>([]);
   const [searchedInput, setSearchedInput] = useState<string>('');
 
   const [show, setShow] = useState<UpdateSwitchModal>({
@@ -40,7 +40,7 @@ const SwitchIndex = () => {
     searchInputSwitchValue(searchedInput);
   };
 
-  const showUpdateModal = (filteredSwitches: ISwitch) => {
+  const showUpdateModal = (filteredSwitches: IProduct) => {
     setShow({ ...show, toggle: true, selectedSwitch: filteredSwitches });
   };
 
@@ -62,27 +62,19 @@ const SwitchIndex = () => {
         </Routes>
 
         <div style={{ display: 'flex' }}>
-          {showSearchedSwitch.map((filteredSwitches: ISwitch) => {
+          {showSearchedSwitch.map((filteredSwitches: IProduct) => {
             return (
-              <div key={filteredSwitches.switchId}>
+              <div key={filteredSwitches.id}>
                 <Card className="switchCard">
                   <div>
-                    <img
-                      src={filteredSwitches.switchImageUrl}
-                      className="switchCardImage"
-                      alt="Switch"
-                    />
+                    <img src={filteredSwitches.imageUrl} className="switchCardImage" alt="Switch" />
                   </div>
                   <Card.Body>
                     <Card.Title>
-                      <div className="switchCardNameFont ">
-                        Name : {filteredSwitches.switchName}
-                      </div>
-                      <div className="switchCardDescFont ">
-                        Desc : {filteredSwitches.switchDesc}
-                      </div>
+                      <div className="switchCardNameFont ">Name : {filteredSwitches.name}</div>
+                      <div className="switchCardDescFont ">Desc : {filteredSwitches.desc}</div>
                       <div className="switchCardColorFont ">
-                        Color: {filteredSwitches.switchFeatures.color}
+                        Color: {filteredSwitches.features.color}
                       </div>
                     </Card.Title>
 
@@ -93,9 +85,9 @@ const SwitchIndex = () => {
                       Update
                     </button>
                     <DeleteSwitch
-                      switchId={filteredSwitches.switchId}
-                      switchName={filteredSwitches.switchName}
-                      switchImagePath={filteredSwitches.switchImagePath}
+                      switchId={filteredSwitches.id}
+                      switchName={filteredSwitches.name}
+                      switchImagePath={filteredSwitches.imageUrl}
                       handleShowSwitch={handleShowSwitch}
                     />
                   </Card.Body>
@@ -107,7 +99,7 @@ const SwitchIndex = () => {
       </div>
       <ModalComp show={show} closeModal={closeUpdateModal}>
         <UpdateSwitch
-          selectedSwitch={show.selectedSwitch as ISwitch}
+          selectedSwitch={show.selectedSwitch as IProduct}
           closeModal={closeUpdateModal}
           handleShowSwitch={handleShowSwitch}
         />
