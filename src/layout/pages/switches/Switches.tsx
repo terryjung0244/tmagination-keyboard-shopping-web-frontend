@@ -29,15 +29,9 @@ const Switches = () => {
       <Container>
         <Row xs={2} md={4} className="rowContainer">
           {switches.map((switchItem: IProduct) => {
-            console.log(switchItem);
             return (
               <Col key={switchItem.id}>
-                <ProductCard
-                  switchItemName={switchItem.name}
-                  switchItemDesc={switchItem.desc}
-                  switchItemImageUrl={switchItem.imageUrl}
-                  switchItemPrice={switchItem.price}
-                />
+                <ProductCard product={switchItem} />
               </Col>
             );
           })}

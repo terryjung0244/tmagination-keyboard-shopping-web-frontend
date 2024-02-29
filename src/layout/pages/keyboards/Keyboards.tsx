@@ -17,6 +17,7 @@ const Keyboards = () => {
         },
       });
       const result = await response.json();
+      console.log(result);
       setKeyboards(result.result);
     };
     getAllKeyboards();
@@ -29,12 +30,7 @@ const Keyboards = () => {
           {keyboards.map((keyboard: IProduct) => {
             return (
               <Col key={keyboard.id}>
-                <ProductCardComp
-                  switchItemName={keyboard.name}
-                  switchItemDesc={keyboard.desc}
-                  switchItemImageUrl={keyboard.imageUrl}
-                  switchItemPrice={keyboard.price}
-                />
+                <ProductCardComp product={keyboard} />
               </Col>
             );
           })}

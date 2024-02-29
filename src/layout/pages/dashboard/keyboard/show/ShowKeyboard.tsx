@@ -22,12 +22,7 @@ const ShowKeyboard = ({ keyboardInfo, deletedKeyboardFromKeyboard }: IKeyboardPr
     <Styles.ShowKeyboard>
       <Container>
         <Row xs={2} md={4} className="keyboardCard">
-          <ProductCard
-            keyboardItemImageUrl={keyboardInfo.imageUrl}
-            keyboardItemName={keyboardInfo.name}
-            keyboardItemDesc={keyboardInfo.desc}
-            keyboardItemPrice={keyboardInfo.price}
-          />
+          <ProductCard product={keyboardInfo} />
           <button className="keyboardUpdateBtn">Update</button>
           <DeleteKeyboard
             keyboardId={keyboardInfo.id}
