@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
-import { calculateDiscountRate } from '../../../util/math';
+import * as Styles from './Keyboards.styled';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../product.interface';
+import ProductCardComp from '../../../components/productCard/ProductCard';
 
 const Keyboards = () => {
   const [keyboards, setKeyboards] = useState<IProduct[]>([]);
@@ -19,24 +23,24 @@ const Keyboards = () => {
   }, []);
 
   return (
-    <div>
-      {keyboards.map((keyboard: IProduct) => {
-        return (
-          <div key={keyboard.id}>
-            <h3>{keyboard.name}</h3>
-            <img
-              src={keyboard.imageUrl}
-              style={{ width: '200px', height: '100px' }}
-              alt={keyboard.name}
-            />
-            <div>
-              Keyboard Price :{calculateDiscountRate(keyboard.price, keyboard.discountRate)}
-            </div>
-            <div>keyboardDiscountRate : {keyboard.discountRate}</div>
-          </div>
-        );
-      })}
-    </div>
+    <Styles.Keyboards>
+      <Container>
+        <Row xs={2} md={4} className="rowContainer">
+          {keyboards.map((keyboard: IProduct) => {
+            return (
+              <Col key={keyboard.id}>
+                <ProductCardComp
+                  switchItemName={keyboard.name}
+                  switchItemDesc={keyboard.desc}
+                  switchItemImageUrl={keyboard.imageUrl}
+                  switchItemPrice={keyboard.price}
+                />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
+    </Styles.Keyboards>
   );
 };
 

@@ -197,7 +197,7 @@ const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateS
           style={{ width: '100px', marginLeft: '10px' }}
           onClick={closeModal}
         >
-          Close
+          Cancel
         </Button>
       </div>
     </div>

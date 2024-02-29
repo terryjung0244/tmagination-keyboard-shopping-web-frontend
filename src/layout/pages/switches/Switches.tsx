@@ -1,7 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
-
+import * as Styles from './Switches.styled';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../product.interface';
+import ProductCard from '../../../components/productCard/ProductCard';
 
 const Switches = () => {
   const [switches, setSwitches] = useState<IProduct[]>([]);
@@ -21,20 +24,27 @@ const Switches = () => {
     getAllSwitches();
   }, []);
 
-  return <div></div>;
+  return (
+    <Styles.Switches>
+      <Container>
+        <Row xs={2} md={4} className="rowContainer">
+          {switches.map((switchItem: IProduct) => {
+            console.log(switchItem);
+            return (
+              <Col key={switchItem.id}>
+                <ProductCard
+                  switchItemName={switchItem.name}
+                  switchItemDesc={switchItem.desc}
+                  switchItemImageUrl={switchItem.imageUrl}
+                  switchItemPrice={switchItem.price}
+                />
+              </Col>
+            );
+          })}
+        </Row>
+      </Container>
+    </Styles.Switches>
+  );
 };
 
 export default Switches;
-
-// useEffect(() => {
-//   const getAllKeyboards = async () => {
-//     const response = await fetch('http://localhost:8070/api/keyboard/getAllKeyboards', {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     });
-//     const result = await response.json();
-//     setKeyboards(result.result);
-//   };
-//   getAllKeyboards();
-// }, []);

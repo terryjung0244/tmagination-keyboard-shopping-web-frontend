@@ -14,4 +14,5 @@ export interface IProduct {
   price: string;
   stock: string;
   updatedAt: string;
+  categoryBtn?: string;
 }

@@ -7,13 +7,6 @@ export const SwitchIndex = styled.section`
   margin-left: 20px;
 
   .createNewSwitchBtn {
-    /* font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    background-color: #ececec;
-    color: black;
-    border: 1px solid #dedede; */
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
@@ -48,14 +41,31 @@ export const SwitchIndex = styled.section`
     font-size: 15px;
   }
 
+  .switchBtnMain {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   .switchUpdateBtn {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 2px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color: #084298;
+    color: #2eff2e;
+    padding: 2px;
+  }
+
+  .switchDeleteBtn {
     width: 100%;
     margin-top: 20px;
     margin-bottom: 2px;
     border-radius: 5px;
     background-color: #084298;
     color: #2eff2e;
-    padding: 4px;
+    padding: 2px;
   }
 
   .createBtnMain {

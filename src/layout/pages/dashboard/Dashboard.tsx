@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import KeyboardIndex from './keyboard/KeyboardIndex';
-import SwitchIndex from './switch/SwitchIndex';
+import KeyboardIndex from './keyboard/keyboardIndex/KeyboardIndex';
+import SwitchIndex from './switch/switchIndex/SwitchIndex';
 import * as Styles from './Dashboard.styled';
 
 const Dashboard = () => {
