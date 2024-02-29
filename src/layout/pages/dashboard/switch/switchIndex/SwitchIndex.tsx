@@ -1,29 +1,36 @@
 import React, { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import * as Styles from './SwitchIndex.styled';
-import CreateSwitch from './create/CreateSwitch';
-import SearchSwitch from './search/SearchSwitch';
-import DeleteSwitch from './delete/DeleteSwitch';
-import ModalComp from '../../../../components/ModalComp';
-import UpdateSwitch from './update/UpdateSwitch';
+import CreateSwitch from '../create/CreateSwitch';
+import SearchSwitch from '../search/SearchSwitch';
+import ModalComp from '../../../../../components/Modal/ModalComp';
+import UpdateSwitch from '../update/UpdateSwitch';
 import Card from 'react-bootstrap/Card';
-import { IProduct } from '../../../../product.interface';
+import { IProduct } from '../../../../../product.interface';
 
-export interface UpdateSwitchModal {
-  toggle: boolean;
-  selectedSwitch: IProduct | null;
-}
+import DeleteSwitch from '../delete/DeleteSwitch';
+import { SwitchModal } from './SwitchIndex.interface';
 
 const SwitchIndex = () => {
   const [showSearchedSwitch, setShowSearchedSwitch] = useState<IProduct[]>([]);
   const [searchedInput, setSearchedInput] = useState<string>('');
 
-  const [show, setShow] = useState<UpdateSwitchModal>({
-    toggle: false,
+  // Modal
+  const [show, setShow] = useState<SwitchModal>({
+    deleteBtn: 'deleteBtn',
+    updateBtn: 'updateBtn',
+    updateToggle: false,
+    deleteToggle: false,
     selectedSwitch: null,
   });
 
-  // Search
+  // Delete Modal
+  // const [deleteModal, setDeleteModal] = useState<DeleteSwitchModal>({
+  //   toggle: false,
+  //   selectedSwitch: null,
+  // });
+
+  // Search API
   const searchInputSwitchValue = async (searchInput: string) => {
     const response = await fetch(
       `http://localhost:8070/api/switch/searchSwitches?searchInput=${searchInput}`,
@@ -40,14 +47,26 @@ const SwitchIndex = () => {
     searchInputSwitchValue(searchedInput);
   };
 
+  // UPDATE MODAL
   const showUpdateModal = (filteredSwitches: IProduct) => {
-    setShow({ ...show, toggle: true, selectedSwitch: filteredSwitches });
+    setShow({ ...show, updateToggle: true, selectedSwitch: filteredSwitches });
   };
 
   const closeUpdateModal = () => {
-    setShow({ ...show, toggle: false });
+    console.log('1');
+    setShow({ ...show, updateToggle: false });
   };
 
+  // DELETE MODAL
+  const showDeleteModal = (filteredSwitches: IProduct) => {
+    setShow({ ...show, deleteToggle: true, selectedSwitch: filteredSwitches });
+  };
+
+  const closeDeleteModal = () => {
+    setShow({ ...show, deleteToggle: false });
+  };
+
+  console.log(show.selectedSwitch?.category);
   return (
     <Styles.SwitchIndex>
       <SearchSwitch searchInputSwitchValue={searchInputSwitchValue} />
@@ -60,7 +79,6 @@ const SwitchIndex = () => {
         <Routes>
           <Route path="/create" element={<CreateSwitch />} />
         </Routes>
-
         <div style={{ display: 'flex' }}>
           {showSearchedSwitch.map((filteredSwitches: IProduct) => {
             return (
@@ -77,19 +95,20 @@ const SwitchIndex = () => {
                         Color: {filteredSwitches.features.color}
                       </div>
                     </Card.Title>
-
-                    <button
-                      className="switchUpdateBtn"
-                      onClick={() => showUpdateModal(filteredSwitches)}
-                    >
-                      Update
-                    </button>
-                    <DeleteSwitch
-                      switchId={filteredSwitches.id}
-                      switchName={filteredSwitches.name}
-                      switchImagePath={filteredSwitches.imageUrl}
-                      handleShowSwitch={handleShowSwitch}
-                    />
+                    <div className="switchBtnMain">
+                      <button
+                        className="switchUpdateBtn"
+                        onClick={() => showUpdateModal(filteredSwitches)}
+                      >
+                        Update
+                      </button>
+                      <button
+                        className="switchDeleteBtn"
+                        onClick={() => showDeleteModal(filteredSwitches)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </Card.Body>
                 </Card>
               </div>
@@ -104,6 +123,21 @@ const SwitchIndex = () => {
           handleShowSwitch={handleShowSwitch}
         />
       </ModalComp>
+      <ModalComp show={show} closeModal={closeDeleteModal}>
+        <DeleteSwitch
+          selectedSwitch={show.selectedSwitch as IProduct}
+          closeModal={closeDeleteModal}
+          handleShowSwitch={handleShowSwitch}
+        />
+      </ModalComp>
+
+      {/* <DeleteSwitch
+        closeModal={closeUpdateModal}
+        switchId={filteredSwitches.id}
+        switchName={filteredSwitches.name}
+        switchImagePath={filteredSwitches.imageUrl}
+        handleShowSwitch={handleShowSwitch}
+      /> */}
     </Styles.SwitchIndex>
   );
 };

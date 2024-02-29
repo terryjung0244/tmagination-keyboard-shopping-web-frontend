@@ -36,7 +36,9 @@ const DeleteKeyboard = ({ keyboardId, keyboardPath, deletedKeyboard }: IDeleteKe
 
   return (
     <Styles.DeleteKeyboard>
-      <button onClick={onClickDeleteKeyboard}>Delete</button>
+      <button className="deleteBtn" onClick={onClickDeleteKeyboard}>
+        Delete
+      </button>
     </Styles.DeleteKeyboard>
   );
 };

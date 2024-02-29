@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import * as Styles from './KeyboardIndex.styled';
-import CreateKeyboard from './create/CreateKeyboard';
-import SearchKeyboard from './search/SearchKeyboard';
-import Keyboard from './show/ShowKeyboard';
-import { IProduct } from '../../../../product.interface';
+import CreateKeyboard from '../create/CreateKeyboard';
+import SearchKeyboard from '../search/SearchKeyboard';
+import Keyboard from '../show/ShowKeyboard';
+import { IProduct } from '../../../../../product.interface';
 
 const KeyboardIndex = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
