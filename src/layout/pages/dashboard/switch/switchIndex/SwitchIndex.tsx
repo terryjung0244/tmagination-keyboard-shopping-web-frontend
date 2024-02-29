@@ -7,7 +7,6 @@ import ModalComp from '../../../../../components/Modal/ModalComp';
 import UpdateSwitch from '../update/UpdateSwitch';
 import Card from 'react-bootstrap/Card';
 import { IProduct } from '../../../../../product.interface';
-
 import DeleteSwitch from '../delete/DeleteSwitch';
 import { SwitchModal } from './SwitchIndex.interface';
 
@@ -116,14 +115,14 @@ const SwitchIndex = () => {
           })}
         </div>
       </div>
-      <ModalComp show={show} closeModal={closeUpdateModal}>
+      <ModalComp show={show} updateBtn={show.updateBtn as string} closeModal={closeUpdateModal}>
         <UpdateSwitch
           selectedSwitch={show.selectedSwitch as IProduct}
           closeModal={closeUpdateModal}
           handleShowSwitch={handleShowSwitch}
         />
       </ModalComp>
-      <ModalComp show={show} closeModal={closeDeleteModal}>
+      <ModalComp show={show} deleteBtn={show.deleteBtn as string} closeModal={closeDeleteModal}>
         <DeleteSwitch
           selectedSwitch={show.selectedSwitch as IProduct}
           closeModal={closeDeleteModal}

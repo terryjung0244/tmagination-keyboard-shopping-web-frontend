@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import * as Styles from './ProductCard.styled';
+import { IProduct } from '../../product.interface';
 
 // interface ISwitchItemCardPropsType {
 //   switchItemName: string;
@@ -27,37 +28,20 @@ import * as Styles from './ProductCard.styled';
 //   keyboardItemPrice: string;
 // }
 
-const ProductCard = ({
-  switchItemName,
-  switchItemDesc,
-  switchItemImageUrl,
-  switchItemPrice,
-  keyboardItemImageUrl,
-  keyboardItemName,
-  keyboardItemDesc,
-  keyboardItemPrice,
-}: any) => {
-  console.log(switchItemName);
+interface IProductCardPropsType {
+  product: IProduct;
+}
 
+const ProductCard = ({ product }: IProductCardPropsType) => {
   return (
     <Styles.Createkeyboard>
-      {switchItemName && switchItemDesc && switchItemImageUrl && (
-        <div className="cardMain">
-          <img className="cardImageUrl" src={switchItemImageUrl} alt="SwitchImageError" />
-          <div className="cardName">Name : {switchItemName}</div>
-          <div className="cardDesc">Switch : {switchItemDesc}</div>
-          <div className="cardPrice">Price : {switchItemPrice}</div>
-        </div>
-      )}
-
-      {keyboardItemName && keyboardItemDesc && keyboardItemImageUrl && (
-        <div className="cardMain">
-          <img className="cardImageUrl" src={keyboardItemImageUrl} alt="SwitchImageError" />
-          <div className="cardName">Name : {keyboardItemName}</div>
-          <div className="cardDesc">Switch : {keyboardItemDesc}</div>
-          <div className="cardPrice">Price : {keyboardItemPrice}</div>
-        </div>
-      )}
+      <div className="cardMain">
+        <img className="cardImageUrl" src={product.imageUrl} alt="SwitchImageError" />
+        <div className="cardName">Name : {product.name}</div>
+        <div className="cardDesc">Switch : {product.desc}</div>
+        <div className="cardPrice">Price : {product.price}</div>
+        <div className="cardStock">Stock : {product.stock}</div>
+      </div>
     </Styles.Createkeyboard>
   );
 };

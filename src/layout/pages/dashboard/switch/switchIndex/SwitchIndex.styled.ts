@@ -24,7 +24,9 @@ export const SwitchIndex = styled.section`
   }
 
   .switchCardImage {
+    min-height: 200px;
     width: 200px;
+    object-fit: scale-down;
   }
 
   .switchCardNameFont {

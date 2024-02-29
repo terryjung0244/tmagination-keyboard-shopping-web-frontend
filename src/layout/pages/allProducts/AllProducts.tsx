@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../product.interface';
-import ProductCardComp from '../../../components/productCard/ProductCard';
+import ProductCard from '../../../components/productCard/ProductCard';
 
 const AllProducts = () => {
   useEffect(() => {
@@ -28,16 +28,11 @@ const AllProducts = () => {
   return (
     <Styles.AllProducts>
       <Container>
-        <Row xs={2} md={4} className="rowContainer">
+        <Row className="rowContainer">
           {showAllProducts.map((product: IProduct) => {
             return (
-              <Col key={product.id}>
-                <ProductCardComp
-                  switchItemName={product.name}
-                  switchItemDesc={product.desc}
-                  switchItemImageUrl={product.imageUrl}
-                  switchItemPrice={product.price}
-                />
+              <Col xs={12} md={4} key={product.id}>
+                <ProductCard product={product} />
               </Col>
             );
           })}

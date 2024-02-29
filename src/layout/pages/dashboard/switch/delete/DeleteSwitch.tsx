@@ -51,6 +51,7 @@ const DeleteSwitch = ({
 
   return (
     <Styles.DeleteSwitch>
+      <h3>Are you sure to delete?</h3>
       <button className="switchDeleteBtn" onClick={handleDeleteSwitch}>
         Delete
       </button>
