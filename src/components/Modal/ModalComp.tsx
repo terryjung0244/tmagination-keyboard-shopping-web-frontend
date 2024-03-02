@@ -26,11 +26,9 @@ const ModalComp = ({ show, updateBtn, deleteBtn, closeModal, children }: IModalC
   }
 
   return (
-    <>
-      <Modal show={show.deleteToggle} onHide={closeModal}>
-        {children}
-      </Modal>
-    </>
+    <Modal size="sm" show={show.deleteToggle} onHide={closeModal}>
+      {children}
+    </Modal>
   );
 };
 

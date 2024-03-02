@@ -4,8 +4,8 @@ import { Link, Route, Routes } from 'react-router-dom';
 import * as Styles from './KeyboardIndex.styled';
 import CreateKeyboard from '../create/CreateKeyboard';
 import SearchKeyboard from '../search/SearchKeyboard';
-import Keyboard from '../show/ShowKeyboard';
 import { IProduct } from '../../../../../product.interface';
+import ShowKeyboard from '../show/ShowKeyboard';
 
 const KeyboardIndex = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -42,17 +42,16 @@ const KeyboardIndex = () => {
       <Routes>
         <Route path="/create" element={<CreateKeyboard />} />
       </Routes>
-      <div>
-        {showKeyboard.map((keyboardInfo: IProduct) => {
-          return (
-            <Keyboard
-              key={keyboardInfo.id}
-              keyboardInfo={keyboardInfo}
-              deletedKeyboardFromKeyboard={deletedKeyboardFromKeyboard}
-            />
-          );
-        })}
-      </div>
+
+      {showKeyboard.map((keyboardInfo: IProduct) => {
+        return (
+          <ShowKeyboard
+            key={keyboardInfo.id}
+            keyboardInfo={keyboardInfo}
+            deletedKeyboardFromKeyboard={deletedKeyboardFromKeyboard}
+          />
+        );
+      })}
 
       {/* 
         // <div style={{ display: 'flex', flexDirection: 'column', width: '200px' }}>

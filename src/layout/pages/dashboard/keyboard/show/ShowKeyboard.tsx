@@ -1,11 +1,12 @@
 import React from 'react';
 import DeleteKeyboard from '../delete/DeleteKeyboard';
 import * as Styles from './ShowKeyboard.styled';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+// import Container from 'react-bootstrap/Container';
+// import Row from 'react-bootstrap/Row';
+import Card from 'react-bootstrap/Card';
 // import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../../../product.interface';
-import ProductCard from '../../../../../components/productCard/ProductCard';
+// import ProductCard from '../../../../../components/productCard/ProductCard';
 
 interface IKeyboardProps {
   keyboardInfo: IProduct;
@@ -20,17 +21,24 @@ const ShowKeyboard = ({ keyboardInfo, deletedKeyboardFromKeyboard }: IKeyboardPr
 
   return (
     <Styles.ShowKeyboard>
-      <Container>
-        <Row xs={2} md={4} className="keyboardCard">
-          <ProductCard product={keyboardInfo} />
+      <div>
+        <img className="keyboardCardImage" src={keyboardInfo.imageUrl} alt="KeyboardImageError" />
+      </div>
+
+      <Card.Title className="cardTitleMain">
+        <div className="keyboardCardName">{keyboardInfo.name}</div>
+        <div className="keyboardCardDesc">{keyboardInfo.desc}</div>
+        <div className="keyboardCardColor">{keyboardInfo.features.color}</div>
+        <div className="keyboardCardSwitch">{keyboardInfo.features.switch}</div>
+        <div className="keyboardBtnMain">
           <button className="keyboardUpdateBtn">Update</button>
           <DeleteKeyboard
             keyboardId={keyboardInfo.id}
             keyboardPath={keyboardInfo.imagePath}
             deletedKeyboard={deletedKeyboard}
           />
-        </Row>
-      </Container>
+        </div>
+      </Card.Title>
     </Styles.ShowKeyboard>
   );
 };
