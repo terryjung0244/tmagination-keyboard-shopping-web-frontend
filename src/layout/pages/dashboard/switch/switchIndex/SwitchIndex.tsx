@@ -88,9 +88,9 @@ const SwitchIndex = () => {
                   </div>
                   <Card.Body>
                     <Card.Title>
-                      <div className="switchCardNameFont ">Name : {filteredSwitches.name}</div>
-                      <div className="switchCardDescFont ">Desc : {filteredSwitches.desc}</div>
-                      <div className="switchCardColorFont ">
+                      <div className="switchCardNameFont">Name : {filteredSwitches.name}</div>
+                      <div className="switchCardDescFont">Desc : {filteredSwitches.desc}</div>
+                      <div className="switchCardColorFont">
                         Color: {filteredSwitches.features.color}
                       </div>
                     </Card.Title>

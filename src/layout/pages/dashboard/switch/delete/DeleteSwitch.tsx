@@ -19,7 +19,7 @@ const DeleteSwitch = ({
   // switchName,
   // switchImagePath,
   // handleShowSwitch,
-  // closeModal,
+  closeModal,
   selectedSwitch,
   handleShowSwitch,
 }: IDeleteSwitchProps) => {
@@ -49,12 +49,23 @@ const DeleteSwitch = ({
     handleShowSwitch();
   };
 
+  const handleCancelModal = () => {
+    closeModal();
+  };
+
   return (
     <Styles.DeleteSwitch>
-      <h3>Are you sure to delete?</h3>
-      <button className="switchDeleteBtn" onClick={handleDeleteSwitch}>
-        Delete
-      </button>
+      <div className="messageContainer">
+        <h2>Delete this switch?</h2>
+        <div className="btnMain">
+          <button className="switchDeleteBtn" onClick={handleDeleteSwitch}>
+            Delete
+          </button>
+          <button className="switchDeleteBtn" onClick={handleCancelModal}>
+            Cancel
+          </button>
+        </div>
+      </div>
     </Styles.DeleteSwitch>
   );
 };

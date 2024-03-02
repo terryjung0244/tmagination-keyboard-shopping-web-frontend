@@ -8,9 +8,7 @@ const App = () => {
   return (
     <Styles.App>
       <Navbar />
-
       <Layout />
-
       <Footer />
     </Styles.App>
   );

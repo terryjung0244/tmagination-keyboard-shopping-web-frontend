@@ -31,7 +31,7 @@ const AllProducts = () => {
         <Row className="rowContainer">
           {showAllProducts.map((product: IProduct) => {
             return (
-              <Col xs={12} md={4} key={product.id}>
+              <Col xs={12} md={2} key={product.id}>
                 <ProductCard product={product} />
               </Col>
             );
