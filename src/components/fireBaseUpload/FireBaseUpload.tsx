@@ -7,6 +7,7 @@ interface IFireBaseUploadProps {
 }
 
 const FireBaseUpload = ({ handleImageUrl }: IFireBaseUploadProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [previewImage, setPreviewImage] = useState<any>(null);
 
   const handleFileUpload = (e: any) => {
@@ -20,8 +21,8 @@ const FireBaseUpload = ({ handleImageUrl }: IFireBaseUploadProps) => {
 
   return (
     <Styles.FireBaseUpload>
-      <div className="preview">
-        {previewImage ? <img style={{ width: '100px' }} src={previewImage} /> : null}
+      <div className="previewMain">
+        {previewImage ? <img className="previewImage" src={previewImage} /> : null}
       </div>
       <div className="filebox">
         <label className="uploadImageLabel" htmlFor="file">

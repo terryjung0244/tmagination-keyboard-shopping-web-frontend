@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const DeleteSwitch = styled.section`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 30px;
 
   .messageContainer {
     display: flex;

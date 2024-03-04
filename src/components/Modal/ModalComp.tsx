@@ -2,6 +2,7 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { SwitchModal } from '../../layout/pages/dashboard/switch/switchIndex/SwitchIndex.interface';
+import { IModalStateType } from '../../layout/pages/dashboard/keyboard/show/ShowKeyboard';
 
 // import {
 //   DeleteSwitchModal,
@@ -11,7 +12,7 @@ import { SwitchModal } from '../../layout/pages/dashboard/switch/switchIndex/Swi
 interface IModalCompProps {
   updateBtn?: string;
   deleteBtn?: string;
-  show: SwitchModal;
+  show: SwitchModal | IModalStateType;
   closeModal: () => void;
   children: JSX.Element | JSX.Element[];
 }
@@ -19,14 +20,14 @@ interface IModalCompProps {
 const ModalComp = ({ show, updateBtn, deleteBtn, closeModal, children }: IModalCompProps) => {
   if (updateBtn === 'updateBtn') {
     return (
-      <Modal show={show.updateToggle} onHide={closeModal}>
+      <Modal size="sm" show={show.updateToggle} onHide={closeModal}>
         {children}
       </Modal>
     );
   }
 
   return (
-    <Modal size="sm" show={show.deleteToggle} onHide={closeModal}>
+    <Modal show={show.deleteToggle} onHide={closeModal}>
       {children}
     </Modal>
   );

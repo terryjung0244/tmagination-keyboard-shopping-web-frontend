@@ -1,4 +1,4 @@
-import { IProduct } from '../../../../../product.interface';
+import { IProduct } from '../../../../../type/product.interface';
 
 export interface SwitchModal {
   deleteBtn?: string;

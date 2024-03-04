@@ -1,7 +1,7 @@
 import React from 'react';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
 import * as Styles from './DeleteSwitch.styled';
-import { IProduct } from '../../../../../product.interface';
+import { IProduct } from '../../../../../type/product.interface';
 
 export interface IDeleteSwitchProps {
   // switchId: string;
