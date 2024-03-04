@@ -4,8 +4,10 @@ import * as Styles from './AllProducts.styled';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { IProduct } from '../../../product.interface';
+import { IProduct } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
+import SortingBox from '../../../components/sortBox/SortBox';
+import { ISortFilter } from '../../../type/sortFilter.interface';
 
 const AllProducts = () => {
   useEffect(() => {
@@ -24,14 +26,19 @@ const AllProducts = () => {
   }, []);
 
   const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
+  const [sortFilter, setSortFilter] = useState<ISortFilter>({
+    nameSort: false,
+    priceSort: false,
+  });
 
   return (
     <Styles.AllProducts>
       <Container>
+        <SortingBox sortFilter={sortFilter} />
         <Row className="rowContainer">
           {showAllProducts.map((product: IProduct) => {
             return (
-              <Col xs={12} md={2} key={product.id}>
+              <Col xs={12} md={3} key={product.id}>
                 <ProductCard product={product} />
               </Col>
             );

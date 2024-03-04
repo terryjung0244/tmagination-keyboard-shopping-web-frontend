@@ -4,7 +4,7 @@ import * as Styles from './Keyboards.styled';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { IProduct } from '../../../product.interface';
+import { IProduct } from '../../../type/product.interface';
 import ProductCardComp from '../../../components/productCard/ProductCard';
 
 const Keyboards = () => {

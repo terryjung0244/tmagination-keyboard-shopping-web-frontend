@@ -1,14 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import * as Styles from './KeyboardIndex.styled';
 import CreateKeyboard from '../create/CreateKeyboard';
 import SearchKeyboard from '../search/SearchKeyboard';
-import { IProduct } from '../../../../../product.interface';
+import { IProduct } from '../../../../../type/product.interface';
 import ShowKeyboard from '../show/ShowKeyboard';
 
 const KeyboardIndex = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [showKeyboard, setShowKeyboard] = useState<IProduct[]>([]);
   const [searchKeyboardInfo, setSearchKeyboardInfo] = useState<string>('');
 
@@ -31,6 +29,10 @@ const KeyboardIndex = () => {
     handleSearchKeyboardInfo(searchKeyboardInfo);
   };
 
+  const handleShowKeyboard = () => {
+    handleSearchKeyboardInfo(searchKeyboardInfo);
+  };
+
   return (
     <Styles.KeyboardIndex>
       <SearchKeyboard handleSearchKeyboardInfo={handleSearchKeyboardInfo} />
@@ -45,27 +47,17 @@ const KeyboardIndex = () => {
 
       {showKeyboard.map((keyboardInfo: IProduct) => {
         return (
-          <ShowKeyboard
-            key={keyboardInfo.id}
-            keyboardInfo={keyboardInfo}
-            deletedKeyboardFromKeyboard={deletedKeyboardFromKeyboard}
-          />
+          <div key={keyboardInfo.id}>
+            <ShowKeyboard
+              // searchKeyboardInfo={searchKeyboardInfo}
+              key={keyboardInfo.id}
+              keyboardInfo={keyboardInfo}
+              handleShowKeyboard={handleShowKeyboard}
+              deletedKeyboardFromKeyboard={deletedKeyboardFromKeyboard}
+            />
+          </div>
         );
       })}
-
-      {/* 
-        // <div style={{ display: 'flex', flexDirection: 'column', width: '200px' }}>
-        //   <div>KeyboardName : {showKeyboard.keyboardName}</div>
-        //   <div>keyboardDesc : {showKeyboard.keyboardDesc}</div>
-        //   <img src={showKeyboard.keyboardImageUrl} alt="keyboard" />
-        //   <button>Delete</button>
-        //   <button>Update</button>
-        // </div> */}
-
-      {/* <Link to="/dashboard/keyboard/update"> Update</Link>
-      <br />
-      <Link to="/dashboard/keyboard/delete"> Delete</Link>
-      <br /> */}
     </Styles.KeyboardIndex>
   );
 };

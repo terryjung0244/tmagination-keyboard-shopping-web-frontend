@@ -6,7 +6,7 @@ import SearchSwitch from '../search/SearchSwitch';
 import ModalComp from '../../../../../components/Modal/ModalComp';
 import UpdateSwitch from '../update/UpdateSwitch';
 import Card from 'react-bootstrap/Card';
-import { IProduct } from '../../../../../product.interface';
+import { IProduct } from '../../../../../type/product.interface';
 import DeleteSwitch from '../delete/DeleteSwitch';
 import { SwitchModal } from './SwitchIndex.interface';
 

@@ -9,8 +9,17 @@ export const Createkeyboard = styled.section`
   align-items: center;
   border-radius: 5px;
   margin-bottom: 20px;
+  position: relative;
 
   .cardMain {
+    .cardOutOfStock {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: red;
+      padding: 0px 10px;
+      color: white;
+    }
   }
 
   .cardImageUrl {
