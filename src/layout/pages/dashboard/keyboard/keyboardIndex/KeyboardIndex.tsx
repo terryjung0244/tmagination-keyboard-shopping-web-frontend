@@ -7,11 +7,11 @@ import { IProduct } from '../../../../../type/product.interface';
 import ShowKeyboard from '../show/ShowKeyboard';
 
 const KeyboardIndex = () => {
-  const [showKeyboard, setShowKeyboard] = useState<IProduct[]>([]);
+  const [searchedKeyboardResult, setSearchedKeyboardResult] = useState<IProduct[]>([]);
   const [searchKeyboardInfo, setSearchKeyboardInfo] = useState<string>('');
 
   const handleSearchKeyboardInfo = async (keyboardInfo: string) => {
-    setSearchKeyboardInfo(keyboardInfo);
+    setSearchKeyboardInfo(keyboardInfo); // Search Input에서 입력한 값
     const response = await fetch(
       `http://localhost:8070/api/keyboard/searchKeyboards?keyboardInfo=${keyboardInfo}`,
       {
@@ -22,7 +22,7 @@ const KeyboardIndex = () => {
     );
     const result = await response.json();
     console.log(result);
-    setShowKeyboard(result.searchKeyboard);
+    setSearchedKeyboardResult(result.searchKeyboard);
   };
 
   const deletedKeyboardFromKeyboard = () => {
@@ -45,13 +45,11 @@ const KeyboardIndex = () => {
         <Route path="/create" element={<CreateKeyboard />} />
       </Routes>
 
-      {showKeyboard.map((keyboardInfo: IProduct) => {
+      {searchedKeyboardResult.map((keyboardInfo: IProduct) => {
         return (
           <div key={keyboardInfo.id}>
             <ShowKeyboard
-              // searchKeyboardInfo={searchKeyboardInfo}
-              key={keyboardInfo.id}
-              keyboardInfo={keyboardInfo}
+              keyboardInfo={keyboardInfo} // after Searched keyboard info
               handleShowKeyboard={handleShowKeyboard}
               deletedKeyboardFromKeyboard={deletedKeyboardFromKeyboard}
             />

@@ -12,7 +12,7 @@ export const FireBaseUpload = styled.section`
   }
 
   .filebox {
-    /* margin-top: 20px; */
+    margin-top: 20px;
     text-align: center;
   }
 

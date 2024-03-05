@@ -190,13 +190,13 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
             onChange={handleKeyboardSelectFeature}
             value={updateKeyboardInput.keyboardFeatures.color}
           >
-            <option>Red</option>
-            <option>Blue</option>
-            <option>Yellow</option>
-            <option>Brown</option>
-            <option>Black</option>
+            <option>Red Keyboard</option>
+            <option>Blue Keyboard</option>
+            <option>Yellow Keyboard</option>
+            <option>Brown Keyboard</option>
+            <option>Black Keyboard</option>
           </select>
-          <select className="selectSwitch" name={'switch'} onChange={handleKeyboardSelectFeature}>
+          <select className="selectInput" name={'switch'} onChange={handleKeyboardSelectFeature}>
             <option value={'default'}>Switches</option>
             <option>Red Switch</option>
             <option>Black Switch</option>

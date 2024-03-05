@@ -6,20 +6,21 @@ interface ISearchKeyboardProps {
 }
 
 const SearchKeyboard = ({ handleSearchKeyboardInfo }: ISearchKeyboardProps) => {
-  const [searchKeyboardInfo, setSearchKeyboardInfo] = useState<string>('');
+  // Search Input State
+  const [searchKeyboardInput, setSearchKeyboardInput] = useState<string>('');
 
   const handleSearchKeyboard = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.name, e.target.value);
-    setSearchKeyboardInfo(e.target.value);
+    setSearchKeyboardInput(e.target.value);
   };
 
   const onClickSearchKeyboard = async () => {
-    if (!searchKeyboardInfo) {
+    if (!searchKeyboardInput) {
       alert('What you looking for?');
       return;
     }
 
-    handleSearchKeyboardInfo(searchKeyboardInfo);
+    handleSearchKeyboardInfo(searchKeyboardInput);
   };
 
   return (
@@ -27,7 +28,7 @@ const SearchKeyboard = ({ handleSearchKeyboardInfo }: ISearchKeyboardProps) => {
       <input
         className="searchInput"
         name="keyboardInfo"
-        value={searchKeyboardInfo}
+        value={searchKeyboardInput}
         onChange={handleSearchKeyboard}
         placeholder="Search Products"
       />
