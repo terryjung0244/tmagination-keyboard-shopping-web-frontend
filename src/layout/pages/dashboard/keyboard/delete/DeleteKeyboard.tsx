@@ -7,10 +7,15 @@ interface IDeleteKeyboardProps {
   keyboardId: string;
   keyboardPath: string;
   deletedKeyboard: () => void;
-  // searchKeyboardInfo: string;
+  closeDeleteModal: () => void;
 }
 
-const DeleteKeyboard = ({ keyboardId, keyboardPath, deletedKeyboard }: IDeleteKeyboardProps) => {
+const DeleteKeyboard = ({
+  keyboardId,
+  keyboardPath,
+  deletedKeyboard,
+  closeDeleteModal,
+}: IDeleteKeyboardProps) => {
   const onClickDeleteKeyboard = async () => {
     // Delete images in Firebase storage
     const storage = getStorage();
@@ -34,11 +39,23 @@ const DeleteKeyboard = ({ keyboardId, keyboardPath, deletedKeyboard }: IDeleteKe
     deletedKeyboard();
   };
 
+  const handleCancelModal = () => {
+    closeDeleteModal();
+  };
+
   return (
     <Styles.DeleteKeyboard>
-      <button className="deleteBtn" onClick={onClickDeleteKeyboard}>
-        Delete
-      </button>
+      <div className="messageContainer">
+        <h2>Delete this switch?</h2>
+        <div className="btnMain">
+          <button className="keyboardDeleteBtn" onClick={onClickDeleteKeyboard}>
+            Delete
+          </button>
+          <button className="keyboardDeleteBtn" onClick={handleCancelModal}>
+            Cancel
+          </button>
+        </div>
+      </div>
     </Styles.DeleteKeyboard>
   );
 };

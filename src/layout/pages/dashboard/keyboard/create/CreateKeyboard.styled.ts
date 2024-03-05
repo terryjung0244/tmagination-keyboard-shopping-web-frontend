@@ -54,7 +54,7 @@ export const Createkeyboard = styled.section`
   .selectMain {
     /* border: 1px solid red; */
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   .selectColor {

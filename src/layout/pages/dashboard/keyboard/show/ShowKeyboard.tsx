@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import { IProduct } from '../../../../../type/product.interface';
 import ModalComp from '../../../../../components/Modal/ModalComp';
 import UpdateKeyboard from '../update/UpdateKeyboard';
+import { keyboard } from '@testing-library/user-event/dist/keyboard';
 
 interface IKeyboardProps {
   keyboardInfo: IProduct;
@@ -52,6 +53,15 @@ const ShowKeyboard = ({
     setShowModal({ ...showModal, updateToggle: false });
   };
 
+  // DELETE MODAL
+  const showDeleteModal = () => {
+    setShowModal({ ...showModal, deleteToggle: true });
+  };
+
+  const closeDeleteModal = () => {
+    setShowModal({ ...showModal, deleteToggle: false });
+  };
+
   return (
     <Styles.ShowKeyboard>
       <div>
@@ -64,14 +74,14 @@ const ShowKeyboard = ({
         <div className="keyboardCardColor">{keyboardInfo.features.color}</div>
         <div className="keyboardCardSwitch">{keyboardInfo.features.switch}</div>
         <div className="keyboardBtnMain">
-          <button className="keyboardUpdateBtn" onClick={showUpdateModal}>
-            Update
-          </button>
-          <DeleteKeyboard
-            keyboardId={keyboardInfo.id}
-            keyboardPath={keyboardInfo.imagePath}
-            deletedKeyboard={deletedKeyboard}
-          />
+          <div className="keyboardBtnSub">
+            <button className="keyboardUpdateBtn" onClick={showUpdateModal}>
+              Update
+            </button>
+            <button className="keyboardDeleteBtn" onClick={showDeleteModal}>
+              Delete
+            </button>
+          </div>
         </div>
       </Card.Title>
 
@@ -84,6 +94,14 @@ const ShowKeyboard = ({
           selectedKeyboard={showModal.selectedKeyboard as IProduct}
           closeModal={closeUpdateModal}
           handleShowKeyboard={handleShowKeyboard}
+        />
+      </ModalComp>
+      <ModalComp show={showModal} closeModal={closeDeleteModal}>
+        <DeleteKeyboard
+          keyboardId={keyboardInfo.id}
+          keyboardPath={keyboardInfo.imagePath}
+          deletedKeyboard={deletedKeyboard}
+          closeDeleteModal={closeDeleteModal}
         />
       </ModalComp>
     </Styles.ShowKeyboard>

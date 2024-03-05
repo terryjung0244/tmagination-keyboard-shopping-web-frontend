@@ -12,12 +12,10 @@ export const ShowKeyboard = styled.section`
 
   .cardTitleMain {
     font-size: 15px;
-    /* border: 1px solid red; */
     padding: 15px;
   }
 
   .keyboardCardImage {
-    /* border: 1px solid #dedede; */
     max-height: 200px;
     width: 200px;
     object-fit: scale-down;
@@ -36,22 +34,33 @@ export const ShowKeyboard = styled.section`
   }
 
   .keyboardCardSwitch {
-    /* border: 1px solid red; */
     margin-bottom: 20px;
   }
 
   .keyboardBtnMain {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-evenly;
   }
 
+  .keyboardBtnSub {
+    width: 200px;
+    display: flex;
+  }
+
   .keyboardUpdateBtn {
     width: 100%;
-    margin-bottom: 2px;
     margin-right: 10px;
     border-radius: 5px;
     background-color: #084298;
     color: #2eff2e;
+    padding: 4px;
+  }
+
+  .keyboardDeleteBtn {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #084298;
+    color: #2eff2e;
+    padding: 4px;
   }
 `;

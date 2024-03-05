@@ -129,14 +129,6 @@ const SwitchIndex = () => {
           handleShowSwitch={handleShowSwitch}
         />
       </ModalComp>
-
-      {/* <DeleteSwitch
-        closeModal={closeUpdateModal}
-        switchId={filteredSwitches.id}
-        switchName={filteredSwitches.name}
-        switchImagePath={filteredSwitches.imageUrl}
-        handleShowSwitch={handleShowSwitch}
-      /> */}
     </Styles.SwitchIndex>
   );
 };
