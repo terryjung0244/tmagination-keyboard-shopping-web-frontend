@@ -23,12 +23,6 @@ const SwitchIndex = () => {
     selectedSwitch: null,
   });
 
-  // Delete Modal
-  // const [deleteModal, setDeleteModal] = useState<DeleteSwitchModal>({
-  //   toggle: false,
-  //   selectedSwitch: null,
-  // });
-
   // Search API
   const searchInputSwitchValue = async (searchInput: string) => {
     const response = await fetch(
@@ -65,7 +59,6 @@ const SwitchIndex = () => {
     setShow({ ...show, deleteToggle: false });
   };
 
-  console.log(show.selectedSwitch?.category);
   return (
     <Styles.SwitchIndex>
       <SearchSwitch searchInputSwitchValue={searchInputSwitchValue} />
