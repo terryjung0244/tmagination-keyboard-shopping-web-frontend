@@ -1,8 +1,9 @@
 import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
-import KeyboardIndex from './keyboard/keyboardIndex/KeyboardIndex';
 import SwitchIndex from './switch/switchIndex/SwitchIndex';
 import * as Styles from './Dashboard.styled';
+import KeyboardIndex from './keyboard/keyboardIndex/KeyboardIndex';
+import KeycapIndex from './keycap/keycapIndex/KeycapIndex';
 
 const Dashboard = () => {
   return (
@@ -25,6 +26,7 @@ const Dashboard = () => {
       <Routes>
         <Route path="/keyboard/*" element={<KeyboardIndex />} />
         <Route path="/switch/*" element={<SwitchIndex />} />
+        <Route path="/keycap/*" element={<KeycapIndex />} />
       </Routes>
     </Styles.Dashboard>
   );

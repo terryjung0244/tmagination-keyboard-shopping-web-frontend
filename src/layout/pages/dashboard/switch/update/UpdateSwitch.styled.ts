@@ -62,7 +62,6 @@ export const UpdateSwitch = styled.section`
 
   .switchDeleteBtn {
     width: 150px;
-
     border-radius: 5px;
     background-color: #084298;
     color: #2eff2e;

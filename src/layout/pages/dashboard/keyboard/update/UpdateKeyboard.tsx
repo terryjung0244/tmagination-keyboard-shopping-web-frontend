@@ -109,7 +109,7 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
       const result = await response.json();
       console.log(result);
       closeModal();
-      handleShowKeyboard();
+      handleShowKeyboard(); // 새로고침 기능
       return;
     }
 
@@ -124,7 +124,7 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
     const result = await response.json();
     console.log(result);
     closeModal();
-    handleShowKeyboard();
+    handleShowKeyboard(); // 새로고침 기능
   };
 
   return (
