@@ -12,7 +12,7 @@ import { SwitchModal } from './SwitchIndex.interface';
 
 const SwitchIndex = () => {
   const [showSearchedSwitch, setShowSearchedSwitch] = useState<IProduct[]>([]);
-  const [searchedInput, setSearchedInput] = useState<string>('');
+  const [searchedInput, setSearchedInput] = useState<string>(''); // Search Input에 검색한 값
 
   // Modal
   const [show, setShow] = useState<SwitchModal>({

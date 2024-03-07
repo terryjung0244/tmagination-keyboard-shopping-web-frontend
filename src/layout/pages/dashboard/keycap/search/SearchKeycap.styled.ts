@@ -1,21 +1,25 @@
 import styled from 'styled-components';
 
 export const SearchKeycap = styled.section`
-  margin-top: 20px;
+  width: 300px;
+  margin-top: 50px;
+  margin-left: 20px;
   display: flex;
-
-  .searchBtn {
-    width: 100%;
-    padding: 5px 15px;
-    background-color: #f1efe5;
-    color: black;
-    border-radius: 0px 5px 5px 0px;
-    border: 1px solid #dedede;
-  }
+  /* border: 1px solid red; */
 
   .searchInput {
     padding: 5px 15px;
     border-radius: 5px 0px 0px 5px;
+    border: 1px solid #dedede;
+  }
+
+  .searchBtn {
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 5px 15px;
+    background-color: #f1efe5;
+    color: black;
+    border-radius: 0px 5px 5px 0px;
     border: 1px solid #dedede;
   }
 `;

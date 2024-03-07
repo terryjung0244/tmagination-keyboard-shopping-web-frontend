@@ -64,7 +64,7 @@ const CreateSwitch = () => {
     }
 
     // 4. backend로 보내기 (input + imageurl)
-
+    console.log(createSwitchInput);
     const response = await fetch('http://localhost:8070/api/switch/createSwitch', {
       method: 'POST',
       headers: {

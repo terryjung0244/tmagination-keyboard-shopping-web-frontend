@@ -26,7 +26,7 @@ const KeyboardIndex = () => {
   };
 
   const deletedKeyboardFromKeyboard = () => {
-    handleSearchKeyboardInfo(searchKeyboardInfo);
+    handleSearchKeyboardInfo(searchKeyboardInfo); // search Input에 넣은 값을 한번에 부른다.
   };
 
   const handleShowKeyboard = () => {

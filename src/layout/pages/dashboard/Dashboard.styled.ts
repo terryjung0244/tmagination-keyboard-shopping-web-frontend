@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Dashboard = styled.section`
   /* border: 1px solid red; */
-  margin-top: 50px;
+  min-height: 500px;
+  margin-bottom: 50px;
 
   .linkContainer {
     display: flex;
