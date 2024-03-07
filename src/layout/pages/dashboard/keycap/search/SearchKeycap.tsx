@@ -1,19 +1,36 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from 'react';
 import * as Styles from './SearchKeycap.styled';
+import { ISearchKeycapCompPropsType } from './SearchKeycap.interface';
 
-const SearchKeycap = () => {
+const SearchKeycap = ({ setShowSearchedResult }: ISearchKeycapCompPropsType) => {
+  const [searchInput, setSearchInput] = useState<string>('');
+
+  const onChangeSearchSwitch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSearchKeycap = async () => {
+    // Search Api
+    const response = await fetch(
+      `http://localhost:8070/api/keycap/searchKeycaps?searchInput=${searchInput}`,
+    );
+    const result = await response.json();
+    setShowSearchedResult(result.filteredResult);
+  };
+
   return (
     <Styles.SearchKeycap>
-      {/* <input
+      <input
+        className="searchInput"
         name="searchInput"
         value={searchInput}
         onChange={onChangeSearchSwitch}
-        placeholder="Search Switches"
-        className="searchInput"
+        placeholder="Search Keycaps"
       />
-      <button onClick={handleSearchSwitch} className="searchBtn">
+      <button className="searchBtn" onClick={() => handleSearchKeycap}>
         Search
-      </button> */}
+      </button>
     </Styles.SearchKeycap>
   );
 };

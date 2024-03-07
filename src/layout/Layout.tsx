@@ -1,4 +1,5 @@
 import React from 'react';
+import * as Styles from './Layout.styled';
 import { Routes, Route } from 'react-router-dom';
 import Home from './home/Home';
 import Keyboards from './pages/keyboards/Keyboards';
@@ -11,16 +12,18 @@ import Dashboard from './pages/dashboard/Dashboard';
 
 const Layout = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/allproducts" element={<AllProducts />} />
-      <Route path="/keyboards" element={<Keyboards />} />
-      <Route path="/switches" element={<Switches />} />
-      <Route path="/keycaps" element={<Keycaps />} />
-      <Route path="/accessories" element={<Accessories />} />
-      <Route path="/footer" element={<Footer />} />
-      <Route path="/dashboard/*" element={<Dashboard />} />
-    </Routes>
+    <Styles.Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/allproducts" element={<AllProducts />} />
+        <Route path="/keyboards" element={<Keyboards />} />
+        <Route path="/switches" element={<Switches />} />
+        <Route path="/keycaps" element={<Keycaps />} />
+        <Route path="/accessories" element={<Accessories />} />
+        <Route path="/footer" element={<Footer />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
+      </Routes>
+    </Styles.Layout>
   );
 };
 

@@ -19,6 +19,8 @@ const FireBaseUpload = ({ handleImageUrl }: IFireBaseUploadProps) => {
     }
   };
 
+  console.log(previewImage);
+
   return (
     <Styles.FireBaseUpload>
       <div className="previewMain">

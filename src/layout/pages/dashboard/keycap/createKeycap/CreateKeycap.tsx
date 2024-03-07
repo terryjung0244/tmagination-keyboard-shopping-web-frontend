@@ -6,9 +6,10 @@ import { IImageInfoStateType } from '../../switch/create/CreateSwitch.interface'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpload';
 import { getUuid } from '../../../../../util/uuid';
+import { useNavigate } from 'react-router-dom';
 
 const CreateKeycap = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const navigate = useNavigate();
   const [imageInfo, setImageInfo] = useState<IImageInfoStateType>({
     imageFile: null,
     imagePath: '',
@@ -46,7 +47,6 @@ const CreateKeycap = () => {
   const handleCreateKeycapBtn = async () => {
     const { keycapName, keycapDesc, keycapPrice, keycapStock, keycapDiscountRate, keycapFeatures } =
       createNewKeycapInput;
-
     if (
       // When all inputs are empty
       !keycapName ||
@@ -67,6 +67,7 @@ const CreateKeycap = () => {
       const uploadResponse = await uploadBytes(imageRef, imageInfo.imageFile as File);
       if (uploadResponse) {
         uploadedImageUrl = await getDownloadURL(uploadResponse.ref);
+        console.log(uploadedImageUrl);
         console.log('Successfully uploaded image');
       }
     } catch (err) {
@@ -86,7 +87,7 @@ const CreateKeycap = () => {
       },
       body: JSON.stringify({
         ...createNewKeycapInput,
-        uploadedImageUrl: uploadedImageUrl, // 한개로 uploadedImageUrl로 사용가능
+        uploadedImageUrl, // 한개로 uploadedImageUrl로 사용가능
         uploadedImagePath: imageInfo.imagePath,
       }),
     });
@@ -96,15 +97,15 @@ const CreateKeycap = () => {
   };
 
   const handleImageUrl = (file: File) => {
-    console.log(file);
-    const fileName = file.name.split('.')[0]; // purple.webp에서 .webp을 뺀부분을 fileName에 담았다.
-    console.log(fileName);
+    const fileName = file.name.split('.')[0]; // purple.webp에서 .webp을 뺀부분
     const imagePath = `tmKeyboards/keycap/${fileName}_${getUuid()}`;
     setImageInfo({ ...imageInfo, imageFile: file, imagePath: imagePath });
     // imagePath & file
   };
 
-  const handleCloseCreateKeycap = () => {};
+  const handleCloseCreateKeycap = () => {
+    navigate(-1);
+  };
 
   return (
     <Styles.CreateKeycap>
