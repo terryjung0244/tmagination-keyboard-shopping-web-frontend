@@ -6,9 +6,10 @@ import { IProduct } from '../../../../../type/product.interface';
 interface IDeleteKeycapProps {
   closeDeleteModal: () => void;
   keycap: IProduct;
+  handleDeleteKeycap: () => void;
 }
 
-const DeleteKeycap = ({ closeDeleteModal, keycap }: IDeleteKeycapProps) => {
+const DeleteKeycap = ({ closeDeleteModal, keycap, handleDeleteKeycap }: IDeleteKeycapProps) => {
   const onClickDeleteKeyboard = async () => {
     const storage = getStorage();
     const desertRef = ref(storage, keycap.imagePath);
@@ -32,6 +33,7 @@ const DeleteKeycap = ({ closeDeleteModal, keycap }: IDeleteKeycapProps) => {
     } catch (err) {
       console.log(err);
     }
+    handleDeleteKeycap();
   };
 
   const handleCancelModal = () => {

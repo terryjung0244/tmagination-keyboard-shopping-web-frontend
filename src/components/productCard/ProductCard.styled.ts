@@ -10,6 +10,7 @@ export const Createkeyboard = styled.section`
   border-radius: 5px;
   margin-bottom: 20px;
   position: relative;
+  color: #333;
 
   .cardMain {
     .cardOutOfStock {

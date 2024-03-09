@@ -1,36 +1,44 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-// import Logo from './Logo';
-// import { Link } from 'react-router-dom';
+import * as Styles from './Navbar.styled';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavbarTop from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from './Logo';
 
 const Navbar = () => {
   return (
-    <NavbarTop expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
-      <Container>
-        <NavbarTop.Brand>
-          <Logo />
-        </NavbarTop.Brand>
-        <NavbarTop.Toggle aria-controls="basic-navbar-nav" />
-        <NavbarTop.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-            <Nav.Link href="/allproducts">All Products</Nav.Link>
-            <Nav.Link href="/keyboards">Keyboards</Nav.Link>
-            <Nav.Link href="/switches">Switches</Nav.Link>
-            <Nav.Link href="/keycaps">Keycaps</Nav.Link>
-            <Nav.Link href="/accessories">Accessories</Nav.Link>
-          </Nav>
-        </NavbarTop.Collapse>
-      </Container>
-    </NavbarTop>
+    <Styles.Navbar>
+      <NavbarTop expand="lg" className="bg-body-tertiary">
+        <Container className="navbarContainer">
+          <NavbarTop.Brand>
+            <Logo />
+          </NavbarTop.Brand>
+          <NavbarTop.Toggle aria-controls="basic-navbar-nav" />
+          <NavbarTop.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link className="navbarFont" href="/dashboard">
+                Dashboard
+              </Nav.Link>
+              <Nav.Link className="navbarFont" href="/allproducts">
+                All Products
+              </Nav.Link>
+              <Nav.Link className="navbarFont" href="/keyboards">
+                Keyboards
+              </Nav.Link>
+              <Nav.Link className="navbarFont" href="/switches">
+                Switches
+              </Nav.Link>
+              <Nav.Link className="navbarFont" href="/keycaps">
+                Keycaps
+              </Nav.Link>
+            </Nav>
+          </NavbarTop.Collapse>
+        </Container>
+      </NavbarTop>
+    </Styles.Navbar>
   );
 };
-
+// bg="dark" data-bs-theme="dark"
 export default Navbar;
 
 {

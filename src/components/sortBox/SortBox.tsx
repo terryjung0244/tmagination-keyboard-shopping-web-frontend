@@ -1,13 +1,17 @@
 import React from 'react';
-import { ISortFilter } from '../../type/sortFilter.interface';
 
-interface ISortBox {
-  sortFilter: ISortFilter;
+interface ISortBoxProps {
+  handleSort: (sortType: string) => void;
 }
 
-const SortingBox = ({ sortFilter }: ISortBox) => {
-  console.log(sortFilter);
-  return <div>SortingBox</div>;
+const SortBox = ({ handleSort }: ISortBoxProps) => {
+  return (
+    <div>
+      <h3>Sorting Box</h3>
+      <button onClick={() => handleSort('name')}>Name</button>
+      <button onClick={() => handleSort('price')}>Price</button>
+    </div>
+  );
 };
 
-export default SortingBox;
+export default SortBox;
