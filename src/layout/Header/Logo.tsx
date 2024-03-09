@@ -6,7 +6,11 @@ const Logo = () => {
   return (
     <div>
       <Link to="/">
-        <img style={{ width: '80px' }} src={tmLogo} alt="TM Logo" />
+        <img
+          style={{ borderRadius: '40px', width: '100px', marginRight: '50px' }}
+          src={tmLogo}
+          alt="TM Logo"
+        />
       </Link>
     </div>
   );

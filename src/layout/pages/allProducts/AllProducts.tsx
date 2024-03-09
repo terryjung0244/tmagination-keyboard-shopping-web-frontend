@@ -8,8 +8,11 @@ import { IProduct } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
 import SortingBox from '../../../components/sortBox/SortBox';
 import { ISortFilter } from '../../../type/sortFilter.interface';
+import SortBox from '../../../components/sortBox/SortBox';
 
 const AllProducts = () => {
+  const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
+
   useEffect(() => {
     const getAllProductsFunc = async () => {
       const response = await fetch('http://localhost:8070/api/allProducts/getAllProducts', {
@@ -25,16 +28,34 @@ const AllProducts = () => {
     getAllProductsFunc();
   }, []);
 
-  const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
-  const [sortFilter, setSortFilter] = useState<ISortFilter>({
-    nameSort: false,
-    priceSort: false,
-  });
+  const handleSort = (sortType: string) => {
+    const tempAllProducts = [...showAllProducts];
+    tempAllProducts.sort((a: IProduct, b: IProduct) => {
+      if (sortType === 'name') {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+      }
+      if (sortType === 'price') {
+        if (a.price < b.price) {
+          return -1;
+        }
+        if (a.price > b.price) {
+          return 1;
+        }
+      }
+      return 0;
+    });
+    setShowAllProducts(tempAllProducts);
+  };
 
   return (
     <Styles.AllProducts>
       <Container>
-        <SortingBox sortFilter={sortFilter} />
+        <SortBox handleSort={handleSort} />
         <Row className="rowContainer">
           {showAllProducts.map((product: IProduct) => {
             return (

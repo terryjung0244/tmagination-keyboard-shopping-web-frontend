@@ -1,22 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import React from 'react';
 import * as Styles from './SearchKeycap.styled';
 import { ISearchKeycapCompPropsType } from './SearchKeycap.interface';
 
-const SearchKeycap = ({ setShowSearchedResult }: ISearchKeycapCompPropsType) => {
-  const [searchInput, setSearchInput] = useState<string>('');
-
+const SearchKeycap = ({
+  handleSearchKeycap,
+  setSearchInput,
+  searchInput,
+}: ISearchKeycapCompPropsType) => {
   const onChangeSearchSwitch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
-  };
-
-  const handleSearchKeycap = async () => {
-    // Search Api
-    const response = await fetch(
-      `http://localhost:8070/api/keycap/searchKeycaps?searchInput=${searchInput}`,
-    );
-    const result = await response.json();
-    setShowSearchedResult(result.filteredResult);
   };
 
   return (
@@ -28,7 +21,7 @@ const SearchKeycap = ({ setShowSearchedResult }: ISearchKeycapCompPropsType) => 
         onChange={onChangeSearchSwitch}
         placeholder="Search Keycaps"
       />
-      <button className="searchBtn" onClick={() => handleSearchKeycap}>
+      <button className="searchBtn" onClick={() => handleSearchKeycap(searchInput)}>
         Search
       </button>
     </Styles.SearchKeycap>

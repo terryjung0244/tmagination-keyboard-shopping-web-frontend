@@ -5,8 +5,9 @@ import { Card } from 'react-bootstrap';
 import ModalComp from '../../../../../components/Modal/ModalComp';
 import DeleteKeycap from '../delete/DeleteKeycap';
 import { IModalStateType, IShowKeycapPropsType } from './ShowKeycap.interface';
+import UpdateKeycap from '../update/UpdateKeycap';
 
-const ShowKeycap = ({ keycap }: IShowKeycapPropsType) => {
+const ShowKeycap = ({ keycap, handleDeleteKeycap, handleUpdateKeycap }: IShowKeycapPropsType) => {
   const [showModal, setShowModal] = useState<IModalStateType>({
     updateBtn: 'updateBtn',
     deleteBtn: 'deleteBtn',
@@ -17,7 +18,16 @@ const ShowKeycap = ({ keycap }: IShowKeycapPropsType) => {
 
   // Update Modal
   const showUpdateModal = () => {
-    console.log('1');
+    setShowModal({
+      ...showModal,
+      updateBtn: 'updateBtn',
+      updateToggle: true,
+      selectedSwitch: keycap,
+    });
+  };
+
+  const closeUpdateModal = () => {
+    setShowModal({ ...showModal, updateToggle: false });
   };
 
   // Delete Modal
@@ -49,11 +59,19 @@ const ShowKeycap = ({ keycap }: IShowKeycapPropsType) => {
           </div>
         </div>
       </Card.Title>
-      {/* <ModalComp>
-        <UpdateKeycap />
-      </ModalComp> */}
       <ModalComp show={showModal} closeModal={closeDeleteModal}>
-        <DeleteKeycap closeDeleteModal={closeDeleteModal} keycap={keycap} />
+        <DeleteKeycap
+          closeDeleteModal={closeDeleteModal}
+          keycap={keycap}
+          handleDeleteKeycap={handleDeleteKeycap}
+        />
+      </ModalComp>
+      <ModalComp show={showModal} updateBtn={showModal.updateBtn} closeModal={closeUpdateModal}>
+        <UpdateKeycap
+          closeUpdateModal={closeUpdateModal}
+          handleUpdateKeycap={handleUpdateKeycap}
+          selectedKeycapInfo={keycap}
+        />
       </ModalComp>
     </Styles.ShowKeycap>
   );

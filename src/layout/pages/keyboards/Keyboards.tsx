@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import * as Styles from './Keyboards.styled';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -26,11 +27,13 @@ const Keyboards = () => {
   return (
     <Styles.Keyboards>
       <Container>
-        <Row xs={2} md={4} className="rowContainer">
+        <Row className="rowContainer">
           {keyboards.map((keyboard: IProduct) => {
             return (
-              <Col key={keyboard.id}>
-                <ProductCardComp product={keyboard} />
+              <Col xs={12} md={4} key={keyboard.id}>
+                <Link to={`/keyboards/${keyboard.id}`}>
+                  <ProductCardComp product={keyboard} />
+                </Link>
               </Col>
             );
           })}

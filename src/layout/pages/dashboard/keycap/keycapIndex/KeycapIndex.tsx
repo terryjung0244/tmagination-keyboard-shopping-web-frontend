@@ -9,10 +9,27 @@ import ShowKeycap from '../show/ShowKeycap';
 
 const KeycapIndex = () => {
   const [searchedResult, setShowSearchedResult] = useState<IProduct[]>([]);
+  const [searchInputFromSearchKeycap, setSearchInputFromSearchKeycap] = useState<string>('');
+  const [searchInput, setSearchInput] = useState<string>('');
+
+  const handleSearchKeycap = async (searchInput: string = searchInputFromSearchKeycap) => {
+    // Search Api
+    const response = await fetch(
+      `http://localhost:8070/api/keycap/searchKeycaps?searchInput=${searchInput}`,
+    );
+    const result = await response.json();
+    setShowSearchedResult(result.filteredResult);
+    setSearchInputFromSearchKeycap(searchInput);
+    setSearchInput('');
+  };
 
   return (
     <Styles.KeycapIndex>
-      <SearchKeycap setShowSearchedResult={setShowSearchedResult} />
+      <SearchKeycap
+        handleSearchKeycap={handleSearchKeycap}
+        setSearchInput={setSearchInput}
+        searchInput={searchInput}
+      />
       <div className="createBtnMain">
         <Link to="/dashboard/keycap/create" className="createNewKeycapBtn">
           Create New Keycap
@@ -25,7 +42,12 @@ const KeycapIndex = () => {
       {searchedResult.map((keycap: IProduct) => {
         return (
           <div key={keycap.id}>
-            <ShowKeycap keycap={keycap} />
+            {keycap.name}
+            <ShowKeycap
+              keycap={keycap}
+              handleDeleteKeycap={handleSearchKeycap}
+              handleUpdateKeycap={handleSearchKeycap}
+            />
           </div>
         );
       })}
