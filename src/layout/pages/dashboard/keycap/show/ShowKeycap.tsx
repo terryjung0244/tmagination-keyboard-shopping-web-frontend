@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import * as Styles from './ShowKeycap.styled';
-
 import { Card } from 'react-bootstrap';
 import ModalComp from '../../../../../components/Modal/ModalComp';
 import DeleteKeycap from '../delete/DeleteKeycap';
 import { IModalStateType, IShowKeycapPropsType } from './ShowKeycap.interface';
 import UpdateKeycap from '../update/UpdateKeycap';
 
-const ShowKeycap = ({ keycap, handleDeleteKeycap, handleUpdateKeycap }: IShowKeycapPropsType) => {
+const ShowKeycap = ({ keycap, handleSearchKeycap }: IShowKeycapPropsType) => {
   const [showModal, setShowModal] = useState<IModalStateType>({
     updateBtn: 'updateBtn',
     deleteBtn: 'deleteBtn',
@@ -63,14 +62,14 @@ const ShowKeycap = ({ keycap, handleDeleteKeycap, handleUpdateKeycap }: IShowKey
         <DeleteKeycap
           closeDeleteModal={closeDeleteModal}
           keycap={keycap}
-          handleDeleteKeycap={handleDeleteKeycap}
+          handleDeleteKeycap={handleSearchKeycap}
         />
       </ModalComp>
       <ModalComp show={showModal} updateBtn={showModal.updateBtn} closeModal={closeUpdateModal}>
         <UpdateKeycap
           closeUpdateModal={closeUpdateModal}
-          handleUpdateKeycap={handleUpdateKeycap}
           selectedKeycapInfo={keycap}
+          handleSearchKeycap={handleSearchKeycap}
         />
       </ModalComp>
     </Styles.ShowKeycap>

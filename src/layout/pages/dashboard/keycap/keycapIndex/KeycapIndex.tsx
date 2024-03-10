@@ -42,12 +42,7 @@ const KeycapIndex = () => {
       {searchedResult.map((keycap: IProduct) => {
         return (
           <div key={keycap.id}>
-            {keycap.name}
-            <ShowKeycap
-              keycap={keycap}
-              handleDeleteKeycap={handleSearchKeycap}
-              handleUpdateKeycap={handleSearchKeycap}
-            />
+            <ShowKeycap keycap={keycap} handleSearchKeycap={handleSearchKeycap} />
           </div>
         );
       })}

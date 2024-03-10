@@ -6,8 +6,7 @@ export interface IShowKeycapCompPropsType {
 
 export interface IShowKeycapPropsType {
   keycap: IProduct;
-  handleDeleteKeycap: () => void;
-  handleUpdateKeycap: () => void;
+  handleSearchKeycap: () => void;
 }
 
 export interface IModalStateType {

@@ -4,11 +4,12 @@ import { IKeycapInputState, IUpdateKeycapProps } from './UpdateKeycap.interface'
 import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpload';
 import { IImageInfoStateType } from '../../switch/create/CreateSwitch.interface';
 import { getUuid } from '../../../../../util/uuid';
+import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
 const UpdateKeycap = ({
   closeUpdateModal,
-  handleUpdateKeycap,
   selectedKeycapInfo,
+  handleSearchKeycap,
 }: IUpdateKeycapProps) => {
   const [imageInfo, setImageInfo] = useState<IImageInfoStateType>({
     imageFile: null,
@@ -49,11 +50,68 @@ const UpdateKeycap = ({
     // imagePath & file
   };
 
-  const handleUpdateSwitch = () => {
-    console.log('1');
-  };
+  const handleUpdateKeycap = async () => {
+    // 수정할 이미지가 있을때.
+    if (imageInfo.imageFile && updateKeycapInput.keycapImagePath) {
+      console.log('수정할 이미지가 있다');
 
-  console.log(selectedKeycapInfo);
+      // 기존에 있던 이미지를 지우고, 새로운 사진을 firebase, mongodb and backend
+      // FireBase
+      const storage = getStorage();
+      const deleteRef = ref(storage, updateKeycapInput.keycapImagePath);
+      try {
+        await deleteObject(deleteRef);
+      } catch (err) {
+        console.log(err);
+      }
+      // FireBase에 새로운이미지 넣는 방법.
+      let uploadedImageUrl = '';
+      try {
+        const imageRef = ref(storage, imageInfo.imagePath);
+        const uploadResponse = await uploadBytes(imageRef, imageInfo.imageFile);
+
+        if (uploadResponse) {
+          uploadedImageUrl = await getDownloadURL(uploadResponse.ref);
+          console.log(uploadedImageUrl);
+          console.log('이미지 추가 완료');
+        }
+      } catch (err) {
+        console.log(err);
+      }
+
+      // Backend에 보내기
+      const response = await fetch('http://localhost:8070/api/keycap/updateKeycap', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...updateKeycapInput,
+          keycapImageUrl: uploadedImageUrl,
+          keycapImagePath: imageInfo.imagePath,
+        }),
+      });
+
+      const result = await response.json();
+      console.log(result);
+      closeUpdateModal();
+      handleSearchKeycap();
+      return;
+    }
+
+    console.log('이미지 수정 안됨');
+    const response = await fetch('http://localhost:8070/api/keycap/updateKeycap', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updateKeycapInput),
+    });
+    const result = await response.json();
+    console.log(result);
+    closeUpdateModal();
+    handleSearchKeycap();
+  };
 
   return (
     <Styles.UpdateKeycap>
@@ -126,19 +184,18 @@ const UpdateKeycap = ({
           {imageInfo.imageFile ? (
             <div></div>
           ) : (
-            <div className="switchImageMain">
-              <img className="switchImageUrl" src={updateKeycapInput.keycapImageUrl} />
+            <div className="keycapImageMain">
+              <img className="keycapImageUrl" src={updateKeycapInput.keycapImageUrl} />
             </div>
           )}
-
           <FireBaseUpload handleImageUrl={handleImageUrl} />
         </div>
-        <div className="switchBtnMain">
-          <div className="switchBtnSub">
-            <button className="switchUpdateBtn" onClick={handleUpdateSwitch}>
+        <div className="keycapBtnMain">
+          <div className="keycapBtnSub">
+            <button className="keycapUpdateBtn" onClick={handleUpdateKeycap}>
               Update
             </button>
-            <button className="switchDeleteBtn" onClick={closeUpdateModal}>
+            <button className="keycapDeleteBtn" onClick={closeUpdateModal}>
               Cancel
             </button>
           </div>
