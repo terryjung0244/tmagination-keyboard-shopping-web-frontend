@@ -18,9 +18,6 @@ const Dashboard = () => {
         <Link to="/dashboard/keycap" className="btnMain">
           Keycap
         </Link>
-        <Link to="/dashboard/accessory" className="btnMain">
-          Accessory
-        </Link>
       </div>
 
       <Routes>

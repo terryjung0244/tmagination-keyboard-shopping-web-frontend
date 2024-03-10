@@ -16,6 +16,6 @@ export interface IKeycapInputState {
 
 export interface IUpdateKeycapProps {
   closeUpdateModal: () => void;
-  handleUpdateKeycap: () => void;
   selectedKeycapInfo: IProduct;
+  handleSearchKeycap: () => void;
 }

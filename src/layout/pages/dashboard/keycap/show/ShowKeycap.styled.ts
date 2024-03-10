@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ShowKeycap = styled.section`
   border: 1px solid #dedede;
+  margin-left: 20px;
   border-radius: 5px;
   width: 200px;
   margin-top: 50px;
@@ -53,7 +54,7 @@ export const ShowKeycap = styled.section`
     border-radius: 5px;
     background-color: #084298;
     color: #2eff2e;
-    padding: 4px;
+    padding: 5px;
   }
 
   .keycapDeleteBtn {
@@ -61,6 +62,6 @@ export const ShowKeycap = styled.section`
     border-radius: 5px;
     background-color: #084298;
     color: #2eff2e;
-    padding: 4px;
+    padding: 5px;
   }
 `;
