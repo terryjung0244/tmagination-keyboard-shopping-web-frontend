@@ -39,7 +39,6 @@ const ProductCard = ({ product }: IProductCardPropsType) => {
         {product.stock === '0' && <div className="cardOutOfStock">Out of Stock</div>}
         <img className="cardImageUrl" src={product.imageUrl} alt="SwitchImageError" />
         <div className="cardName">Name : {product.name}</div>
-        <div className="cardDesc">Switch : {product.desc}</div>
         <div className="cardPrice">Price : {product.price}</div>
         <div className="cardStock">Stock : {product.stock}</div>
       </div>

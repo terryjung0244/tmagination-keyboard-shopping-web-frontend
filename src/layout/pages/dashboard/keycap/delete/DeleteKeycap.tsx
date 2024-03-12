@@ -45,10 +45,10 @@ const DeleteKeycap = ({ closeDeleteModal, keycap, handleDeleteKeycap }: IDeleteK
       <div className="messageContainer">
         <h2>Delete this switch?</h2>
         <div className="btnMain">
-          <button className="keyboardDeleteBtn" onClick={onClickDeleteKeyboard}>
+          <button className="keycapDeleteBtn" onClick={onClickDeleteKeyboard}>
             Delete
           </button>
-          <button className="keyboardDeleteBtn" onClick={handleCancelModal}>
+          <button className="keycapDeleteBtn" onClick={handleCancelModal}>
             Cancel
           </button>
         </div>

@@ -4,7 +4,7 @@ export interface IKeycapInputState {
   keycapId: string;
   keycapName: string;
   keycapDesc: string;
-  keycapPrice: string;
+  keycapPrice: string | number;
   keycapDiscountRate: string;
   keycapStock: string;
   keycapImageUrl: string;

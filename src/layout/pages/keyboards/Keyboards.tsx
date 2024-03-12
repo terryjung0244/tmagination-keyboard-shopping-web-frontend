@@ -31,7 +31,7 @@ const Keyboards = () => {
           {keyboards.map((keyboard: IProduct) => {
             return (
               <Col xs={12} md={4} key={keyboard.id}>
-                <Link to={`/keyboards/${keyboard.id}`}>
+                <Link to={`/keyboards/${keyboard.id}`} state={keyboard}>
                   <ProductCardComp product={keyboard} />
                 </Link>
               </Col>
