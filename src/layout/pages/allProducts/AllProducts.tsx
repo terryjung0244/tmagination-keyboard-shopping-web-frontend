@@ -40,10 +40,10 @@ const AllProducts = () => {
         }
       }
       if (sortType === 'price') {
-        if (a.price < b.price) {
+        if (a.price > b.price) {
           return -1;
         }
-        if (a.price > b.price) {
+        if (a.price < b.price) {
           return 1;
         }
       }
