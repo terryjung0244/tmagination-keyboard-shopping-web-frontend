@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Createkeyboard = styled.section`
-  width: 200px;
   border: 1px solid #dedede;
   padding: 20px 0px;
   display: flex;

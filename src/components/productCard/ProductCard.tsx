@@ -3,31 +3,6 @@ import React from 'react';
 import * as Styles from './ProductCard.styled';
 import { IProduct } from '../../type/product.interface';
 
-// interface ISwitchItemCardPropsType {
-//   switchItemName: string;
-//   switchItemDesc: string;
-//   switchItemImageUrl: string;
-//   switchItemPrice: string;
-// }
-
-// interface IKeyboardItemPropsType {
-//   keyboardItemName: string;
-//   keyboardItemDesc: string;
-//   keyboardItemImage: string;
-//   keyboardItemPrice: string;
-// }
-
-// interface IProductItemPropsType {
-//   switchItemName: string;
-//   switchItemDesc: string;
-//   switchItemImageUrl: string;
-//   switchItemPrice: string;
-//   keyboardItemName: string;
-//   keyboardItemDesc: string;
-//   keyboardItemImage: string;
-//   keyboardItemPrice: string;
-// }
-
 interface IProductCardPropsType {
   product: IProduct;
 }

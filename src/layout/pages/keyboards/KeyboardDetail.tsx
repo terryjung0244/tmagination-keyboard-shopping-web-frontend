@@ -4,16 +4,29 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { IProduct } from '../../../type/product.interface';
 import ProductCardDetail from '../../../components/productCardDetail/ProductCardDetail';
 
+interface IStateProps {
+  keyboard: IProduct;
+  keyboardString: string;
+  switchItem: IProduct;
+  switchString: string;
+}
+
 const KeyboardDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { state }: { state: IProduct } = useLocation();
+  const { state }: { state: IStateProps } = useLocation();
+  const { keyboard, keyboardString } = state;
 
-  console.log(state);
+  console.log(keyboard);
+  console.log(keyboardString);
+
   const [quantity, setQuantity] = useState<number>(1);
 
   const handleDisocuntPrice = () => {
-    return parseInt(state.price) - parseInt(state.price) * parseFloat(state.discountRate);
+    return (
+      parseInt(state.keyboard.price) -
+      parseInt(state.keyboard.price) * parseFloat(state.keyboard.discountRate)
+    );
   };
 
   const handlePreviousPage = () => {
@@ -21,7 +34,7 @@ const KeyboardDetail = () => {
   };
 
   const handleIncreaseQuantity = () => {
-    if (quantity < parseInt(state.stock)) {
+    if (quantity < parseInt(state.keyboard.stock)) {
       setQuantity(quantity + 1);
     }
   };
@@ -36,7 +49,9 @@ const KeyboardDetail = () => {
     <div>
       <button onClick={handlePreviousPage}>Previous</button>
       <ProductCardDetail
-        productDetail={state}
+        switchString={switchString}
+        keyboardString={keyboardString}
+        productDetail={keyboard}
         handleIncreaseQuantity={handleIncreaseQuantity}
         handleDecreaseQuantity={handleDecreaseQuantity}
       />
