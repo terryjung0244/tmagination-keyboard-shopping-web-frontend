@@ -9,7 +9,6 @@ import Keycaps from './pages/keycaps/Keycaps';
 import Footer from './footer/Footer';
 import AllProducts from './pages/allProducts/AllProducts';
 import Dashboard from './pages/dashboard/Dashboard';
-import KeycapDetail from './pages/keycaps/KeycapDetail';
 
 const Layout = () => {
   return (
@@ -23,7 +22,7 @@ const Layout = () => {
           <Route path="/switches" element={<Switches />} />
           <Route path="/switches/:id" element={<KeyboardDetail />} />
           <Route path="/keycaps" element={<Keycaps />} />
-          <Route path="/keycaps/:id" element={<KeycapDetail />} />
+          <Route path="/keycaps/:id" element={<KeyboardDetail />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
