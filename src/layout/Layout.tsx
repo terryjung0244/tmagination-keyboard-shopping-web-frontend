@@ -3,7 +3,7 @@ import * as Styles from './Layout.styled';
 import { Routes, Route } from 'react-router-dom';
 import Home from './home/Home';
 import Keyboards from './pages/keyboards/Keyboards';
-import KeyboardDetail from './pages/keyboards/KeyboardDetail';
+import ProductDetail from './pages/productDetail/ProductDetail';
 import Switches from './pages/switches/Switches';
 import Keycaps from './pages/keycaps/Keycaps';
 import Footer from './footer/Footer';
@@ -18,11 +18,11 @@ const Layout = () => {
           <Route path="/" element={<Home />} />
           <Route path="/allproducts" element={<AllProducts />} />
           <Route path="/keyboards" element={<Keyboards />} />
-          <Route path="/keyboards/:id" element={<KeyboardDetail />} />
+          <Route path="/keyboards/:id" element={<ProductDetail />} />
           <Route path="/switches" element={<Switches />} />
-          <Route path="/switches/:id" element={<KeyboardDetail />} />
+          <Route path="/switches/:id" element={<ProductDetail />} />
           <Route path="/keycaps" element={<Keycaps />} />
-          <Route path="/keycaps/:id" element={<KeyboardDetail />} />
+          <Route path="/keycaps/:id" element={<ProductDetail />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>

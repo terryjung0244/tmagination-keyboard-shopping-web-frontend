@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { IProduct } from '../../../type/product.interface';
 import ProductCardDetail from '../../../components/productCardDetail/ProductCardDetail';
+import arrowImage from '../../../assets/previous.png';
 
 interface IStateProps {
   product: IProduct;
@@ -11,7 +12,7 @@ interface IStateProps {
   keycapString: string;
 }
 
-const KeyboardDetail = () => {
+const ProductDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { state }: { state: IStateProps } = useLocation();
@@ -37,30 +38,38 @@ const KeyboardDetail = () => {
     if (quantity < parseInt(state.product.stock)) {
       setQuantity(quantity + 1);
     }
+    console.log('Inc');
   };
 
   const handleDecreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
+    console.log('Dec');
   };
 
+  console.log(quantity);
   return (
     <div>
-      <button onClick={handlePreviousPage}>Previous</button>
+      <div onClick={handlePreviousPage}>
+        <img src={arrowImage} alt="arrowImage" style={{ width: '50px', marginBottom: '20px' }} />
+      </div>
+
       <ProductCardDetail
+        quantityState={quantity}
         keyboardString={keyboardString}
         switchString={switchString}
         keycapString={keycapString}
         productDetail={product}
         handleIncreaseQuantity={handleIncreaseQuantity}
         handleDecreaseQuantity={handleDecreaseQuantity}
+        handleDisocuntPrice={handleDisocuntPrice}
       />
     </div>
   );
 };
 
-export default KeyboardDetail;
+export default ProductDetail;
 
 /**
  * 링크 클릭 했을 때, state 값으로 해당 키보드 데이터 넘기기

@@ -3,23 +3,28 @@ import * as Styles from './ProductCardDetail.styled';
 import { IProduct } from '../../type/product.interface';
 import minus from './../../assets/minus.png';
 import plus from './../../assets/plus.png';
+import saleIcon from '../../assets/sale.png';
 
 interface IProductCardDetailProps {
+  quantityState: number;
   keyboardString: string;
   switchString: string;
   keycapString: string;
   productDetail: IProduct;
   handleIncreaseQuantity: () => void;
   handleDecreaseQuantity: () => void;
+  handleDisocuntPrice: () => number;
 }
 
 const ProductCardDetail = ({
+  quantityState,
   keyboardString,
   switchString,
   keycapString,
   productDetail,
   handleIncreaseQuantity,
   handleDecreaseQuantity,
+  handleDisocuntPrice,
 }: IProductCardDetailProps) => {
   console.log(productDetail);
   return (
@@ -32,10 +37,22 @@ const ProductCardDetail = ({
         <div className="categoryBox">{productDetail.category}</div>
         <div className="namePriceBoxMain">
           <div className="nameBox">{productDetail.name}</div>
-          <div className="priceBox">{productDetail.price}</div>
+          {productDetail.discountRate !== '0' ? (
+            <div className="priceBox">
+              <span className="discountPriceBox">${handleDisocuntPrice()}</span>
+              <span>
+                <img className="saleImageBox" src={saleIcon} alt="saleImage" />
+              </span>
+              <span className="originalPriceBox">${productDetail.price}</span>
+            </div>
+          ) : (
+            <div className="priceWithoutDiscountBox">${handleDisocuntPrice()}</div>
+          )}
+          <div className="instockBox">{productDetail.stock} In stock </div>
         </div>
         {keyboardString === 'keyboards' && (
           <>
+            priceBox
             <div className="switchSelectMainBox">
               <div className="switchesNameBox">Switches</div>
               <button className="switchSelectColorBox">Red</button>
@@ -74,7 +91,7 @@ const ProductCardDetail = ({
               <div className="quantityControlBox" onClick={handleDecreaseQuantity}>
                 <img className="quantityImageBox" src={minus} alt="minusImage" />
               </div>
-              <div className="quantityStockBox">{productDetail.stock}</div>
+              <div className="quantityStockBox">{quantityState}</div>
               <div className="quantityControlBox" onClick={handleIncreaseQuantity}>
                 <img className="quantityImageBox" src={plus} alt="plusImage" />
               </div>
@@ -82,7 +99,6 @@ const ProductCardDetail = ({
           </div>
           <div className="cartBox">Add to Cart</div>
         </div>
-
         <div className="checkoutBtnMainBox">
           <div className="checkoutBtnBox">Proceed to Check out</div>
         </div>

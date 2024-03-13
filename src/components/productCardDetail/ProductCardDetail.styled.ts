@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ProductCardDetail = styled.section`
   /* border: 2px solid #dedede; */
-  border: 1px solid red;
+  border: 2px solid #dedede;
   display: flex;
 
   .imageMainBox {
@@ -43,8 +43,28 @@ export const ProductCardDetail = styled.section`
         font-size: 30px;
         margin-bottom: 10px;
       }
+      .priceWithoutDiscountBox {
+        font-size: 30px;
+        margin-bottom: 20px;
+      }
       .priceBox {
         font-size: 30px;
+        margin-bottom: 20px;
+        .discountPriceBox {
+        }
+
+        .saleImageBox {
+          width: 50px;
+        }
+        .originalPriceBox {
+          font-size: 20px;
+          margin-left: 10px;
+          text-decoration: line-through;
+        }
+      }
+      .instockBox {
+        font-size: 20px;
+        color: #dc143c;
         margin-bottom: 20px;
       }
     }
