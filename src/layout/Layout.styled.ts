@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Layout = styled.section`
   .layout-section-max-width {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     max-width: 1024px;
     height: 1200px;
     padding-top: 100px;
