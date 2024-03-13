@@ -29,8 +29,8 @@ const Keycaps = () => {
         <Row className="rowContainer">
           {keycaps.map((keycap: IProduct) => {
             return (
-              <Col xs={12} md={4} key={keycap.id}>
-                <Link to={`/keyboards/${keycap.id}`}>
+              <Col xs={12} md={3} key={keycap.id}>
+                <Link to={`/keycaps/${keycap.id}`} state={keycap}>
                   <ProductCardComp product={keycap} />
                 </Link>
               </Col>

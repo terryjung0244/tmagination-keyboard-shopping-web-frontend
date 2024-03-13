@@ -9,20 +9,26 @@ import Keycaps from './pages/keycaps/Keycaps';
 import Footer from './footer/Footer';
 import AllProducts from './pages/allProducts/AllProducts';
 import Dashboard from './pages/dashboard/Dashboard';
+import KeycapDetail from './pages/keycaps/KeycapDetail';
 
 const Layout = () => {
   return (
     <Styles.Layout>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/allproducts" element={<AllProducts />} />
-        <Route path="/keyboards" element={<Keyboards />} />
-        <Route path="/keyboards/:id" element={<KeyboardDetail />} />
-        <Route path="/switches" element={<Switches />} />
-        <Route path="/keycaps" element={<Keycaps />} />
-        <Route path="/footer" element={<Footer />} />
-        <Route path="/dashboard/*" element={<Dashboard />} />
-      </Routes>
+      <div className="layout-section-max-width">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/allproducts" element={<AllProducts />} />
+          <Route path="/keyboards" element={<Keyboards />} />
+          <Route path="/keyboards/:id" element={<KeyboardDetail />} />
+          <Route path="/switches" element={<Switches />} />
+          <Route path="/switches/:id" element={<KeyboardDetail />} />
+          <Route path="/keycaps" element={<Keycaps />} />
+          <Route path="/keycaps/:id" element={<KeycapDetail />} />
+          <Route path="/footer" element={<Footer />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
+        </Routes>
+      </div>
+      {/* <Footer /> */}
     </Styles.Layout>
   );
 };

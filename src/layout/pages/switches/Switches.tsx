@@ -5,9 +5,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
+import { Link } from 'react-router-dom';
 
 const Switches = () => {
   const [switches, setSwitches] = useState<IProduct[]>([]);
+  const [switchString, setSwitchString] = useState<string>('');
 
   useEffect(() => {
     const getAllSwitches = async () => {
@@ -20,6 +22,7 @@ const Switches = () => {
       const result = await response.json();
       console.log(switches);
       setSwitches(result.result);
+      setSwitchString('switch');
     };
     getAllSwitches();
   }, []);
@@ -27,11 +30,13 @@ const Switches = () => {
   return (
     <Styles.Switches>
       <Container>
-        <Row xs={2} md={4} className="rowContainer">
+        <Row xs={12} md={3} className="rowContainer">
           {switches.map((switchItem: IProduct) => {
             return (
-              <Col key={switchItem.id}>
-                <ProductCard product={switchItem} />
+              <Col xs={12} md={3} key={switchItem.id}>
+                <Link to={`/switches/${switchItem.id}`} state={{ switchItem, switchString }}>
+                  <ProductCard product={switchItem} />
+                </Link>
               </Col>
             );
           })}
