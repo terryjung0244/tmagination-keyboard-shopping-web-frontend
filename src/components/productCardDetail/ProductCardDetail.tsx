@@ -6,6 +6,8 @@ import plus from './../../assets/plus.png';
 
 interface IProductCardDetailProps {
   keyboardString: string;
+  switchString: string;
+  keycapString: string;
   productDetail: IProduct;
   handleIncreaseQuantity: () => void;
   handleDecreaseQuantity: () => void;
@@ -13,6 +15,8 @@ interface IProductCardDetailProps {
 
 const ProductCardDetail = ({
   keyboardString,
+  switchString,
+  keycapString,
   productDetail,
   handleIncreaseQuantity,
   handleDecreaseQuantity,
@@ -42,7 +46,28 @@ const ProductCardDetail = ({
             </div>
           </>
         )}
-
+        {switchString === 'switches' && (
+          <>
+            <div className="switchSelectMainBox">
+              <div className="switchesNameBox">Switch Color</div>
+              <button className="switchSelectColorBox">Red</button>
+              <button className="switchSelectColorBox">Yellow</button>
+              <button className="switchSelectColorBox">Brown</button>
+              <button className="switchSelectColorBox">Black</button>
+            </div>
+          </>
+        )}
+        {keycapString === 'keycaps' && (
+          <>
+            <div className="switchSelectMainBox">
+              <div className="switchesNameBox">Keycap Color</div>
+              <button className="switchSelectColorBox">Beige</button>
+              <button className="switchSelectColorBox">Green</button>
+              <button className="switchSelectColorBox">Mint</button>
+              <button className="switchSelectColorBox">Purple</button>
+            </div>
+          </>
+        )}
         <div className="quantityAndCartBox">
           <div className="quantityMainBox">
             <div className="quantityBox">

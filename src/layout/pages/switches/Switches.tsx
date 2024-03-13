@@ -22,7 +22,7 @@ const Switches = () => {
       const result = await response.json();
       console.log(switches);
       setSwitches(result.result);
-      setSwitchString('switch');
+      setSwitchString('switches');
     };
     getAllSwitches();
   }, []);
@@ -30,12 +30,12 @@ const Switches = () => {
   return (
     <Styles.Switches>
       <Container>
-        <Row xs={12} md={3} className="rowContainer">
-          {switches.map((switchItem: IProduct) => {
+        <Row className="rowContainer">
+          {switches.map((product: IProduct) => {
             return (
-              <Col xs={12} md={3} key={switchItem.id}>
-                <Link to={`/switches/${switchItem.id}`} state={{ switchItem, switchString }}>
-                  <ProductCard product={switchItem} />
+              <Col xs={12} md={3} key={product.id}>
+                <Link to={`/switches/${product.id}`} state={{ product, switchString }}>
+                  <ProductCard product={product} />
                 </Link>
               </Col>
             );

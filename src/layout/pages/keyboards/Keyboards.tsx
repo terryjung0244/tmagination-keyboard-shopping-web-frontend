@@ -30,11 +30,11 @@ const Keyboards = () => {
     <Styles.Keyboards>
       <Container>
         <Row className="rowContainer">
-          {keyboards.map((keyboard: IProduct) => {
+          {keyboards.map((product: IProduct) => {
             return (
-              <Col xs={12} md={3} key={keyboard.id}>
-                <Link to={`/keyboards/${keyboard.id}`} state={{ keyboard, keyboardString }}>
-                  <ProductCard product={keyboard} />
+              <Col xs={12} md={3} key={product.id}>
+                <Link to={`/keyboards/${product.id}`} state={{ product, keyboardString }}>
+                  <ProductCard product={product} />
                 </Link>
               </Col>
             );
