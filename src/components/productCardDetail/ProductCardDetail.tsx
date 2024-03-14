@@ -1,32 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import * as Styles from './ProductCardDetail.styled';
 import { IProduct } from '../../type/product.interface';
 import minus from './../../assets/minus.png';
 import plus from './../../assets/plus.png';
 import saleIcon from '../../assets/sale.png';
+import { productDetailOptions } from './ProductDetailOptions';
 
 interface IProductCardDetailProps {
   quantityState: number;
-  keyboardString: string;
-  switchString: string;
-  keycapString: string;
   productDetail: IProduct;
   handleIncreaseQuantity: () => void;
   handleDecreaseQuantity: () => void;
   handleDisocuntPrice: () => number;
+  handleAddToCart: (product: IProduct) => void;
 }
 
 const ProductCardDetail = ({
   quantityState,
-  keyboardString,
-  switchString,
-  keycapString,
   productDetail,
   handleIncreaseQuantity,
   handleDecreaseQuantity,
   handleDisocuntPrice,
+  handleAddToCart,
 }: IProductCardDetailProps) => {
-  console.log(productDetail);
   return (
     <Styles.ProductCardDetail>
       <div className="imageMainBox">
@@ -50,41 +47,20 @@ const ProductCardDetail = ({
           )}
           <div className="instockBox">{productDetail.stock} In stock </div>
         </div>
-        {keyboardString === 'keyboards' && (
-          <>
-            priceBox
-            <div className="switchSelectMainBox">
-              <div className="switchesNameBox">Switches</div>
-              <button className="switchSelectColorBox">Red</button>
-              <button className="switchSelectColorBox">Yellow</button>
-              <button className="switchSelectColorBox">Brown</button>
-              <button className="switchSelectColorBox">Blue</button>
-              <button className="switchSelectColorBox">Black</button>
+        {Object.keys(productDetail.features).map((feature: any) => {
+          return (
+            <div className="switchSelectMainBox" key={feature}>
+              <div className="switchesNameBox">{feature}</div>
+              {productDetailOptions[feature].list.map((el: string) => {
+                return (
+                  <button className="switchSelectColorBox" key={el}>
+                    {el}
+                  </button>
+                );
+              })}
             </div>
-          </>
-        )}
-        {switchString === 'switches' && (
-          <>
-            <div className="switchSelectMainBox">
-              <div className="switchesNameBox">Switch Color</div>
-              <button className="switchSelectColorBox">Red</button>
-              <button className="switchSelectColorBox">Yellow</button>
-              <button className="switchSelectColorBox">Brown</button>
-              <button className="switchSelectColorBox">Black</button>
-            </div>
-          </>
-        )}
-        {keycapString === 'keycaps' && (
-          <>
-            <div className="switchSelectMainBox">
-              <div className="switchesNameBox">Keycap Color</div>
-              <button className="switchSelectColorBox">Beige</button>
-              <button className="switchSelectColorBox">Green</button>
-              <button className="switchSelectColorBox">Mint</button>
-              <button className="switchSelectColorBox">Purple</button>
-            </div>
-          </>
-        )}
+          );
+        })}
         <div className="quantityAndCartBox">
           <div className="quantityMainBox">
             <div className="quantityBox">
@@ -97,7 +73,9 @@ const ProductCardDetail = ({
               </div>
             </div>
           </div>
-          <div className="cartBox">Add to Cart</div>
+          <div className="cartBox" onClick={() => handleAddToCart(productDetail)}>
+            Add to Cart
+          </div>
         </div>
         <div className="checkoutBtnMainBox">
           <div className="checkoutBtnBox">Proceed to Check out</div>

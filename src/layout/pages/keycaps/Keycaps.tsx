@@ -9,7 +9,7 @@ import ProductCardComp from '../../../components/productCard/ProductCard';
 
 const Keycaps = () => {
   const [keycaps, setKeycaps] = useState<IProduct[]>([]);
-  const [keycapString, setKeycapString] = useState<string>('');
+
   useEffect(() => {
     const getAllKeycaps = async () => {
       const response = await fetch('http://localhost:8070/api/keycap/getAllKeycaps', {
@@ -20,7 +20,6 @@ const Keycaps = () => {
       });
       const result = await response.json();
       setKeycaps(result.result);
-      setKeycapString('keycaps');
     };
     getAllKeycaps();
   });
@@ -32,7 +31,7 @@ const Keycaps = () => {
           {keycaps.map((product: IProduct) => {
             return (
               <Col xs={12} md={3} key={product.id}>
-                <Link to={`/keycaps/${product.id}`} state={{ product, keycapString }}>
+                <Link to={`/keycaps/${product.id}`} state={{ product }}>
                   <ProductCardComp product={product} />
                 </Link>
               </Col>

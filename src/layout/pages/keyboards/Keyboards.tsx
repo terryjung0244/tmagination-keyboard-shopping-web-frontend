@@ -10,7 +10,7 @@ import ProductCard from '../../../components/productCard/ProductCard';
 
 const Keyboards = () => {
   const [keyboards, setKeyboards] = useState<IProduct[]>([]);
-  const [keyboardString, setKeyboardString] = useState<string>('');
+
   useEffect(() => {
     const getAllKeyboards = async () => {
       const response = await fetch('http://localhost:8070/api/keyboard/getAllKeyboards', {
@@ -21,7 +21,6 @@ const Keyboards = () => {
       const result = await response.json();
       console.log(result);
       setKeyboards(result.result);
-      setKeyboardString('keyboards');
     };
     getAllKeyboards();
   }, []);
@@ -33,7 +32,7 @@ const Keyboards = () => {
           {keyboards.map((product: IProduct) => {
             return (
               <Col xs={12} md={3} key={product.id}>
-                <Link to={`/keyboards/${product.id}`} state={{ product, keyboardString }}>
+                <Link to={`/keyboards/${product.id}`} state={{ product }}>
                   <ProductCard product={product} />
                 </Link>
               </Col>

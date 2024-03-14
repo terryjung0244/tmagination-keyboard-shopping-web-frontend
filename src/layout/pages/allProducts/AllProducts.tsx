@@ -9,6 +9,7 @@ import ProductCard from '../../../components/productCard/ProductCard';
 import SortingBox from '../../../components/sortBox/SortBox';
 import { ISortFilter } from '../../../type/sortFilter.interface';
 import SortBox from '../../../components/sortBox/SortBox';
+import { Link } from 'react-router-dom';
 
 const AllProducts = () => {
   const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
@@ -29,9 +30,10 @@ const AllProducts = () => {
   }, []);
 
   const handleSort = (sortType: string) => {
+    console.log(sortType);
     const tempAllProducts = [...showAllProducts];
     tempAllProducts.sort((a: IProduct, b: IProduct) => {
-      if (sortType === 'name') {
+      if (sortType === 'A-Z') {
         if (a.name < b.name) {
           return -1;
         }
@@ -39,7 +41,23 @@ const AllProducts = () => {
           return 1;
         }
       }
-      if (sortType === 'price') {
+      if (sortType === 'Z-A') {
+        if (a.name > b.name) {
+          return -1;
+        }
+        if (a.name < b.name) {
+          return 1;
+        }
+      }
+      if (sortType === 'low-high') {
+        if (a.price < b.price) {
+          return -1;
+        }
+        if (a.price > b.price) {
+          return 1;
+        }
+      }
+      if (sortType === 'high-low') {
         if (a.price > b.price) {
           return -1;
         }
@@ -60,7 +78,9 @@ const AllProducts = () => {
           {showAllProducts.map((product: IProduct) => {
             return (
               <Col xs={12} md={3} key={product.id}>
-                <ProductCard product={product} />
+                <Link to={`/allproducts/${product.id}`} state={{ product }}>
+                  <ProductCard product={product} />
+                </Link>
               </Col>
             );
           })}
