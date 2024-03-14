@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useEffect, useState } from 'react';
 import * as Styles from './Navbar.styled';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';

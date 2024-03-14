@@ -7,19 +7,13 @@ import arrowImage from '../../../assets/previous.png';
 
 interface IStateProps {
   product: IProduct;
-  keyboardString: string;
-  switchString: string;
-  keycapString: string;
 }
 
 const ProductDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { state }: { state: IStateProps } = useLocation();
-  const { product, keyboardString, switchString, keycapString } = state;
-
-  console.log(product);
-  console.log(keyboardString);
+  const { product } = state;
 
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -48,6 +42,19 @@ const ProductDetail = () => {
     console.log('Dec');
   };
 
+  const handleAddToCart = (product: IProduct) => {
+    const cartLocalStorage = localStorage.getItem('cart');
+    if (cartLocalStorage) {
+      const parsedCartLocalStorage = JSON.parse(cartLocalStorage);
+      const tempProduct = { ...product, quantity };
+      parsedCartLocalStorage.push(tempProduct);
+      localStorage.setItem('cart', JSON.stringify(parsedCartLocalStorage));
+      return;
+    }
+    const tempProduct = { ...product, quantity };
+    localStorage.setItem('cart', JSON.stringify([tempProduct]));
+  };
+
   console.log(quantity);
   return (
     <div>
@@ -57,13 +64,11 @@ const ProductDetail = () => {
 
       <ProductCardDetail
         quantityState={quantity}
-        keyboardString={keyboardString}
-        switchString={switchString}
-        keycapString={keycapString}
         productDetail={product}
         handleIncreaseQuantity={handleIncreaseQuantity}
         handleDecreaseQuantity={handleDecreaseQuantity}
         handleDisocuntPrice={handleDisocuntPrice}
+        handleAddToCart={handleAddToCart}
       />
     </div>
   );

@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 
 const Switches = () => {
   const [switches, setSwitches] = useState<IProduct[]>([]);
-  const [switchString, setSwitchString] = useState<string>('');
 
   useEffect(() => {
     const getAllSwitches = async () => {
@@ -22,7 +21,6 @@ const Switches = () => {
       const result = await response.json();
       console.log(switches);
       setSwitches(result.result);
-      setSwitchString('switches');
     };
     getAllSwitches();
   }, []);
@@ -34,7 +32,7 @@ const Switches = () => {
           {switches.map((product: IProduct) => {
             return (
               <Col xs={12} md={3} key={product.id}>
-                <Link to={`/switches/${product.id}`} state={{ product, switchString }}>
+                <Link to={`/switches/${product.id}`} state={{ product }}>
                   <ProductCard product={product} />
                 </Link>
               </Col>
