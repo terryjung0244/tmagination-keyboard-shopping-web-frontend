@@ -1,3 +1,12 @@
 import styled from 'styled-components';
 
-export const Switches = styled.section``;
+export const Switches = styled.section`
+  .switchesText {
+    font-size: 50px;
+    font-weight: 600;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #dedede;
+  }
+`;

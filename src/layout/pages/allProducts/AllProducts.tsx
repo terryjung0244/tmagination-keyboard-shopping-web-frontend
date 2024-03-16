@@ -72,6 +72,7 @@ const AllProducts = () => {
 
   return (
     <Styles.AllProducts>
+      <div className="allProductsText">All Products</div>
       <Container>
         <SortBox handleSort={handleSort} />
         <Row className="rowContainer">

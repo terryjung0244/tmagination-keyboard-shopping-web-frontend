@@ -8,6 +8,7 @@ import KeycapIndex from './keycap/keycapIndex/KeycapIndex';
 const Dashboard = () => {
   return (
     <Styles.Dashboard>
+      <div className="dashboardText">Dashboard</div>
       <div className="linkContainer">
         <Link to="/dashboard/keyboard" className="btnMain">
           Keyboard

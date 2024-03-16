@@ -27,6 +27,7 @@ const Keyboards = () => {
 
   return (
     <Styles.Keyboards>
+      <div className="keyboardsText">Keyboards</div>
       <Container>
         <Row className="rowContainer">
           {keyboards.map((product: IProduct) => {
