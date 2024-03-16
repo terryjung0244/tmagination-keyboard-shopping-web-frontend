@@ -26,6 +26,7 @@ const Keycaps = () => {
 
   return (
     <Styles.Keycap>
+      <div className="keycapsText">Keycaps</div>
       <Container>
         <Row className="rowContainer">
           {keycaps.map((product: IProduct) => {

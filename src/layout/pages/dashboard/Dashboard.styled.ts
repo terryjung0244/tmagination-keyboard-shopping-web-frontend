@@ -5,6 +5,15 @@ export const Dashboard = styled.section`
   min-height: 500px;
   margin-bottom: 50px;
 
+  .dashboardText {
+    font-size: 50px;
+    font-weight: 600;
+    padding-left: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #dedede;
+  }
+
   .linkContainer {
     display: flex;
     justify-content: center;

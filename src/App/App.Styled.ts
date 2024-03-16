@@ -1,3 +1,5 @@
 import styled from 'styled-components';
 
-export const App = styled.section``;
+export const App = styled.section`
+  border: 1px solid red;
+`;

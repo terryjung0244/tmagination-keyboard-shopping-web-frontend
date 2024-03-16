@@ -3,6 +3,17 @@
   margin: 0;
   box-sizing: border-box;
   /* color: #fff !important; */
+  font-family: 'Rubik-Regular';
+}
+
+@font-face {
+  font-family: 'Rubik-Regular';
+  font-weight: light;
+  src: url('./../src/assets/fonts/Rubik-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Kanit';
 }
 
 a {

@@ -5,6 +5,7 @@ export const Navbar = styled.section`
   /* border: 1px solid red; */
   display: flex;
   justify-content: space-evenly;
+  letter-spacing: 1px;
 
   .bg-body-tertiary {
     background-color: #2d406b !important;

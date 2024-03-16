@@ -27,6 +27,7 @@ const Switches = () => {
 
   return (
     <Styles.Switches>
+      <div className="switchesText">Switches</div>
       <Container>
         <Row className="rowContainer">
           {switches.map((product: IProduct) => {
