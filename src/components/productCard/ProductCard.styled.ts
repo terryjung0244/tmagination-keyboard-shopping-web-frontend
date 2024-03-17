@@ -1,17 +1,23 @@
 import styled from 'styled-components';
 
 export const Createkeyboard = styled.section`
-  border: 1px solid #dedede;
+  /* border: 1px solid red; */
+  min-width: 300px;
+  min-height: 500px;
+  /* border: 1px solid #dedede; */
   padding: 20px 0px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 5px;
   margin-bottom: 20px;
   position: relative;
   color: #333;
 
   .cardMain {
+    /* border: 1px solid red; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+
     .cardOutOfStock {
       position: absolute;
       top: 0;
@@ -24,7 +30,7 @@ export const Createkeyboard = styled.section`
 
   .cardImageUrl {
     /* border: 1px solid red; */
-    width: 150px;
+    width: 100%;
     height: 150px;
     object-fit: cover;
     margin-bottom: 20px;
@@ -33,6 +39,8 @@ export const Createkeyboard = styled.section`
 
   .cardName {
     /* border: 1px solid red; */
+    font-size: 30px;
+    margin-bottom: 10px;
   }
 
   .cardDesc {
@@ -43,5 +51,6 @@ export const Createkeyboard = styled.section`
 
   .cardPrice {
     /* border: 1px solid red; */
+    font-size: 30px;
   }
 `;

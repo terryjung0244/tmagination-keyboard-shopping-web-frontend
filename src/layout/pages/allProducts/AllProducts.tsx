@@ -10,6 +10,7 @@ import SortingBox from '../../../components/sortBox/SortBox';
 import { ISortFilter } from '../../../type/sortFilter.interface';
 import SortBox from '../../../components/sortBox/SortBox';
 import { Link } from 'react-router-dom';
+import Keyboards from '../keyboards/Keyboards';
 
 const AllProducts = () => {
   const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
@@ -78,7 +79,7 @@ const AllProducts = () => {
         <Row className="rowContainer">
           {showAllProducts.map((product: IProduct) => {
             return (
-              <Col xs={12} md={3} key={product.id}>
+              <Col xs={12} md={4} key={product.id}>
                 <Link to={`/allproducts/${product.id}`} state={{ product }}>
                   <ProductCard product={product} />
                 </Link>
