@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
+import SortBox from '../../../components/sortBox/SortBox';
+import { handleProductSort } from '../../../util/sortProduct';
 
 const Keycaps = () => {
   const [keycaps, setKeycaps] = useState<IProduct[]>([]);
@@ -25,11 +27,17 @@ const Keycaps = () => {
     getAllKeycaps();
   }, []);
 
+  const handleSort = (sortType: string) => {
+    const tempKeycaps = [...keycaps];
+    setKeycaps(handleProductSort(sortType, tempKeycaps));
+  };
+
   console.log(keycaps);
   return (
     <Styles.Keycap>
       <div className="keycapsText">Keycaps</div>
       <Container>
+        <SortBox handleSort={handleSort} />
         <Row className="rowContainer">
           {keycaps.map((product: IProduct) => {
             return (
@@ -47,3 +55,24 @@ const Keycaps = () => {
 };
 
 export default Keycaps;
+
+// props {}
+
+// const student = {
+//   id: 1,
+//   name: 'hong',
+// };
+
+// const newStudent = student;
+// newStudent.name = 'terry';
+
+// newStudent.name => 'terry';
+// student.name => 'terry';
+
+//////////////////////////////////////////////////////////
+
+// const newStudent = { ...student };
+// newStudent.name = 'terry';
+
+// newStudent.name => 'terry';
+// student.name => 'hong';

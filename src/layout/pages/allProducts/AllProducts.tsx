@@ -11,8 +11,13 @@ import { ISortFilter } from '../../../type/sortFilter.interface';
 import SortBox from '../../../components/sortBox/SortBox';
 import { Link } from 'react-router-dom';
 import Keyboards from '../keyboards/Keyboards';
+import { handleProductSort } from '../../../util/sortProduct';
+import { useAppDispatch, useAppSelector } from '../../../service/store';
+import { changeMessage } from '../../../service/slice/cartSlice';
 
 const AllProducts = () => {
+  const dispatch = useAppDispatch();
+  const { message } = useAppSelector((state) => state.cartSlice);
   const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -31,44 +36,8 @@ const AllProducts = () => {
   }, []);
 
   const handleSort = (sortType: string) => {
-    console.log(sortType);
     const tempAllProducts = [...showAllProducts];
-    tempAllProducts.sort((a: IProduct, b: IProduct) => {
-      if (sortType === 'A-Z') {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-      }
-      if (sortType === 'Z-A') {
-        if (a.name > b.name) {
-          return -1;
-        }
-        if (a.name < b.name) {
-          return 1;
-        }
-      }
-      if (sortType === 'low-high') {
-        if (a.price < b.price) {
-          return -1;
-        }
-        if (a.price > b.price) {
-          return 1;
-        }
-      }
-      if (sortType === 'high-low') {
-        if (a.price > b.price) {
-          return -1;
-        }
-        if (a.price < b.price) {
-          return 1;
-        }
-      }
-      return 0;
-    });
-    setShowAllProducts(tempAllProducts);
+    setShowAllProducts(handleProductSort(sortType, tempAllProducts));
   };
 
   return (
