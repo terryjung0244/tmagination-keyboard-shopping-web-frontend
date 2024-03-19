@@ -9,6 +9,7 @@ import Keycaps from './pages/keycaps/Keycaps';
 import Footer from './footer/Footer';
 import AllProducts from './pages/allProducts/AllProducts';
 import Dashboard from './pages/dashboard/Dashboard';
+import Cart from './pages/cart/Cart';
 
 const Layout = () => {
   return (
@@ -26,6 +27,7 @@ const Layout = () => {
           <Route path="/keycaps/:id" element={<ProductDetail />} />
           <Route path="/footer" element={<Footer />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
       {/* <Footer /> */}

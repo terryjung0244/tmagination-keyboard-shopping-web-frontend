@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavbarTop from 'react-bootstrap/Navbar';
 import Logo from './Logo';
+import { Cart } from 'react-bootstrap-icons';
 
 const Navbar = () => {
   return (
@@ -31,6 +32,9 @@ const Navbar = () => {
               </Nav.Link>
               <Nav.Link className="navbarFont" href="/keycaps">
                 Keycaps
+              </Nav.Link>
+              <Nav.Link className="navbarFont" href="/cart">
+                <Cart />
               </Nav.Link>
             </Nav>
           </NavbarTop.Collapse>
