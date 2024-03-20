@@ -43,19 +43,5 @@ const Navbar = () => {
     </Styles.Navbar>
   );
 };
-// bg="dark" data-bs-theme="dark"
-export default Navbar;
 
-{
-  /* <div>
-<Logo />
-<Link to="/dashboard">Dashboard</Link>
-<div className="">
-  <Link to="/allproducts">All Products</Link>
-  <Link to="/keyboards">Keyboards</Link>
-  <Link to="/switches">Switches</Link>
-  <Link to="/keycaps">Keycaps</Link>
-  <Link to="/accessories">accessories</Link>
-</div>
-</div> */
-}
+export default Navbar;
