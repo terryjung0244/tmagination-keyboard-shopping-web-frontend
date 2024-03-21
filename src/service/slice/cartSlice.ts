@@ -14,8 +14,8 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    loadInitialCart: (state) => {
-      // state.cart = parameter
+    loadInitialCart: (state, action) => {
+      state.cart = action.payload;
     },
   },
 
@@ -34,6 +34,6 @@ export const cartSlice = createSlice({
   // },
 });
 
-export const { loadInitialCart } = cartSlice.actions;
+export const { loadInitialCart } = cartSlice.actions; // Destructoring For Actions...
 
 export default cartSlice.reducer;

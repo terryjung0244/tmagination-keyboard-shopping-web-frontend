@@ -8,7 +8,6 @@ interface IProductCardPropsType {
 }
 
 const ProductCard = ({ product }: IProductCardPropsType) => {
-  console.log(product);
   return (
     <Styles.Createkeyboard>
       <div className="cardMain">

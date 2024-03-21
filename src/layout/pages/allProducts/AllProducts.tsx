@@ -6,18 +6,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
-import SortingBox from '../../../components/sortBox/SortBox';
-import { ISortFilter } from '../../../type/sortFilter.interface';
 import SortBox from '../../../components/sortBox/SortBox';
 import { Link } from 'react-router-dom';
-import Keyboards from '../keyboards/Keyboards';
+
 import { handleProductSort } from '../../../util/sortProduct';
-import { useAppDispatch, useAppSelector } from '../../../service/store';
-import { changeMessage } from '../../../service/slice/cartSlice';
 
 const AllProducts = () => {
-  const dispatch = useAppDispatch();
-  const { message } = useAppSelector((state) => state.cartSlice);
   const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {

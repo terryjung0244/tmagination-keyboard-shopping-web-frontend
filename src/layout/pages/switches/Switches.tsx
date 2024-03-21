@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
 import { Link } from 'react-router-dom';
+import SortBox from '../../../components/sortBox/SortBox';
+import { handleProductSort } from '../../../util/sortProduct';
 
 const Switches = () => {
   const [switches, setSwitches] = useState<IProduct[]>([]);
@@ -25,10 +27,16 @@ const Switches = () => {
     getAllSwitches();
   }, []);
 
+  const handleSort = (SortType: string) => {
+    const tempSwitches = [...switches];
+    setSwitches(handleProductSort(SortType, tempSwitches));
+  };
+
   return (
     <Styles.Switches>
       <div className="switchesText">Switches</div>
       <Container>
+        <SortBox handleSort={handleSort} />
         <Row className="rowContainer">
           {switches.map((product: IProduct) => {
             return (

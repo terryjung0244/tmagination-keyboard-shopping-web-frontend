@@ -42,8 +42,12 @@ const ProductDetail = () => {
     console.log('Dec');
   };
 
+  console.log(quantity);
+
   const handleAddToCart = (product: IProduct) => {
+    console.log(product);
     const cartLocalStorage = localStorage.getItem('cart');
+    console.log(cartLocalStorage);
     if (cartLocalStorage) {
       const parsedCartLocalStorage = JSON.parse(cartLocalStorage);
       const tempProduct = { ...product, quantity };
@@ -51,7 +55,7 @@ const ProductDetail = () => {
       localStorage.setItem('cart', JSON.stringify(parsedCartLocalStorage));
       return;
     }
-    const tempProduct = { ...product, quantity };
+    const tempProduct = { ...product, quantity }; // {...이유} state?
     localStorage.setItem('cart', JSON.stringify([tempProduct]));
   };
 

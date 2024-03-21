@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
+import { handleProductSort } from '../../../util/sortProduct';
+import SortBox from '../../../components/sortBox/SortBox';
 
 const Keyboards = () => {
   const [keyboards, setKeyboards] = useState<IProduct[]>([]);
@@ -25,10 +27,16 @@ const Keyboards = () => {
     getAllKeyboards();
   }, []);
 
+  const handleSort = (sortType: string) => {
+    const tempKeyboards = [...keyboards];
+    setKeyboards(handleProductSort(sortType, tempKeyboards));
+  };
+
   return (
     <Styles.Keyboards>
       <div className="keyboardsText">Keyboards</div>
       <Container>
+        <SortBox handleSort={handleSort} />
         <Row className="rowContainer">
           {keyboards.map((product: IProduct) => {
             return (
