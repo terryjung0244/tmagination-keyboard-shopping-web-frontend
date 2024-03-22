@@ -17,6 +17,9 @@ export const cartSlice = createSlice({
     loadInitialCart: (state, action) => {
       state.cart = action.payload;
     },
+    addCart: (state, action) => {
+      state.cart.push(action.payload);
+    },
   },
 
   // Saga == Thunk
@@ -34,6 +37,6 @@ export const cartSlice = createSlice({
   // },
 });
 
-export const { loadInitialCart } = cartSlice.actions; // Destructoring For Actions...
+export const { loadInitialCart, addCart } = cartSlice.actions; // Destructoring For Actions...
 
 export default cartSlice.reducer;

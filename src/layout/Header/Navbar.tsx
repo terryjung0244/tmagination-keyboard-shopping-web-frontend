@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavbarTop from 'react-bootstrap/Navbar';
 import Logo from './Logo';
-import { Cart } from 'react-bootstrap-icons';
+import Cart from './Cart';
 
 const Navbar = () => {
   return (
