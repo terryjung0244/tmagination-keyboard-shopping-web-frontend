@@ -2,9 +2,8 @@ import styled from 'styled-components';
 
 export const Createkeyboard = styled.section`
   /* border: 1px solid red; */
-  min-width: 300px;
+  min-width: 180px;
   min-height: 500px;
-  /* border: 1px solid #dedede; */
   padding: 20px 0px;
   border-radius: 5px;
   margin-bottom: 20px;

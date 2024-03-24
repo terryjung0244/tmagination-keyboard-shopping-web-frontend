@@ -4,12 +4,15 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { IProduct } from '../../../type/product.interface';
 import ProductCardDetail from '../../../components/productCardDetail/ProductCardDetail';
 import arrowImage from '../../../assets/previous.png';
+import { useAppDispatch } from '../../../service/store';
+import { addCart } from '../../../service/slice/cartSlice';
 
 interface IStateProps {
   product: IProduct;
 }
 
 const ProductDetail = () => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
   const { state }: { state: IStateProps } = useLocation();
@@ -46,15 +49,19 @@ const ProductDetail = () => {
 
   const handleAddToCart = (product: IProduct) => {
     console.log(product);
+
     const cartLocalStorage = localStorage.getItem('cart');
     console.log(cartLocalStorage);
     if (cartLocalStorage) {
       const parsedCartLocalStorage = JSON.parse(cartLocalStorage);
+      console.log(parsedCartLocalStorage);
       const tempProduct = { ...product, quantity };
       parsedCartLocalStorage.push(tempProduct);
       localStorage.setItem('cart', JSON.stringify(parsedCartLocalStorage));
+      dispatch(addCart(tempProduct));
       return;
     }
+
     const tempProduct = { ...product, quantity }; // {...이유} state?
     localStorage.setItem('cart', JSON.stringify([tempProduct]));
   };
