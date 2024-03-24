@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice } from '@reduxjs/toolkit';
 import { IProduct } from '../../type/product.interface';
+import { updateCartRequest } from './cartThunk';
 
 interface CartState {
   cart: IProduct[];
@@ -23,18 +25,19 @@ export const cartSlice = createSlice({
   },
 
   // Saga == Thunk
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(testThunkAPI.pending, (state, action) => {
-  //       console.log('321');
-  //     })
-  //     .addCase(testThunkAPI.fulfilled, (state, action) => {
-  //       console.log(action.payload);
-  //     })
-  //     .addCase(testThunkAPI.rejected, (state, action) => {
-  //       console.log(action.payload);
-  //     });
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateCartRequest.pending, (state: CartState, action: any) => {
+        console.log('1');
+      })
+      .addCase(updateCartRequest.rejected, (state: CartState, action: any) => {
+        console.log('2');
+      })
+      .addCase(updateCartRequest.fulfilled, (state: CartState, action: any) => {
+        console.log(action.payload);
+        console.log('3');
+      });
+  },
 });
 
 export const { loadInitialCart, addCart } = cartSlice.actions; // Destructoring For Actions...

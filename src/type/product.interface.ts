@@ -11,6 +11,7 @@ export interface IProduct {
   imagePath: string;
   imageUrl: string;
   name: string;
+  quantity?: string;
   price: string;
   stock: string;
   updatedAt: string;
