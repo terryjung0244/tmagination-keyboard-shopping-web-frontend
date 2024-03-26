@@ -8,10 +8,11 @@ export interface IProduct {
     switch?: string;
   };
   id: string;
+  cartId: string;
   imagePath: string;
   imageUrl: string;
   name: string;
-  quantity?: string;
+  quantity?: string | number;
   price: string;
   stock: string;
   updatedAt: string;

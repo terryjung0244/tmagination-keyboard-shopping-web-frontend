@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import * as Styles from './SortBox.styled';
 import downArrow from '../../assets/downArrow.png';
@@ -9,6 +10,7 @@ interface ISortBoxProps {
 const SortBox = ({ handleSort }: ISortBoxProps) => {
   const handleNameFeature = (e: React.ChangeEvent<HTMLSelectElement>) => {
     handleSort(e.target.value);
+    (document.activeElement as any).blur();
   };
 
   return (
@@ -16,7 +18,9 @@ const SortBox = ({ handleSort }: ISortBoxProps) => {
       <div className="sortByText">Sort by</div>
       <div className="selectBoxContainer">
         <select className="selectBox" onChange={handleNameFeature}>
-          <option value={'default'}>Featured</option>
+          <option style={{ fontSize: '10px' }} value={'default'}>
+            Featured
+          </option>
           <option value={'A-Z'}>Alphabetically, A-Z</option>
           <option value={'Z-A'}>Alphabetically, Z-A</option>
           <option value={'low-high'}>Price, low to high</option>
