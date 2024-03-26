@@ -17,16 +17,21 @@ export const SortBox = styled.section`
   }
 
   .selectBoxContainer {
-    /* border: 1px solid red; */
     position: relative;
 
     .selectBox {
-      /* background: transparent; */
+      padding-left: 5px;
+      width: 300px;
+      background: transparent;
       border: 0 none;
       position: relative;
       appearance: none;
       font-size: 25px;
       z-index: 3; // select가 위로 올라와야 함
+
+      & option {
+        color: blue;
+      }
     }
 
     .downArrowContainer {

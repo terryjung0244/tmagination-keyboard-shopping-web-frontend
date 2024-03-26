@@ -6,6 +6,7 @@ import ProductCardDetail from '../../../components/productCardDetail/ProductCard
 import arrowImage from '../../../assets/previous.png';
 import { useAppDispatch } from '../../../service/store';
 import { addCart } from '../../../service/slice/cartSlice';
+import { getUuid } from '../../../util/uuid';
 
 interface IStateProps {
   product: IProduct;
@@ -55,14 +56,14 @@ const ProductDetail = () => {
     if (cartLocalStorage) {
       const parsedCartLocalStorage = JSON.parse(cartLocalStorage);
       console.log(parsedCartLocalStorage);
-      const tempProduct = { ...product, quantity };
+      const tempProduct = { ...product, quantity, cartId: getUuid() };
       parsedCartLocalStorage.push(tempProduct);
       localStorage.setItem('cart', JSON.stringify(parsedCartLocalStorage));
       dispatch(addCart(tempProduct));
       return;
     }
 
-    const tempProduct = { ...product, quantity }; // {...이유} state?
+    const tempProduct = { ...product, quantity, cartId: getUuid() }; // {...이유} state?
     localStorage.setItem('cart', JSON.stringify([tempProduct]));
   };
 

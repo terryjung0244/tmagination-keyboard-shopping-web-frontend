@@ -2,21 +2,46 @@ import React from 'react';
 import * as Styles from './Cart.styled';
 import { useAppDispatch, useAppSelector } from '../../../service/store';
 import { IProduct } from '../../../type/product.interface';
-import { updateCartRequest } from '../../../service/slice/cartThunk';
+
+import {
+  cartQuantityDecrease,
+  cartQuantityIncrease,
+  deleteCart,
+} from '../../../service/slice/cartSlice';
 
 const Cart = () => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cartSlice);
-  console.log(cart);
+  // console.log(cart);
 
-  const handleUpdateCart = (cart: string) => {
-    dispatch(updateCartRequest(cart));
+  const handleUpdateCart = () => {
+    localStorage.removeItem('cart');
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Successfully updated cart');
   };
 
+  const handleDeleteCart = (cartId: string) => {
+    dispatch(deleteCart(cartId));
+  };
+
+  const handleDecreaseQuantity = (cartItem: IProduct) => {
+    if (parseInt(cartItem.quantity as string) < 2) {
+      return;
+    }
+    dispatch(cartQuantityDecrease(cartItem));
+  };
+
+  const handleIncreaseQuantity = (cartItem: IProduct) => {
+    if (parseInt(cartItem.quantity as string) >= parseInt(cartItem.stock)) {
+      return;
+    }
+    dispatch(cartQuantityIncrease(cartItem));
+  };
   return (
     <Styles.Cart>
       <div>
         <div>Your Cart</div>
+        <div onClick={handleUpdateCart}>Update Cart</div>
         <div>
           {cart.map((cartItem: IProduct, index: number) => {
             return (
@@ -27,11 +52,16 @@ const Cart = () => {
                     <div>{cartItem.name}</div>
                     <div>{cartItem.price}</div>
                     <div>Color: {cartItem.features.color}</div>
-                    <div>Switches: {cartItem.features.switch}</div>
+                    {cartItem.category === 'KEYBOARD' && (
+                      <div>Switches: {cartItem.features.switch}</div>
+                    )}
                     <div>Quantity: {cartItem.quantity}</div>
-                    <div>- 1 +</div>
-                    <div onClick={() => handleUpdateCart('1')}>Update Cart</div>
-                    <div>Delete Cart</div>
+                    <div style={{ display: 'flex' }}>
+                      <div onClick={() => handleDecreaseQuantity(cartItem)}>-</div>
+                      <div style={{ margin: '0 10px' }}>{cartItem.quantity}</div>
+                      <div onClick={() => handleIncreaseQuantity(cartItem)}>+</div>
+                    </div>
+                    <div onClick={() => handleDeleteCart(cartItem.cartId)}>Delete Cart</div>
                   </div>
                 </div>
                 <div className="orderSummary">
