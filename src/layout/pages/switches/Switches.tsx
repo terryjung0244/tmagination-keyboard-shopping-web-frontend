@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Switches.styled';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../type/product.interface';
@@ -35,20 +34,19 @@ const Switches = () => {
   return (
     <Styles.Switches>
       <div className="switchesText">Switches</div>
-      <Container>
-        <SortBox handleSort={handleSort} />
-        <Row className="rowContainer">
-          {switches.map((product: IProduct) => {
-            return (
-              <Col xs={12} md={4} key={product.id}>
-                <Link to={`/switches/${product.id}`} state={{ product }}>
-                  <ProductCard product={product} />
-                </Link>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <div className="collectionText">Switches Collection</div>
+      <SortBox handleSort={handleSort} />
+      <Row className="rowContainer">
+        {switches.map((product: IProduct) => {
+          return (
+            <Col xs={12} md={4} key={product.id}>
+              <Link to={`/switches/${product.id}`} state={{ product }}>
+                <ProductCard product={product} />
+              </Link>
+            </Col>
+          );
+        })}
+      </Row>
     </Styles.Switches>
   );
 };

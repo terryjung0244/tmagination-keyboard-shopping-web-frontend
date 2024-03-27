@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Styles from './Keyboards.styled';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { IProduct } from '../../../type/product.interface';
@@ -35,20 +34,19 @@ const Keyboards = () => {
   return (
     <Styles.Keyboards>
       <div className="keyboardsText">Keyboards</div>
-      <Container>
-        <SortBox handleSort={handleSort} />
-        <Row className="rowContainer">
-          {keyboards.map((product: IProduct) => {
-            return (
-              <Col xs={12} md={4} key={product.id}>
-                <Link to={`/keyboards/${product.id}`} state={{ product }}>
-                  <ProductCard product={product} />
-                </Link>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <div className="collectionText">Keyboards Collection</div>
+      <SortBox handleSort={handleSort} />
+      <Row className="rowContainer">
+        {keyboards.map((product: IProduct) => {
+          return (
+            <Col xs={12} md={4} key={product.id}>
+              <Link to={`/keyboards/${product.id}`} state={{ product }}>
+                <ProductCard product={product} />
+              </Link>
+            </Col>
+          );
+        })}
+      </Row>
     </Styles.Keyboards>
   );
 };

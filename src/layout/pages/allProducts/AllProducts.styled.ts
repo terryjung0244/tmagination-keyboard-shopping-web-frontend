@@ -11,7 +11,7 @@ export const AllProducts = styled.section`
     margin-bottom: 20px;
   }
 
-  .allProductsCollectionText {
+  .collectionText {
     /* border: 1px solid red; */
     font-size: 30px;
     font-weight: 500;
