@@ -36,8 +36,7 @@ const AllProducts = () => {
   return (
     <Styles.AllProducts>
       <div className="allProductsText">All Products</div>
-      <div className="allProductsCollectionText">All Products Collection</div>
-
+      <div className="collectionText">All Products Collection</div>
       <SortBox handleSort={handleSort} />
       <Row className="rowContainer">
         {showAllProducts.map((product: IProduct) => {

@@ -18,13 +18,11 @@ const SortBox = ({ handleSort }: ISortBoxProps) => {
       <div className="sortByText">Sort by</div>
       <div className="selectBoxContainer">
         <select className="selectBox" onChange={handleNameFeature}>
-          <option style={{ fontSize: '10px' }} value={'default'}>
-            Featured
-          </option>
-          <option value={'A-Z'}>Alphabetically, A-Z</option>
-          <option value={'Z-A'}>Alphabetically, Z-A</option>
-          <option value={'low-high'}>Price, low to high</option>
-          <option value={'high-low'}>Price, high to low</option>
+          <option value={'default'}>Featured</option>
+          <option value={'A-Z'}>Alph, A-Z</option>
+          <option value={'Z-A'}>Alph, Z-A</option>
+          <option value={'low-high'}>$, Low to high</option>
+          <option value={'high-low'}>$, High to low</option>
         </select>
         <span className="downArrowContainer">
           <img className="downArrowImage" src={downArrow} alt="downArrow" />

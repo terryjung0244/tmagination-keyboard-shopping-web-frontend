@@ -20,8 +20,8 @@ export const SortBox = styled.section`
     position: relative;
 
     .selectBox {
-      padding-left: 5px;
-      width: 300px;
+      padding-left: 15px;
+      width: 220px;
       background: transparent;
       border: 0 none;
       position: relative;
@@ -29,8 +29,11 @@ export const SortBox = styled.section`
       font-size: 25px;
       z-index: 3; // select가 위로 올라와야 함
 
+      .selectBox:focus {
+        border: none;
+      }
+
       & option {
-        color: blue;
       }
     }
 

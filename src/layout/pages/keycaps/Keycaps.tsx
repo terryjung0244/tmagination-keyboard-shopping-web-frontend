@@ -36,20 +36,19 @@ const Keycaps = () => {
   return (
     <Styles.Keycap>
       <div className="keycapsText">Keycaps</div>
-      <Container>
-        <SortBox handleSort={handleSort} />
-        <Row className="rowContainer">
-          {keycaps.map((product: IProduct) => {
-            return (
-              <Col xs={12} md={4} key={product.id}>
-                <Link to={`/keycaps/${product.id}`} state={{ product }}>
-                  <ProductCard product={product} />
-                </Link>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+      <div className="collectionText">Keycaps Collection</div>
+      <SortBox handleSort={handleSort} />
+      <Row className="rowContainer">
+        {keycaps.map((product: IProduct) => {
+          return (
+            <Col xs={12} md={4} key={product.id}>
+              <Link to={`/keycaps/${product.id}`} state={{ product }}>
+                <ProductCard product={product} />
+              </Link>
+            </Col>
+          );
+        })}
+      </Row>
     </Styles.Keycap>
   );
 };

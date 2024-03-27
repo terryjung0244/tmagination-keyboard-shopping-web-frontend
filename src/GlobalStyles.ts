@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const globalMaxWidth = '1024px';
+export const globalMaxWidth = '1200px';
 
 export const globalPadding = {
   mobileXxs: '15px',
   mobile: '30px',
-  web: '60px',
+  web: '50px',
 };
 
 export const colors = {};
