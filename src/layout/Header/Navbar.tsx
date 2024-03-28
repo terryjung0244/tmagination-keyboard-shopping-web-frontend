@@ -1,44 +1,41 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Navbar.styled';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import NavbarTop from 'react-bootstrap/Navbar';
+import { Navbar as NavbarTop, Nav } from 'react-bootstrap'; //
 import Logo from './Logo';
 import Cart from './Cart';
+import control from './../../assets/control.png';
 
 const Navbar = () => {
   return (
     <Styles.Navbar>
-      <NavbarTop expand="lg" className="bg-body-tertiary">
-        <Container className="navbarContainer">
-          <NavbarTop.Brand>
-            <Logo />
-          </NavbarTop.Brand>
-          <NavbarTop.Toggle aria-controls="basic-navbar-nav" />
-          <NavbarTop.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link className="navbarFont" href="/dashboard">
-                Dashboard
-              </Nav.Link>
-              <Nav.Link className="navbarFont" href="/allproducts">
-                All Products
-              </Nav.Link>
-              <Nav.Link className="navbarFont" href="/keyboards">
-                Keyboards
-              </Nav.Link>
-              <Nav.Link className="navbarFont" href="/switches">
-                Switches
-              </Nav.Link>
-              <Nav.Link className="navbarFont" href="/keycaps">
-                Keycaps
-              </Nav.Link>
-              <Nav.Link className="navbarFont" href="/cart">
-                <Cart />
-              </Nav.Link>
-            </Nav>
-          </NavbarTop.Collapse>
-        </Container>
+      <NavbarTop className="navbarTop" sticky="top" expand="md">
+        <NavbarTop.Brand className="navbarTop-brand">
+          <Logo />
+        </NavbarTop.Brand>
+        <NavbarTop.Toggle className="navbarTop-toggle" />
+        <NavbarTop.Collapse className="navbarCollapse">
+          <Nav className="navbarCollapse-nav">
+            <Nav.Link className="navbarCollapse-nav-navLink" href="/dashboard">
+              <img src={control} alt="control" style={{ width: '40px' }} />
+            </Nav.Link>
+            <Nav.Link className="navbarCollapse-nav-navLink" href="/allproducts">
+              All Products
+            </Nav.Link>
+            <Nav.Link className="navbarCollapse-nav-navLink" href="/keyboards">
+              Keyboards
+            </Nav.Link>
+            <Nav.Link className="navbarCollapse-nav-navLink" href="/switches">
+              Switches
+            </Nav.Link>
+            <Nav.Link className="navbarCollapse-nav-navLink" href="/keycaps">
+              Keycaps
+            </Nav.Link>
+            <Nav.Link className="navbarCollapse-nav-navLink" href="/cart">
+              <Cart />
+            </Nav.Link>
+          </Nav>
+        </NavbarTop.Collapse>
       </NavbarTop>
     </Styles.Navbar>
   );

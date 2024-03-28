@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Keyboards = styled.section`
-  border: 1px solid red;
+  /* border: 1px solid red; */
 
   .keyboardsText {
     font-size: 60px;

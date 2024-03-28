@@ -4,15 +4,15 @@ import tmLogo from './../../assets/tmLogo.jpg';
 
 const Logo = () => {
   return (
-    <div>
+    <>
       <Link to="/">
         <img
-          style={{ borderRadius: '40px', width: '100px', marginRight: '50px' }}
+          style={{ width: 'auto', height: '80px', border: '1px solid red' }}
           src={tmLogo}
           alt="TM Logo"
         />
       </Link>
-    </div>
+    </>
   );
 };
 
