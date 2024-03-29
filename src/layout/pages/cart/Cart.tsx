@@ -2,6 +2,9 @@ import React from 'react';
 import * as Styles from './Cart.styled';
 import { useAppDispatch, useAppSelector } from '../../../service/store';
 import { IProduct } from '../../../type/product.interface';
+import minus from '../../../assets/minus.png';
+import plus from '../../../assets/plus.png';
+import deleteIcon from '../../../assets/delete.png';
 
 import {
   cartQuantityDecrease,
@@ -40,40 +43,67 @@ const Cart = () => {
   return (
     <Styles.Cart>
       <div>
-        <div>Your Cart</div>
-        <div onClick={handleUpdateCart}>Update Cart</div>
-        <div>
-          {cart.map((cartItem: IProduct, index: number) => {
-            return (
-              <div className="cartMain" key={index}>
-                <div className="imageAndDetails">
-                  <img className="imageItem" src={cartItem.imageUrl} alt="" />
-                  <div>
-                    <div>{cartItem.name}</div>
-                    <div>{cartItem.price}</div>
-                    <div>Color: {cartItem.features.color}</div>
-                    {cartItem.category === 'KEYBOARD' && (
-                      <div>Switches: {cartItem.features.switch}</div>
-                    )}
-                    <div>Quantity: {cartItem.quantity}</div>
-                    <div style={{ display: 'flex' }}>
-                      <div onClick={() => handleDecreaseQuantity(cartItem)}>-</div>
-                      <div style={{ margin: '0 10px' }}>{cartItem.quantity}</div>
-                      <div onClick={() => handleIncreaseQuantity(cartItem)}>+</div>
+        <div className="yourCartText">Your Cart</div>
+        <div className="cartMainSection">
+          <div className="leftSideCartSection">
+            {cart.map((cartItem: IProduct, index: number) => {
+              return (
+                <div className="cartSection" key={index}>
+                  <div className="cartSection_imageAndDetails_container">
+                    <img className="cartSection_image_container" src={cartItem.imageUrl} alt="" />
+                    <div>
+                      <div className="cartSection_name_container">{cartItem.name}</div>
+                      <div className="cartSection_price_container">${cartItem.price}</div>
+                      <div className="cartSection_color_container">
+                        Color: {cartItem.features.color}
+                      </div>
+                      {cartItem.category === 'KEYBOARD' && (
+                        <div className="cartSection_switches_container">
+                          Switches: {cartItem.features.switch}
+                        </div>
+                      )}
+                      <div className="cartSection_quantity_container">
+                        Quantity: {cartItem.quantity}
+                      </div>
+                      <div className="quantityContorlBoxAndRemoveButton">
+                        <div className="quantityControlBox">
+                          <div onClick={() => handleDecreaseQuantity(cartItem)}>
+                            <img className="minusControlBoxImage" src={minus} alt="minusImage" />
+                          </div>
+                          <div className="textControlBox">{cartItem.quantity}</div>
+                          <div onClick={() => handleIncreaseQuantity(cartItem)}>
+                            <img className="plusControlBoxImage" src={plus} alt="plusImage" />
+                          </div>
+                        </div>
+                        <div
+                          className="removeBox"
+                          onClick={() => handleDeleteCart(cartItem.cartId)}
+                        >
+                          <img className="removeButtonBox" src={deleteIcon} />
+                        </div>
+                      </div>
                     </div>
-                    <div onClick={() => handleDeleteCart(cartItem.cartId)}>Delete Cart</div>
                   </div>
                 </div>
-                <div className="orderSummary">
-                  <div>Order summary</div>
-                  <div>Add order note</div>
-                  <div>Taxes calculated at checkout</div>
-                  <div>Subtotal: ${cartItem.price}</div>
-                  <div>Checkout</div>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+          <div className="bottomSection">
+            <div className="orderSummary">Order summary</div>
+            <div className="addOrderNote">Add order note</div>
+            <div className="taxesCalculated">
+              <span className="taxesAndShpping">Taxes and shipping</span> calculated at checkout
+            </div>
+            <div className="subtotal">
+              Subtotal: <span className="subtotal-price">$500</span>
+            </div>
+          </div>
+        </div>
+        <div className="updateCartAndCheckoutSection">
+          <div className="updateCart" onClick={handleUpdateCart}>
+            Update Cart
+          </div>
+          <div className="checkout">Checkout</div>
         </div>
       </div>
     </Styles.Cart>

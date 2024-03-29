@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export const App = styled.section`
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
