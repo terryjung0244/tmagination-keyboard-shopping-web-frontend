@@ -8,32 +8,28 @@ export const Navbar = styled.section`
   padding: 0px 30px;
 
   .navbarTop {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 1200px;
     background-color: #2c3c6b;
-    /* display: flex;
-    flex-direction: column; */
 
     .navbarTop-brand {
-      /* border: 1px solid yellow; */
-      /* width: 100%; */
-      /* display: flex;
-      justify-content: space-between;
-      align-items: center; */
+    }
 
-      .searchInput {
-        height: 50px;
-        border-radius: 25px;
-        padding-left: 20px;
-        width: 500px;
-      }
+    .navbar-toggler {
+      color: transparent;
+      border: 2px solid white;
+      padding: 3px 6px;
+      /* border: transparent; */
     }
 
     .navbarTop-toggle {
+      .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 30 30%27%3e%3cpath stroke='rgba(255,255,255, 1)' stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/%3e%3c/svg%3e");
+      }
     }
 
     .navbarCollapse {
-      border: 1px solid red;
+      /* border: 1px solid red; */
       width: 100%;
 
       .navbarCollapse-nav {
