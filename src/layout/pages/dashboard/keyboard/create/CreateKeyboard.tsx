@@ -27,8 +27,8 @@ const CreateKeyboard = () => {
     keyboardImageUrl: '',
     keyboardImagePath: '',
     keyboardFeatures: {
-      color: '',
-      switch: '',
+      color: ['White', 'Black', 'Silver', 'Cream'],
+      switch: ['Red', 'Yellow', 'Brown', 'Blue'],
     },
   });
 
@@ -47,25 +47,17 @@ const CreateKeyboard = () => {
       JSON.stringify(err);
     }
     // 3. `validation`
-    const {
-      keyboardName,
-      keyboardDesc,
-      keyboardPrice,
-      keyboardDiscountRate,
-      keyboardStock,
-      keyboardFeatures,
-    } = createKeyboardInput;
+    const { keyboardName, keyboardDesc, keyboardPrice, keyboardDiscountRate, keyboardStock } =
+      createKeyboardInput;
     if (
       !keyboardName ||
       !keyboardDesc ||
       !keyboardPrice ||
       !keyboardDiscountRate ||
       !keyboardStock ||
-      !keyboardFeatures.color ||
-      !keyboardFeatures.switch ||
       !uploadedImageUrl
     ) {
-      alert('Please fill out all fields');
+      alert('Please fill out all inputs and image. ');
       return;
     }
 
@@ -156,7 +148,7 @@ const CreateKeyboard = () => {
           className="input"
         />
       </div>
-      <div className="selectMain">
+      {/* <div className="selectMain">
         <select className="selectColor" name={'color'} onChange={handleKeyboardSelectFeature}>
           <option value={'default'}>Colors</option>
           <option>White</option>
@@ -171,7 +163,7 @@ const CreateKeyboard = () => {
           <option>Yellow Switch</option>
           <option>Brown Switch</option>
         </select>
-      </div>
+      </div> */}
       <FireBaseUpload handleImageUrl={handleImageUrl} />
       <div className="buttonMain">
         <button className="createButton" onClick={handleCreateKeyboard}>

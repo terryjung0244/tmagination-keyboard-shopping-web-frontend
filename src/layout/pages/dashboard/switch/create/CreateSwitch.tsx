@@ -24,22 +24,15 @@ const CreateSwitch = () => {
     switchImageUrl: '',
     switchImagePath: '',
     switchFeatures: {
-      color: '',
+      color: ['Black', 'Blue', 'Brown', 'Red', 'Yellow'],
     },
   });
 
   const handleCreateSwitch = async () => {
     // 1. `validation`
-    const { switchName, switchDesc, switchPrice, switchDiscountRate, switchStock, switchFeatures } =
+    const { switchName, switchDesc, switchPrice, switchDiscountRate, switchStock } =
       createSwitchInput;
-    if (
-      !switchName ||
-      !switchDesc ||
-      !switchPrice ||
-      !switchDiscountRate ||
-      !switchStock ||
-      !switchFeatures.color
-    ) {
+    if (!switchName || !switchDesc || !switchPrice || !switchDiscountRate || !switchStock) {
       alert('Please fill out all fields');
       return;
     }
@@ -99,15 +92,15 @@ const CreateSwitch = () => {
     });
   };
 
-  const handleSwitchSelectFeature = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCreateSwitchInput({
-      ...createSwitchInput,
-      switchFeatures: {
-        ...createSwitchInput.switchFeatures,
-        [e.target.name]: e.target.value,
-      },
-    });
-  };
+  // const handleSwitchSelectFeature = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setCreateSwitchInput({
+  //     ...createSwitchInput,
+  //     switchFeatures: {
+  //       ...createSwitchInput.switchFeatures,
+  //       [e.target.name]: e.target.value,
+  //     },
+  //   });
+  // };
 
   return (
     <Styles.CreateSwitch>
@@ -151,7 +144,7 @@ const CreateSwitch = () => {
           className="input"
         />
       </div>
-      <div className="selectMain">
+      {/* <div className="selectMain">
         <select className="selectColor" name={'color'} onChange={handleSwitchSelectFeature}>
           <option value={'default'}>Switch Colors</option>
           <option>Red</option>
@@ -159,7 +152,7 @@ const CreateSwitch = () => {
           <option>Yellow</option>
           <option>Brown</option>
         </select>
-      </div>
+      </div> */}
       <FireBaseUpload handleImageUrl={handleImageUrl} />
       <div className="buttonMain">
         <button className="createButton" onClick={handleCreateSwitch}>

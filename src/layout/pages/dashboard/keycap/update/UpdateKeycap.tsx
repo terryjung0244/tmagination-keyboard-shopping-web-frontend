@@ -24,24 +24,24 @@ const UpdateKeycap = ({
     keycapStock: selectedKeycapInfo.stock,
     keycapImageUrl: selectedKeycapInfo.imageUrl,
     keycapImagePath: selectedKeycapInfo.imagePath,
-    keycapFeatures: {
-      color: selectedKeycapInfo.features.color,
-    },
+    // keycapFeatures: {
+    //   color: selectedKeycapInfo.features.color,
+    // },
   });
 
   const handleKeycapInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUpdateKeycapInput({ ...updateKeycapInput, [e.target.name]: e.target.value });
   };
 
-  const handleSelectColorInput = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setUpdateKeycapInput({
-      ...updateKeycapInput,
-      keycapFeatures: {
-        ...updateKeycapInput.keycapFeatures,
-        [e.target.name]: e.target.value,
-      },
-    });
-  };
+  // const handleSelectColorInput = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setUpdateKeycapInput({
+  //     ...updateKeycapInput,
+  //     keycapFeatures: {
+  //       ...updateKeycapInput.keycapFeatures,
+  //       [e.target.name]: e.target.value,
+  //     },
+  //   });
+  // };
 
   const handleImageUrl = (file: File) => {
     const fileName = file.name.split('.')[0]; // purple.webp에서 .webp을 뺀부분
@@ -170,7 +170,7 @@ const UpdateKeycap = ({
               placeholder="switchDiscountRate"
             />
           </div>
-          <select
+          {/* <select
             className="selectInput"
             name={'color'}
             onChange={handleSelectColorInput}
@@ -180,7 +180,7 @@ const UpdateKeycap = ({
             <option>Green</option>
             <option>Mint</option>
             <option>Purple</option>
-          </select>
+          </select> */}
           {imageInfo.imageFile ? (
             <div></div>
           ) : (

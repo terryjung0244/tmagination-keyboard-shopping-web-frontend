@@ -7,8 +7,8 @@ export interface ISwitchInputStateType {
   switchStock?: string;
   switchImageUrl?: string;
   switchImagePath?: string;
-  switchFeatures: {
-    color?: string;
+  switchFeatures?: {
+    color?: string[];
   };
 }
 

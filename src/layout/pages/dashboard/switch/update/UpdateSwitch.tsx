@@ -23,9 +23,9 @@ const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateS
     switchStock: selectedSwitch.stock,
     switchImageUrl: selectedSwitch.imageUrl,
     switchImagePath: selectedSwitch.imagePath,
-    switchFeatures: {
-      color: selectedSwitch.features.color,
-    },
+    // switchFeatures: {
+    //   color: selectedSwitch.features.color,
+    // },
   });
 
   const [imageInfo, setImageInfo] = useState<IImageInfoStateType>({
@@ -40,15 +40,15 @@ const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateS
     });
   };
 
-  const handleSwitchSelectFeature = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setUpdateSwitchInput({
-      ...updateSwitchInput,
-      switchFeatures: {
-        ...updateSwitchInput.switchFeatures,
-        [e.target.name]: e.target.value,
-      },
-    });
-  };
+  // const handleSwitchSelectFeature = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setUpdateSwitchInput({
+  //     ...updateSwitchInput,
+  //     switchFeatures: {
+  //       ...updateSwitchInput.switchFeatures,
+  //       [e.target.name]: e.target.value,
+  //     },
+  //   });
+  // };
 
   const handleImageUrl = (file: File) => {
     const fileName = file.name.split('.')[0];
@@ -180,7 +180,7 @@ const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateS
               placeholder="switchDiscountRate"
             />
           </div>
-          <select
+          {/* <select
             className="selectInput"
             name={'color'}
             onChange={handleSwitchSelectFeature}
@@ -191,7 +191,7 @@ const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateS
             <option>Yellow</option>
             <option>Brown</option>
             <option>Black</option>
-          </select>
+          </select> */}
           {imageInfo.imageFile ? (
             <div></div>
           ) : (

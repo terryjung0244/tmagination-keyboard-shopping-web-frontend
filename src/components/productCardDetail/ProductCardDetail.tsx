@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Styles from './ProductCardDetail.styled';
 import { IProduct } from '../../type/product.interface';
 import minus from './../../assets/minus.png';
@@ -24,6 +24,14 @@ const ProductCardDetail = ({
   handleDisocuntPrice,
   handleAddToCart,
 }: IProductCardDetailProps) => {
+  useEffect(() => {
+    handleShowfFeatures();
+  }, []);
+
+  const handleShowfFeatures = () => {
+    console.log('1');
+  };
+
   return (
     <Styles.ProductCardDetail>
       <div className="imageMainBox">

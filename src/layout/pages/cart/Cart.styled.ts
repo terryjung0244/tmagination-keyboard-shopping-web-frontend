@@ -12,41 +12,58 @@ export const Cart = styled.section`
 
   .cartMainSection {
     .leftSideCartSection {
+      /* display: grid;
+      grid-template-columns: repeat(2, 1fr); */
     }
-
-    .cartSection {
+    .cartSection_imageAndDetails_container {
       display: flex;
-      .cartSection_imageAndDetails_container {
-        display: flex;
-        /* border: 1px solid red; */
+      /* display: grid;
+      grid-template-columns: repeat(2, 1fr); */
+      /* border: 1px solid red; */
+      width: 100%;
+      padding: 50px 0px;
+      .cartSection_image_container {
+        /* height: 200px; */
         width: 100%;
-        padding: 50px 0px;
-        .cartSection_image_container {
-          height: 200px;
-          width: 400px;
-          object-fit: scale-down;
-          padding-right: 50px;
+        object-fit: scale-down;
+        /* margin-right: 30px; */
+      }
+      .cartSection_name_container {
+        font-size: 30px;
+        margin-bottom: 15px;
+      }
+      .cartSection_price_container {
+        font-size: 25px;
+        margin-bottom: 15px;
+        .discountPriceBox {
         }
-        .cartSection_name_container {
-          font-size: 30px;
-          margin-bottom: 15px;
+        .saleImageBox {
+          width: 50px;
         }
-        .cartSection_price_container {
-          font-size: 25px;
-          margin-bottom: 15px;
+        .originalPriceBox {
+          font-size: 20px;
+          margin-left: 10px;
+          text-decoration: line-through;
         }
-        .cartSection_color_container {
-          font-size: 25px;
-          margin-bottom: 10px;
+        .originalPriceBox {
         }
-        .cartSection_switches_container {
-          font-size: 25px;
-          margin-bottom: 10px;
-        }
-        .cartSection_quantity_container {
-          font-size: 25px;
-          margin-bottom: 20px;
-        }
+      }
+      .priceWithoutDiscountBox {
+        font-size: 25px;
+        margin-bottom: 15px;
+      }
+
+      .cartSection_color_container {
+        font-size: 25px;
+        margin-bottom: 10px;
+      }
+      .cartSection_switches_container {
+        font-size: 25px;
+        margin-bottom: 10px;
+      }
+      .cartSection_quantity_container {
+        font-size: 25px;
+        margin-bottom: 20px;
       }
     }
 
@@ -113,7 +130,7 @@ export const Cart = styled.section`
         border-bottom: 2px solid #dedede;
 
         .subtotal-price {
-          margin-left: 30px;
+          margin-left: 20px;
         }
       }
     }
@@ -142,4 +159,10 @@ export const Cart = styled.section`
       text-align: center;
     }
   }
+  /* 
+  @media screen and (max-width: 768px) {
+    .leftSideCartSection {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  } */
 `;

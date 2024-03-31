@@ -24,10 +24,10 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
     keyboardStock: selectedKeyboard.stock,
     keyboardImageUrl: selectedKeyboard.imageUrl,
     keyboardImagePath: selectedKeyboard.imagePath,
-    keyboardFeatures: {
-      color: selectedKeyboard.features.color,
-      switch: selectedKeyboard.features.switch,
-    },
+    // keyboardFeatures: {
+    //   color: selectedKeyboard.features.color,
+    //   switch: selectedKeyboard.features.switch,
+    // },
   });
 
   const [imageInfo, setImageInfo] = useState<IImageInfoStateType>({
@@ -184,7 +184,7 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
               placeholder="keyboardDiscountRate"
             />
           </div>
-          <select
+          {/* <select
             className="selectInput"
             name={'color'}
             onChange={handleKeyboardSelectFeature}
@@ -202,7 +202,7 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
             <option>Black Switch</option>
             <option>Yellow Switch</option>
             <option>Brown Switch</option>
-          </select>
+          </select> */}
           {imageInfo.imageFile ? (
             <div></div>
           ) : (
