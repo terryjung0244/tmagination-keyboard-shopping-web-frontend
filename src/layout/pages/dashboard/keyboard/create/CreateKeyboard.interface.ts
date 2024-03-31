@@ -7,9 +7,9 @@ export interface IKeyboardInputStateType {
   keyboardStock: string;
   keyboardImageUrl: string;
   keyboardImagePath: string;
-  keyboardFeatures: {
-    color?: string;
-    switch?: string;
+  keyboardFeatures?: {
+    color?: string[];
+    switch?: string[];
   };
 }
 

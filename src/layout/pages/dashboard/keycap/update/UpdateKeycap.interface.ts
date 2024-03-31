@@ -9,8 +9,8 @@ export interface IKeycapInputState {
   keycapStock: string;
   keycapImageUrl: string;
   keycapImagePath: string;
-  keycapFeatures: {
-    color: string;
+  keycapFeatures?: {
+    color?: string;
   };
 }
 
