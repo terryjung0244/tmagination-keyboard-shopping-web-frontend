@@ -5,7 +5,7 @@ import { IProduct } from '../../type/product.interface';
 import minus from './../../assets/minus.png';
 import plus from './../../assets/plus.png';
 import saleIcon from '../../assets/sale.png';
-import { productDetailOptions } from './ProductDetailOptions';
+// import { productDetailOptions } from './ProductDetailOptions';
 
 interface IProductCardDetailProps {
   quantityState: number;
@@ -25,11 +25,18 @@ const ProductCardDetail = ({
   handleAddToCart,
 }: IProductCardDetailProps) => {
   useEffect(() => {
-    handleShowfFeatures();
+    handleShowFeatures();
   }, []);
 
-  const handleShowfFeatures = () => {
-    console.log('1');
+  const handleShowFeatures = async () => {
+    const response = await fetch('http://localhost:8070/api/keyboard/getAllKeyboards', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const result = await response.json();
+    console.log(result);
   };
 
   return (
@@ -59,13 +66,13 @@ const ProductCardDetail = ({
           return (
             <div className="switchSelectMainBox" key={feature}>
               <div className="switchesNameBox">{feature}</div>
-              {productDetailOptions[feature].list.map((el: string) => {
+              {/* {productDetailOptions[feature].list.map((productDetailItem: string) => {
                 return (
-                  <button className="switchSelectColorBox" key={el}>
-                    {el}
+                  <button className="switchSelectColorBox" key={productDetailItem}>
+                    {productDetailItem}
                   </button>
                 );
-              })}
+              })} */}
             </div>
           );
         })}

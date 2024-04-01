@@ -18,6 +18,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const { state }: { state: IStateProps } = useLocation();
   const { product } = state;
+  console.log(id);
 
   const [quantity, setQuantity] = useState<number>(1);
 

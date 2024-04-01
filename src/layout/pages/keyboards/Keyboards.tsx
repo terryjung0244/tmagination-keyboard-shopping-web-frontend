@@ -52,13 +52,3 @@ const Keyboards = () => {
 };
 
 export default Keyboards;
-
-// export const calculateDiscountRate = (price: string, discountRate: number) => {
-//   return parseInt(price) - parseInt(price) * discountRate;
-// };
-
-// UI
-// GetAllProducts
-// 복습 겸 keycaps & accessories (CRUD)
-
-// 재고
