@@ -71,8 +71,6 @@ const ShowKeyboard = ({
       <Card.Title className="cardTitleMain">
         <div className="keyboardCardName">{keyboardInfo.name}</div>
         <div className="keyboardCardDesc">{keyboardInfo.desc}</div>
-        {/* <div className="keyboardCardColor">{keyboardInfo.features.color}</div>
-        <div className="keyboardCardSwitch">{keyboardInfo.features.switch}</div> */}
         <div className="keyboardBtnMain">
           <div className="keyboardBtnSub">
             <button className="keyboardUpdateBtn" onClick={showUpdateModal}>

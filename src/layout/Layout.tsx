@@ -10,6 +10,7 @@ import Footer from './footer/Footer';
 import AllProducts from './pages/allProducts/AllProducts';
 import Dashboard from './pages/dashboard/Dashboard';
 import Cart from './pages/cart/Cart';
+import Checkout from '../components/checkout/Checkout';
 
 const Layout = () => {
   return (
@@ -28,6 +29,7 @@ const Layout = () => {
           <Route path="/footer" element={<Footer />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
       {/* <Footer /> */}

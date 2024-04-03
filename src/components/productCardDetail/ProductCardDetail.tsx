@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import * as Styles from './ProductCardDetail.styled';
 import { IProduct } from '../../type/product.interface';
 import minus from './../../assets/minus.png';
 import plus from './../../assets/plus.png';
 import saleIcon from '../../assets/sale.png';
-// import { productDetailOptions } from './ProductDetailOptions';
 
 interface IProductCardDetailProps {
   quantityState: number;
@@ -29,14 +29,16 @@ const ProductCardDetail = ({
   }, []);
 
   const handleShowFeatures = async () => {
-    const response = await fetch('http://localhost:8070/api/keyboard/getAllKeyboards', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const result = await response.json();
-    console.log(result);
+    // const response = await fetch(
+    //   `http://localhost:8070/api/keyboard/searchKeyboard?keyboardId=${'111'}`,
+    //   {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   },
+    // );
+    // const result = await response.json();
+    // console.log(result);
   };
 
   return (
@@ -66,13 +68,6 @@ const ProductCardDetail = ({
           return (
             <div className="switchSelectMainBox" key={feature}>
               <div className="switchesNameBox">{feature}</div>
-              {/* {productDetailOptions[feature].list.map((productDetailItem: string) => {
-                return (
-                  <button className="switchSelectColorBox" key={productDetailItem}>
-                    {productDetailItem}
-                  </button>
-                );
-              })} */}
             </div>
           );
         })}
@@ -93,7 +88,9 @@ const ProductCardDetail = ({
           </div>
         </div>
         <div className="checkoutBtnMainBox">
-          <div className="checkoutBtnBox">Proceed to Check out</div>
+          <Link to="/checkout" className="checkoutBtnBox" state={productDetail}>
+            Proceed to Check out
+          </Link>
         </div>
       </div>
     </Styles.ProductCardDetail>

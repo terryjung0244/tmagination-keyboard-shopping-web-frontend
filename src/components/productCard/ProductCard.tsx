@@ -8,6 +8,20 @@ interface IProductCardPropsType {
 }
 
 const ProductCard = ({ product }: IProductCardPropsType) => {
+  // useEffect(() => {
+  //   handleGetAllInfo();
+  // });
+
+  // const handleGetAllInfo = async () => {
+  //   const response = await fetch('http://localhost:8070/api/keyboard/getAllKeyboards', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
+  //   const result = await response.json();
+  //   console.log(result);
+  // };
   return (
     <Styles.Createkeyboard>
       <div className="cardMain">

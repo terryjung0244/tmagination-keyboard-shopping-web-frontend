@@ -150,12 +150,11 @@ export const Cart = styled.section`
       width: 250px;
     }
     .checkout {
-      border: 2px solid black;
-      background-color: black;
-      color: white;
-      padding: 10px 30px;
-      margin-left: 30px;
-      width: 250px;
+      /* border: 2px solid black; */
+      background-color: #ffdf00;
+      color: black;
+      padding: 15px 30px;
+      width: 300px;
       text-align: center;
     }
   }

@@ -15,10 +15,13 @@ import {
   deleteCart,
 } from '../../../service/slice/cartSlice';
 import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cartSlice);
+
+  console.log(cart);
 
   useEffect(() => {
     handleSubtotalPrice();
@@ -44,10 +47,9 @@ const Cart = () => {
     // });
     setSubtotalPrice(totalPriceSum);
     console.log(totalPriceSum);
-    // console.log(result);
   };
 
-  // console.log(subtotalPrice);
+  console.log(subtotalPrice);
 
   const handlePrice = (cartItem: IProduct) => {
     // quantity saleprice
@@ -61,11 +63,11 @@ const Cart = () => {
     return parseInt(cartItem.price) - parseInt(cartItem.price) * parseFloat(cartItem.discountRate);
   };
 
-  const handleUpdateCart = () => {
-    // localStorage.removeItem('cart');
-    // localStorage.setItem('cart', JSON.stringify(cart));
-    // alert('Successfully updated cart');
-  };
+  // const handleUpdateCart = () => {
+  //   localStorage.removeItem('cart');
+  //   localStorage.setItem('cart', JSON.stringify(cart));
+  //   alert('Successfully updated cart');
+  // };
 
   const handleDeleteCart = (cartId: string) => {
     const cartResult: IProduct[] = JSON.parse(localStorage.getItem('cart') as string);
@@ -168,10 +170,12 @@ const Cart = () => {
           </div>
         </div>
         <div className="updateCartAndCheckoutSection">
-          <div className="updateCart" onClick={handleUpdateCart}>
+          {/* <div className="updateCart" onClick={handleUpdateCart}>
             Update Cart
-          </div>
-          <div className="checkout">Checkout</div>
+          </div> */}
+          <Link to="/checkout" className="checkout" state={subtotalPrice}>
+            Checkout
+          </Link>
         </div>
       </div>
     </Styles.Cart>
