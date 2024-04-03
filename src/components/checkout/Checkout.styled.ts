@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getResponsiveMediaQuery } from '../../GlobalStyles';
 
 export const Checkout = styled.section`
   /* border: 1px solid red; */
@@ -87,6 +88,9 @@ export const Checkout = styled.section`
       margin-bottom: 20px;
     }
     .firstAndLastNameInput {
+      ${getResponsiveMediaQuery('sm')} {
+        flex-direction: column;
+      }
       /* border: 1px solid red; */
       width: 100%;
       display: flex;
@@ -94,6 +98,10 @@ export const Checkout = styled.section`
       margin-bottom: 20px;
 
       .firstNameInput {
+        ${getResponsiveMediaQuery('sm')} {
+          margin-bottom: 20px;
+          width: 100%;
+        }
         width: 48%;
         font-size: 20px;
         border: 2px solid lightgray;
@@ -101,6 +109,9 @@ export const Checkout = styled.section`
         padding: 10px 10px 40px 10px;
       }
       .lastNameInput {
+        ${getResponsiveMediaQuery('sm')} {
+          width: 100%;
+        }
         width: 48%;
         font-size: 20px;
         border: 2px solid lightgray;
@@ -126,12 +137,18 @@ export const Checkout = styled.section`
     }
 
     .cityProvincePostalCodeSection {
+      ${getResponsiveMediaQuery('sm')} {
+        flex-direction: column;
+      }
       /* border: 1px solid red; */
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
 
       .cityInput {
+        ${getResponsiveMediaQuery('sm')} {
+          width: 100%;
+        }
         font-size: 20px;
         border: 2px solid lightgray;
         border-radius: 10px;
@@ -140,6 +157,9 @@ export const Checkout = styled.section`
         width: 30%;
       }
       .provinceInput {
+        ${getResponsiveMediaQuery('sm')} {
+          width: 100%;
+        }
         font-size: 20px;
         border: 2px solid lightgray;
         border-radius: 10px;
@@ -148,6 +168,9 @@ export const Checkout = styled.section`
         margin-bottom: 20px;
       }
       .postalCodeInput {
+        ${getResponsiveMediaQuery('sm')} {
+          width: 100%;
+        }
         font-size: 20px;
         border: 2px solid lightgray;
         border-radius: 10px;
@@ -212,6 +235,9 @@ export const Checkout = styled.section`
       }
     }
     .secureText {
+      ${getResponsiveMediaQuery('sm')} {
+        font-size: 20px;
+      }
       font-size: 25px;
       font-weight: 500;
       border: 2px 2px 0px 2px solid #0476bf;

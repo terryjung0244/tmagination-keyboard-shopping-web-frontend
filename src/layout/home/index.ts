@@ -4,8 +4,30 @@ import luminKey80 from '../../assets/luminkey80.png';
 
 export const introKeyboardInfo = [
   {
-    image: { firstImage: luminKey65, secondImage: luminKey75, thirdImage: luminKey80 },
-    name: '1',
-    description: '3',
+    name: 'Luminkey65',
+    image: luminKey65,
+    description: {
+      layout: '65% layout, compact and refined.',
+      design: 'Minimalist design.',
+      weight: 'Iconic copper weight & badge.',
+    },
+  },
+  {
+    name: 'Luminkey75',
+    image: luminKey75,
+    description: {
+      layout: '75% layout, balancing practicality and compact design.',
+      design: 'Rounded corner design.',
+      weight: 'Brass weight.',
+    },
+  },
+  {
+    name: 'Luminkey80',
+    image: luminKey80,
+    description: {
+      layout: '80% layout, meets your daily needs.',
+      design: 'Retro minimalist design.',
+      weight: 'Iconic copper weight & badge.',
+    },
   },
 ];

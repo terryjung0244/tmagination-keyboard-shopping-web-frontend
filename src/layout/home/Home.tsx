@@ -36,36 +36,19 @@ const Home = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      <div>
-        <div className="imagesAndDescription">
-          <img src={luminKey65} className="introImages" />
-          <div className="description">
-            <li>65% layout, compact and refined</li>
-            <li>Minimalist design</li>
-            <li>Iconic copper weight & badge</li>
-          </div>
-        </div>
-        <div>
-          <img src={luminKey75} className="introImages" />
-          <div className="description">
-            <li>75% layout, balancing practicality and compact design</li>
-            <li>Rounded corner design</li>
-            <li>Brass weight</li>
-          </div>
-        </div>
-        <div>
-          <img src={luminKey80} className="introImages" />
-          <div className="description">
-            <li>80% layout, meets your daily needs</li>
-            <li>Retro minimalist design</li>
-            <li>Iconic copper weight & badge</li>
-          </div>
-        </div>
-      </div>
       {introKeyboardInfo.map((KeyboardItem, index) => {
+        console.log(KeyboardItem);
         return (
-          <div key={index}>
-            <img src={KeyboardItem.image.firstImage} />
+          <div className="keyboardIntroSection" key={index}>
+            <img className="keyboardImage" src={KeyboardItem.image} />
+
+            <div className="keyboardDescContainer">
+              <div className="keyboardName">{KeyboardItem.name}</div>
+              <div className="keyboardDescLayout">{KeyboardItem.description.layout}</div>
+              <div className="keyboardDescDesign">{KeyboardItem.description.design}</div>
+              <div className="keyboardDescWeight">{KeyboardItem.description.weight}</div>
+              <div className="keyboardLearnMoreButton">Learn more</div>
+            </div>
           </div>
         );
       })}
