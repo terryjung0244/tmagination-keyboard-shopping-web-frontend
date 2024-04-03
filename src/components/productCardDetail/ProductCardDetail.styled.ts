@@ -149,6 +149,7 @@ export const ProductCardDetail = styled.section`
         display: flex;
         justify-content: center;
         align-items: center;
+        color: inherit;
       }
     }
   }
