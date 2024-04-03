@@ -26,26 +26,25 @@ export const fontSize = {
 };
 
 export const responsiveSize = {
-  xxs: '440px',
-  xs: '640px',
-  sm: '800px',
-  md: '1024px',
-  lg: '1200px',
+  xs: '576px',
+  sm: '576px',
+  md: '768px',
+  lg: '992px',
 };
 
 export const getResponsiveMediaQuery = (selectedSize: string): string => {
   switch (selectedSize) {
-    case 'xxs':
-      return `@media screen and (max-width: ${responsiveSize.xxs})`;
+    // case 'xxs':
+    //   return `@media screen and (max-width: ${responsiveSize.xxs})`;
     case 'xs':
       return `@media screen and (max-width: ${responsiveSize.xs})`;
     case 'sm':
       return `@media screen and (max-width: ${responsiveSize.sm})`;
     case 'md':
-      return `@media screen and (min-width: ${responsiveSize.sm})`;
+      return `@media screen and (min-width: ${responsiveSize.md})`;
     // and (max-width: ${responsiveSize.md})
     case 'lg':
-      return `@media screen and (min-width: ${responsiveSize.lg})`;
+      return `@media screen and (max-width: ${responsiveSize.lg})`;
     default:
       return '';
   }
