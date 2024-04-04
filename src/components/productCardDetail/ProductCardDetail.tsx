@@ -25,21 +25,21 @@ const ProductCardDetail = ({
   handleAddToCart,
 }: IProductCardDetailProps) => {
   useEffect(() => {
-    handleShowFeatures();
+    // handleShowFeatures();
   }, []);
 
-  const handleShowFeatures = async () => {
-    const response = await fetch(
-      `http://localhost:8070/api/keyboard/searchKeyboard?keyboardId=${'111'}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-    const result = await response.json();
-    console.log(result);
-  };
+  // const handleShowFeatures = async () => {
+  //   const response = await fetch(
+  //     `http://localhost:8070/api/keyboard/searchKeyboard?keyboardId=${'111'}`,
+  //     {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     },
+  //   );
+  //   const result = await response.json();
+  //   console.log(result);
+  // };
 
   return (
     <Styles.ProductCardDetail>

@@ -9,6 +9,7 @@ import { IImageInfoStateType, IKeyboardInputStateType } from './CreateKeyboard.i
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../../../../../firebase';
 import { useNavigate } from 'react-router-dom';
+import { keyboardColors, keyboardSwitches } from '.';
 
 const CreateKeyboard = () => {
   const navigate = useNavigate();
@@ -148,22 +149,20 @@ const CreateKeyboard = () => {
           className="input"
         />
       </div>
-      {/* <div className="selectMain">
+      <div className="selectMain">
         <select className="selectColor" name={'color'} onChange={handleKeyboardSelectFeature}>
           <option value={'default'}>Colors</option>
-          <option>White</option>
-          <option>Black</option>
-          <option>Green</option>
-          <option>Silver</option>
+          {keyboardColors.map((keyboardColor: string, index) => {
+            return <option key={index}>{keyboardColor}</option>;
+          })}
         </select>
         <select className="selectSwitch" name={'switch'} onChange={handleKeyboardSelectFeature}>
           <option value={'default'}>Switches</option>
-          <option>Red Switch</option>
-          <option>Black Switch</option>
-          <option>Yellow Switch</option>
-          <option>Brown Switch</option>
+          {keyboardSwitches.map((keyboardSwitch: string, index) => {
+            return <option key={index}>{keyboardSwitch}</option>;
+          })}
         </select>
-      </div> */}
+      </div>
       <FireBaseUpload handleImageUrl={handleImageUrl} />
       <div className="buttonMain">
         <button className="createButton" onClick={handleCreateKeyboard}>
