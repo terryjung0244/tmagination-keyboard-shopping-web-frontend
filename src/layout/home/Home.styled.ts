@@ -20,6 +20,9 @@ export const Home = styled.section`
     }
 
     .keyboardImage {
+      ${getResponsiveMediaQuery('lg')} {
+        width: 100%;
+      }
       width: 60%;
     }
 
@@ -30,11 +33,18 @@ export const Home = styled.section`
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+      padding-left: 15px;
 
       ${getResponsiveMediaQuery('lg')} {
         margin-top: 40px;
         flex-direction: column;
         align-items: center;
+      }
+
+      ${getResponsiveMediaQuery('sm')} {
+        margin-top: 40px;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       .keyboardName {
@@ -43,6 +53,9 @@ export const Home = styled.section`
       }
 
       & div {
+        ${getResponsiveMediaQuery('sm')} {
+          padding-left: 5px;
+        }
         /* border: 1px solid red; */
         padding-left: 30px;
         font-size: 25px;
