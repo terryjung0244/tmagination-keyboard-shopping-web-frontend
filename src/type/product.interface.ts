@@ -4,8 +4,8 @@ export interface IProduct {
   desc: string;
   discountRate: string;
   features: {
-    color?: string[];
-    switch?: string[];
+    color: string[];
+    switch: string[];
   };
   id: string;
   cartId: string;

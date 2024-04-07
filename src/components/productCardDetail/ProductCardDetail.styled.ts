@@ -36,7 +36,8 @@ export const ProductCardDetail = styled.section`
     }
 
     .namePriceBoxMain {
-      margin-bottom: 10px;
+      /* border: 1px solid red; */
+      margin-bottom: 20px;
       border-bottom: 2px solid #dedede;
       font-weight: 600;
       .nameBox {
@@ -69,23 +70,33 @@ export const ProductCardDetail = styled.section`
       }
     }
 
-    .switchSelectMainBox {
+    .selectFeaturesBox {
       border-bottom: 2px solid #dedede;
       padding-bottom: 20px;
       margin-bottom: 40px;
       font-weight: 600;
-      font-size: 20px;
+      font-size: 25px;
       margin-top: 20px;
 
-      .switchesNameBox {
+      .featuresNameBox {
         margin-bottom: 20px;
+        display: flex;
+        /* border: 1px solid red; */
       }
-      .switchSelectColorBox {
-        border: 1px solid black;
-        margin-right: 5px;
-        width: 100px;
-        height: 40px;
-        margin-bottom: 20px;
+
+      .selectFeaturesContainer {
+        display: flex;
+
+        .selectFeaturesItem {
+          border: 1px solid black;
+          font-size: 20px;
+          width: 100px;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 5px;
+        }
       }
     }
 
