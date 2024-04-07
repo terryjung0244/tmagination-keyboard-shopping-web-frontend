@@ -28,10 +28,11 @@ const CreateKeyboard = () => {
     keyboardImageUrl: '',
     keyboardImagePath: '',
     keyboardFeatures: {
-      color: ['White', 'Black', 'Silver', 'Cream'],
-      switch: ['Red', 'Yellow', 'Brown', 'Blue'],
+      color: [],
+      switch: [],
     },
   });
+  console.log(createKeyboardInput);
 
   const handleCreateKeyboard = async () => {
     let uploadedImageUrl;
@@ -98,13 +99,73 @@ const CreateKeyboard = () => {
   };
 
   const handleKeyboardSelectFeature = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setCreateKeyboardInput({
-      ...createKeyboardInput,
-      keyboardFeatures: {
-        ...createKeyboardInput.keyboardFeatures,
-        [e.target.name]: e.target.value,
-      },
-    });
+    const { name, value } = e.target;
+    console.log(name, value);
+
+    if (value) {
+      if (name === 'color') {
+        let temp = createKeyboardInput.keyboardFeatures?.color;
+        if (temp?.includes(value)) {
+          temp = temp.filter((el) => el !== value); // ['black']
+        } else {
+          temp?.push(value);
+        }
+        setCreateKeyboardInput({
+          ...createKeyboardInput,
+          keyboardFeatures: {
+            ...createKeyboardInput.keyboardFeatures,
+            [name]: temp, // color: ['black', 'green']
+          },
+        });
+      } else {
+        let temp = createKeyboardInput.keyboardFeatures?.switch;
+        if (temp?.includes(value)) {
+          temp = temp.filter((el) => el !== value);
+        } else {
+          temp?.push(value);
+        }
+        setCreateKeyboardInput({
+          ...createKeyboardInput,
+          keyboardFeatures: {
+            ...createKeyboardInput.keyboardFeatures,
+            [name]: temp,
+          },
+        });
+      }
+    } else {
+      setCreateKeyboardInput({
+        ...createKeyboardInput,
+        keyboardFeatures: {
+          ...createKeyboardInput.keyboardFeatures,
+          [name]: [],
+        },
+      });
+    }
+
+    // if (e.target.name === 'switch') {
+    //   let temp = createKeyboardInput.keyboardFeatures?.switch;
+    //   if (temp?.includes(e.target.value)) {
+    //     temp = temp.filter((el) => el !== e.target.value);
+    //   } else {
+    //     temp?.push(e.target.value);
+    //   }
+    //   setCreateKeyboardInput({
+    //     ...createKeyboardInput,
+    //     keyboardFeatures: {
+    //       ...createKeyboardInput.keyboardFeatures,
+    //       [e.target.name]: temp,
+    //     },
+    //   });
+    // }
+    // if (e.target.name === 'switch') {
+    //   setCreateKeyboardInput({
+    //     ...createKeyboardInput,
+    //     keyboardFeatures: {
+    //       ...createKeyboardInput.keyboardFeatures,
+    //       switch: [...(createKeyboardInput.keyboardFeatures as any).switch, e.target.value],
+    //     },
+    //   });
+    // }
   };
 
   return (
@@ -150,13 +211,25 @@ const CreateKeyboard = () => {
         />
       </div>
       <div className="selectMain">
-        <select className="selectColor" name={'color'} onChange={handleKeyboardSelectFeature}>
+        <select
+          className="selectColor"
+          name={'color'}
+          onChange={handleKeyboardSelectFeature}
+          multiple
+          value={createKeyboardInput.keyboardFeatures?.color}
+        >
           <option value={'default'}>Colors</option>
           {keyboardColors.map((keyboardColor: string, index) => {
             return <option key={index}>{keyboardColor}</option>;
           })}
         </select>
-        <select className="selectSwitch" name={'switch'} onChange={handleKeyboardSelectFeature}>
+        <select
+          className="selectSwitch"
+          name={'switch'}
+          onChange={handleKeyboardSelectFeature}
+          multiple
+          value={createKeyboardInput.keyboardFeatures?.switch}
+        >
           <option value={'default'}>Switches</option>
           {keyboardSwitches.map((keyboardSwitch: string, index) => {
             return <option key={index}>{keyboardSwitch}</option>;

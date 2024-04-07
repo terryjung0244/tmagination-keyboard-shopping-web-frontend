@@ -105,7 +105,6 @@ const Cart = () => {
           <div className="leftSideCartSection">
             {cart.map((cartItem: IProduct, index: number) => {
               return (
-                // <div className="cartSection" key={index}>
                 <Row className="cartSection_imageAndDetails_container" key={index}>
                   <Col xs={12} lg={5}>
                     <img className="cartSection_image_container" src={cartItem.imageUrl} alt="" />
@@ -154,7 +153,6 @@ const Cart = () => {
                     </div>
                   </Col>
                 </Row>
-                // </div>
               );
             })}
           </div>
@@ -170,9 +168,6 @@ const Cart = () => {
           </div>
         </div>
         <div className="updateCartAndCheckoutSection">
-          {/* <div className="updateCart" onClick={handleUpdateCart}>
-            Update Cart
-          </div> */}
           <Link to="/checkout" className="checkout" state={subtotalPrice}>
             Checkout
           </Link>
@@ -183,3 +178,13 @@ const Cart = () => {
 };
 
 export default Cart;
+
+// const names = {
+//   color: ['black'],
+//   switch: ['yellow', 'red'],
+// };
+
+// Object.entries(names).map((name) => {
+//   console.log(name[0]);
+//   console.log(name[1]);
+// });

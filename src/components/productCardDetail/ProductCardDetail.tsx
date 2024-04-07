@@ -1,11 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Styles from './ProductCardDetail.styled';
 import { IProduct } from '../../type/product.interface';
 import minus from './../../assets/minus.png';
 import plus from './../../assets/plus.png';
 import saleIcon from '../../assets/sale.png';
+import Features from './Features/Features';
+import { useAppDispatch } from '../../service/store';
+import { addCart } from '../../service/slice/cartSlice';
 
 interface IProductCardDetailProps {
   quantityState: number;
@@ -24,13 +28,14 @@ const ProductCardDetail = ({
   handleDisocuntPrice,
   handleAddToCart,
 }: IProductCardDetailProps) => {
-  useEffect(() => {
-    // handleShowFeatures();
-  }, []);
+  const dispatch = useAppDispatch();
+  // useEffect(() => {
+  //   handleShowFeatures();
+  // }, []);
 
   // const handleShowFeatures = async () => {
   //   const response = await fetch(
-  //     `http://localhost:8070/api/keyboard/searchKeyboard?keyboardId=${'111'}`,
+  //     `http://localhost:8070/api/keyboard/getKeyboardById?keyboardId=${productDetail.id}`,
   //     {
   //       headers: {
   //         'Content-Type': 'application/json',
@@ -40,6 +45,13 @@ const ProductCardDetail = ({
   //   const result = await response.json();
   //   console.log(result);
   // };
+  const [isClicked, setIsClicked] = useState<boolean>(false);
+
+  const handleSelectFeatures = (keyboardColor: string) => {
+    // setIsClicked(!isClicked);
+    dispatch(addCart(keyboardColor));
+    console.log(keyboardColor);
+  };
 
   return (
     <Styles.ProductCardDetail>
@@ -64,13 +76,7 @@ const ProductCardDetail = ({
           )}
           <div className="instockBox">{productDetail.stock} In stock </div>
         </div>
-        {Object.keys(productDetail.features).map((feature: any) => {
-          return (
-            <div className="switchSelectMainBox" key={feature}>
-              <div className="switchesNameBox">{feature}</div>
-            </div>
-          );
-        })}
+        <Features productDetail={productDetail} handleSelectFeatures={handleSelectFeatures} />
         <div className="quantityAndCartBox">
           <div className="quantityMainBox">
             <div className="quantityBox">
@@ -98,3 +104,13 @@ const ProductCardDetail = ({
 };
 
 export default ProductCardDetail;
+
+// const features = {
+//   color: ['balck'],
+//   switch: ['a', 'b'],
+// };
+
+// Object.entries(features).map((feature) => {
+//   console.log(feature[0]);
+//   console.log(feature[1]);
+// });

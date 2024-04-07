@@ -19,6 +19,7 @@ export const cartSlice = createSlice({
       state.cart = action.payload;
     },
     addCart: (state, action) => {
+      console.log(action.payload);
       state.cart.push(action.payload);
     },
     cartQuantityIncrease: (state, action) => {
