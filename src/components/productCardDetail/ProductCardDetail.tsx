@@ -16,8 +16,13 @@ interface IProductCardDetailProps {
   productDetail: IProduct;
   handleIncreaseQuantity: () => void;
   handleDecreaseQuantity: () => void;
+  handleSelectedFeatures: (feature: string, type: string) => void;
   handleDisocuntPrice: () => number;
-  handleAddToCart: (product: IProduct) => void;
+  selectedFeatures: {
+    color: string;
+    switch: string;
+  };
+  handleAddToCart: (product: IProduct, isGoCheckout: boolean) => void;
 }
 
 const ProductCardDetail = ({
@@ -25,6 +30,8 @@ const ProductCardDetail = ({
   productDetail,
   handleIncreaseQuantity,
   handleDecreaseQuantity,
+  handleSelectedFeatures,
+  selectedFeatures,
   handleDisocuntPrice,
   handleAddToCart,
 }: IProductCardDetailProps) => {
@@ -45,12 +52,14 @@ const ProductCardDetail = ({
   //   const result = await response.json();
   //   console.log(result);
   // };
+  console.log(productDetail);
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const handleSelectFeatures = (keyboardColor: string) => {
-    // setIsClicked(!isClicked);
-    dispatch(addCart(keyboardColor));
-    console.log(keyboardColor);
+  const clickFeature = (feature: string, type: string) => {
+    handleSelectedFeatures(feature, type);
+    // // setIsClicked(!isClicked);
+    // dispatch(addCart(keyboardColor));
+    // console.log(keyboardColor);
   };
 
   return (
@@ -76,7 +85,11 @@ const ProductCardDetail = ({
           )}
           <div className="instockBox">{productDetail.stock} In stock </div>
         </div>
-        <Features productDetail={productDetail} handleSelectFeatures={handleSelectFeatures} />
+        <Features
+          productFeatures={productDetail.features}
+          selectedFeatures={selectedFeatures}
+          clickFeature={clickFeature}
+        />
         <div className="quantityAndCartBox">
           <div className="quantityMainBox">
             <div className="quantityBox">
@@ -89,14 +102,17 @@ const ProductCardDetail = ({
               </div>
             </div>
           </div>
-          <div className="cartBox" onClick={() => handleAddToCart(productDetail)}>
+          <div className="cartBox" onClick={() => handleAddToCart(productDetail, false)}>
             Add to Cart
           </div>
         </div>
         <div className="checkoutBtnMainBox">
-          <Link to="/checkout" className="checkoutBtnBox" state={productDetail}>
+          <div className="checkoutBtnBox" onClick={() => handleAddToCart(productDetail, true)}>
             Proceed to Check out
-          </Link>
+          </div>
+          {/* <Link to="/checkout" className="checkoutBtnBox">
+            
+          </Link> */}
         </div>
       </div>
     </Styles.ProductCardDetail>

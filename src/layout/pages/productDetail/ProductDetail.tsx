@@ -22,6 +22,10 @@ const ProductDetail = () => {
   console.log(id);
 
   const [quantity, setQuantity] = useState<number>(1);
+  const [selectedFeatures, setSelectedFeatures] = useState<{ color: string; switch: string }>({
+    color: '',
+    switch: '',
+  });
 
   const handleDisocuntPrice = () => {
     return (
@@ -48,25 +52,43 @@ const ProductDetail = () => {
     console.log('Dec');
   };
 
-  console.log(quantity);
+  const handleSelectedFeatures = (feature: string, type: string) => {
+    console.log(feature, type);
+    if (type === 'color') {
+      setSelectedFeatures({ ...selectedFeatures, color: feature });
+    } else {
+      setSelectedFeatures({ ...selectedFeatures, switch: feature });
+    }
+    // setSelectedFeatures({ ...selectedFeatures, [type]: feature });
+  };
 
-  const handleAddToCart = (product: IProduct) => {
-    console.log(product);
-
-    const cartLocalStorage = localStorage.getItem('cart');
-    console.log(cartLocalStorage);
-    if (cartLocalStorage) {
-      const parsedCartLocalStorage = JSON.parse(cartLocalStorage);
-      console.log(parsedCartLocalStorage);
-      const tempProduct = { ...product, quantity, cartId: getUuid() };
-      parsedCartLocalStorage.push(tempProduct);
-      localStorage.setItem('cart', JSON.stringify(parsedCartLocalStorage));
-      dispatch(addCart(tempProduct));
+  const handleAddToCart = (product: IProduct, isGoCheckout: boolean) => {
+    if (!selectedFeatures.color || !selectedFeatures.switch) {
+      alert('Please select all features');
       return;
     }
 
-    const tempProduct = { ...product, quantity, cartId: getUuid() }; // {...이유} state?
+    const cartLocalStorage = localStorage.getItem('cart');
+    if (cartLocalStorage) {
+      const parsedCartLocalStorage = JSON.parse(cartLocalStorage);
+      const tempProduct = { ...product, quantity, features: selectedFeatures, cartId: getUuid() };
+      parsedCartLocalStorage.push(tempProduct);
+      localStorage.setItem('cart', JSON.stringify(parsedCartLocalStorage));
+      dispatch(addCart(tempProduct));
+
+      if (isGoCheckout) {
+        navigate('/checkout');
+      }
+      return;
+    }
+
+    const tempProduct = { ...product, quantity, features: selectedFeatures, cartId: getUuid() }; // {...이유} state?
     localStorage.setItem('cart', JSON.stringify([tempProduct]));
+    dispatch(addCart(tempProduct));
+
+    if (isGoCheckout) {
+      navigate('/checkout');
+    }
   };
 
   console.log(quantity);
@@ -81,6 +103,8 @@ const ProductDetail = () => {
         productDetail={product}
         handleIncreaseQuantity={handleIncreaseQuantity}
         handleDecreaseQuantity={handleDecreaseQuantity}
+        handleSelectedFeatures={handleSelectedFeatures}
+        selectedFeatures={selectedFeatures}
         handleDisocuntPrice={handleDisocuntPrice}
         handleAddToCart={handleAddToCart}
       />
