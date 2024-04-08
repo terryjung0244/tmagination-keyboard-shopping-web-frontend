@@ -1,20 +1,35 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Checkout.styled';
 import paypal from '../../assets/paypal.png';
 import creditCard from '../../assets/creditCard.png';
 import { useLocation } from 'react-router-dom';
+import { useAppSelector } from '../../service/store';
+import { IProduct } from '../../type/product.interface';
 
 const Checkout = () => {
+  const { cart } = useAppSelector((state) => state.cartSlice);
+
   useEffect(() => {
     handleTotalCost();
   });
+
   const [totalCost, setTotalCost] = useState<number>(0);
-  const { state }: { state: any } = useLocation();
-  console.log(state);
+
+  const handlePrice = (cartItem: IProduct) => {
+    // quantity saleprice
+    return (
+      (parseInt(cartItem.price) - parseInt(cartItem.price) * parseFloat(cartItem.discountRate)) *
+      (cartItem.quantity as number)
+    );
+  };
 
   const handleTotalCost = () => {
-    setTotalCost(state + 20);
+    const totalPriceSum = cart.reduce((accumulator, currentObjectValue): any => {
+      return accumulator + handlePrice(currentObjectValue);
+    }, 0);
+    setTotalCost(totalPriceSum + 20);
   };
 
   console.log(totalCost);
@@ -80,7 +95,7 @@ const Checkout = () => {
           <div className="orderSummaryText">Order summary</div>
           <div className="subTotalAndPrice">
             <div>Subtotal</div>
-            <div>${state}</div>
+            <div>${totalCost}</div>
           </div>
           <div className="shippingAndCost">
             <div>Shipping</div>
