@@ -42,12 +42,11 @@ const Cart = () => {
     //   // }
 
     const totalPriceSum = cart.reduce((accumulator, currentObjectValue): any => {
+      console.log(currentObjectValue);
       return accumulator + handlePrice(currentObjectValue);
-      // setSubtotalPrice(totalPriceSum);
     }, 0);
     // });
     setSubtotalPrice(totalPriceSum);
-    console.log(totalPriceSum);
   };
 
   console.log(subtotalPrice);
@@ -169,7 +168,7 @@ const Cart = () => {
           </div>
         </div>
         <div className="updateCartAndCheckoutSection">
-          <Link to="/checkout" className="checkout">
+          <Link to="/checkout" className="checkout" state={subtotalPrice}>
             Checkout
           </Link>
         </div>

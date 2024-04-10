@@ -24,7 +24,7 @@ const CreateKeycap = () => {
     keycapImageUrl: '',
     keycapImagePath: '',
     keycapFeatures: {
-      color: ['Beige', 'Green', 'Mint', 'Purple'],
+      color: [],
     },
   });
 
