@@ -19,10 +19,10 @@ const ProductDetail = () => {
   const { state }: { state: IStateProps } = useLocation();
   const { product } = state;
 
-  console.log(id);
+  console.log(state);
 
   const [quantity, setQuantity] = useState<number>(1);
-  const [selectedFeatures, setSelectedFeatures] = useState<{ color: string; switch: string }>({
+  const [selectedFeatures, setSelectedFeatures] = useState<{ color: string; switch?: string }>({
     color: '',
     switch: '',
   });
@@ -54,18 +54,40 @@ const ProductDetail = () => {
 
   const handleSelectedFeatures = (feature: string, type: string) => {
     console.log(feature, type);
-    if (type === 'color') {
-      setSelectedFeatures({ ...selectedFeatures, color: feature });
-    } else {
-      setSelectedFeatures({ ...selectedFeatures, switch: feature });
-    }
-    // setSelectedFeatures({ ...selectedFeatures, [type]: feature });
+    // if (type === 'color') {
+    //   setSelectedFeatures({ ...selectedFeatures, color: feature });
+    // } else {
+    //   setSelectedFeatures({ ...selectedFeatures, switch: feature });
+    // }
+    setSelectedFeatures({ ...selectedFeatures, [type]: feature });
   };
 
   const handleAddToCart = (product: IProduct, isGoCheckout: boolean) => {
-    if (!selectedFeatures.color || !selectedFeatures.switch) {
-      alert('Please select all features');
-      return;
+    switch (product.category) {
+      case 'KEYBOARD':
+        if (!selectedFeatures.color || !selectedFeatures.switch) {
+          alert('Please select color and switch');
+          return;
+        }
+        break;
+
+      case 'SWITCH':
+        if (!selectedFeatures.color) {
+          alert('Please select color');
+          return;
+        }
+        break;
+
+      case 'KEYCAP':
+        if (!selectedFeatures.color) {
+          alert('Please select color');
+          return;
+        }
+        break;
+
+      default:
+        alert('Default');
+        break;
     }
 
     const cartLocalStorage = localStorage.getItem('cart');
@@ -82,7 +104,7 @@ const ProductDetail = () => {
       return;
     }
 
-    const tempProduct = { ...product, quantity, features: selectedFeatures, cartId: getUuid() }; // {...이유} state?
+    const tempProduct = { ...product, quantity, features: selectedFeatures, cartId: getUuid() };
     localStorage.setItem('cart', JSON.stringify([tempProduct]));
     dispatch(addCart(tempProduct));
 
@@ -91,7 +113,6 @@ const ProductDetail = () => {
     }
   };
 
-  console.log(quantity);
   return (
     <div>
       <div onClick={handlePreviousPage}>
@@ -113,9 +134,3 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
-
-/**
- * 링크 클릭 했을 때, state 값으로 해당 키보드 데이터 넘기기
- * 또는
- * 링크 클릭 하고 페이지 이동됬을 때, 넘어온 id 값으로 API 부르기
- */

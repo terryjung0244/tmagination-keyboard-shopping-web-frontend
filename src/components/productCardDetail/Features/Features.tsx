@@ -5,11 +5,11 @@ import * as Styles from './Features.styled';
 interface FeaturesProps {
   productFeatures: {
     color: string[];
-    switch: string[];
+    switch?: string[];
   };
   selectedFeatures: {
     color: string;
-    switch: string;
+    switch?: string;
   };
   clickFeature: (feature: string, type: string) => void;
 }
@@ -42,7 +42,7 @@ const Features = ({ productFeatures, selectedFeatures, clickFeature }: FeaturesP
       <div>
         <div className="keyboardFeatureText">Switch</div>
         <div className="keyboardselectFeaturesContainer">
-          {productFeatures.switch.map((keyboardSwitch: string, index) => {
+          {productFeatures.switch?.map((keyboardSwitch: string, index) => {
             // console.log(keyboardSwitch);
             return (
               <div

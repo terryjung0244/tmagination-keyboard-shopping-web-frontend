@@ -16,7 +16,6 @@ import {
 } from '../../../service/slice/cartSlice';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Practice from './Practice';
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -173,7 +172,7 @@ const Cart = () => {
           </Link>
         </div>
 
-        <Practice />
+        {/* <Practice /> */}
       </div>
     </Styles.Cart>
   );

@@ -19,7 +19,7 @@ interface IProductCardDetailProps {
   handleDisocuntPrice: () => number;
   selectedFeatures: {
     color: string;
-    switch: string;
+    switch?: string;
   };
   handleAddToCart: (product: IProduct, isGoCheckout: boolean) => void;
 }
