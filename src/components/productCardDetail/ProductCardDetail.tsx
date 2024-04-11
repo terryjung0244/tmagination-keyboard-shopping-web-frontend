@@ -9,7 +9,6 @@ import plus from './../../assets/plus.png';
 import saleIcon from '../../assets/sale.png';
 import Features from './Features/Features';
 import { useAppDispatch } from '../../service/store';
-import { addCart } from '../../service/slice/cartSlice';
 
 interface IProductCardDetailProps {
   quantityState: number;
@@ -20,7 +19,7 @@ interface IProductCardDetailProps {
   handleDisocuntPrice: () => number;
   selectedFeatures: {
     color: string;
-    switch: string;
+    switch?: string;
   };
   handleAddToCart: (product: IProduct, isGoCheckout: boolean) => void;
 }
@@ -52,8 +51,6 @@ const ProductCardDetail = ({
   //   const result = await response.json();
   //   console.log(result);
   // };
-  console.log(productDetail);
-  const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const clickFeature = (feature: string, type: string) => {
     handleSelectedFeatures(feature, type);
@@ -110,9 +107,6 @@ const ProductCardDetail = ({
           <div className="checkoutBtnBox" onClick={() => handleAddToCart(productDetail, true)}>
             Proceed to Check out
           </div>
-          {/* <Link to="/checkout" className="checkoutBtnBox">
-            
-          </Link> */}
         </div>
       </div>
     </Styles.ProductCardDetail>
@@ -120,13 +114,3 @@ const ProductCardDetail = ({
 };
 
 export default ProductCardDetail;
-
-// const features = {
-//   color: ['balck'],
-//   switch: ['a', 'b'],
-// };
-
-// Object.entries(features).map((feature) => {
-//   console.log(feature[0]);
-//   console.log(feature[1]);
-// });

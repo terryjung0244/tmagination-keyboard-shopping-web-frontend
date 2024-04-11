@@ -10,11 +10,14 @@ import { IProduct } from '../../type/product.interface';
 
 const Checkout = () => {
   const { cart } = useAppSelector((state) => state.cartSlice);
+  const { state } = useLocation();
 
   useEffect(() => {
+    handleSubTotalCost();
     handleTotalCost();
   });
 
+  const [subTotalCost, setSubTotalCost] = useState<number>(0);
   const [totalCost, setTotalCost] = useState<number>(0);
 
   const handlePrice = (cartItem: IProduct) => {
@@ -25,14 +28,17 @@ const Checkout = () => {
     );
   };
 
-  const handleTotalCost = () => {
+  const handleSubTotalCost = () => {
+    console.log('1');
     const totalPriceSum = cart.reduce((accumulator, currentObjectValue): any => {
-      return accumulator + handlePrice(currentObjectValue);
+      return accumulator + handlePrice(currentObjectValue); // discount rate 적용해야함.
     }, 0);
-    setTotalCost(totalPriceSum + 20);
+    setSubTotalCost(totalPriceSum);
   };
 
-  console.log(totalCost);
+  const handleTotalCost = () => {
+    setTotalCost(subTotalCost + 20);
+  };
 
   return (
     <Styles.Checkout>
@@ -95,7 +101,10 @@ const Checkout = () => {
           <div className="orderSummaryText">Order summary</div>
           <div className="subTotalAndPrice">
             <div>Subtotal</div>
-            <div>${totalCost}</div>
+            <div>${state}</div>
+            {/* 카트에서 Checkout눌렀을떄 나오는 총가격 */}
+            <div>${subTotalCost}</div>
+            {/* 상품페이지에서 Proceed To Checkout 눌렀을떄 나오는 총가격 */}
           </div>
           <div className="shippingAndCost">
             <div>Shipping</div>
@@ -103,7 +112,7 @@ const Checkout = () => {
           </div>
           <div className="total">
             <div>Total</div>
-            <div>${totalCost}.00</div>
+            <div>${totalCost}</div>
           </div>
           <div className="clickToPay">Click To Pay</div>
         </div>

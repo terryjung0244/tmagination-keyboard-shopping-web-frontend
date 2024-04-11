@@ -16,7 +16,6 @@ import {
 } from '../../../service/slice/cartSlice';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Practice from './Practice';
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -42,12 +41,11 @@ const Cart = () => {
     //   // }
 
     const totalPriceSum = cart.reduce((accumulator, currentObjectValue): any => {
+      console.log(currentObjectValue);
       return accumulator + handlePrice(currentObjectValue);
-      // setSubtotalPrice(totalPriceSum);
     }, 0);
     // });
     setSubtotalPrice(totalPriceSum);
-    console.log(totalPriceSum);
   };
 
   console.log(subtotalPrice);
@@ -169,12 +167,12 @@ const Cart = () => {
           </div>
         </div>
         <div className="updateCartAndCheckoutSection">
-          <Link to="/checkout" className="checkout">
+          <Link to="/checkout" className="checkout" state={subtotalPrice}>
             Checkout
           </Link>
         </div>
 
-        <Practice />
+        {/* <Practice /> */}
       </div>
     </Styles.Cart>
   );
