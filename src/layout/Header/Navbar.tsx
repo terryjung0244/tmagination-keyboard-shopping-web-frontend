@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as Styles from './Navbar.styled';
 import { Navbar as NavbarTop, Nav } from 'react-bootstrap'; //
 import Logo from './Logo';
@@ -17,7 +16,7 @@ const Navbar = () => {
         <NavbarTop.Collapse className="navbarCollapse">
           <Nav className="navbarCollapse-nav">
             <Nav.Link className="navbarCollapse-nav-navLink" href="/dashboard">
-              <img src={control} alt="control" style={{ width: '40px' }} />
+              <img src={control} alt="control" className="dashboardImage" />
             </Nav.Link>
             <Nav.Link className="navbarCollapse-nav-navLink" href="/allproducts">
               All Products

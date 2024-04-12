@@ -1,11 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from 'styled-components';
-import { getResponsiveMediaQuery } from './../../GlobalStyles';
+import { fontSize, getResponsiveMediaQuery } from './../../GlobalStyles';
 
 export const Home = styled.section`
+  width: 70%;
+
   .carouselImages {
+    /* border: 1px solid red; */
     width: 100%;
-    height: 700px;
+    height: 400px;
     object-fit: cover;
   }
 
@@ -24,10 +26,12 @@ export const Home = styled.section`
         width: 100%;
       }
       width: 60%;
+      height: 300px;
+      object-fit: cover;
     }
 
     .keyboardDescContainer {
-      /* border: 1px solid red; */
+      border: 1px solid red;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -49,7 +53,7 @@ export const Home = styled.section`
 
       .keyboardName {
         font-weight: 600;
-        font-size: 30px;
+        font-size: ${fontSize.md};
       }
 
       & div {
@@ -58,16 +62,16 @@ export const Home = styled.section`
         }
         /* border: 1px solid red; */
         padding-left: 30px;
-        font-size: 25px;
+        font-size: ${fontSize.sm};
         margin-bottom: 10px;
       }
 
       .keyboardLearnMoreButton {
+        font-weight: 600;
         padding: 0;
-        /* border: 1px solid red; */
         border-radius: 10px;
-        width: 200px;
-        height: 60px;
+        width: 120px;
+        height: 35px;
         margin-left: 30px;
         margin-top: 20px;
         display: flex;

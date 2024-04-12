@@ -5,6 +5,7 @@ import luminKey65 from '../../assets/luminkey65.jpg';
 import luminKey75 from '../../assets/luminkey75.png';
 import luminKey80 from '../../assets/luminkey80.png';
 import { introKeyboardInfo } from '.';
+import VideoClip from './videoClip/VideoClip';
 
 const Home = () => {
   const handleNavigatePage = () => {
@@ -13,25 +14,26 @@ const Home = () => {
 
   return (
     <Styles.Home>
+      <VideoClip />
       <Carousel>
         <Carousel.Item interval={2500}>
           <img src={luminKey65} className="carouselImages" onClick={handleNavigatePage} />
           <Carousel.Caption>
-            <h3>Luminkey65</h3>
+            <h3>Varon65</h3>
             <p>65% layout, compact and refined.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={2500}>
           <img src={luminKey75} className="carouselImages" />
           <Carousel.Caption>
-            <h3>Luminkey75</h3>
+            <h3>Varon75</h3>
             <p>75% layout, balancing practicality and compact design.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img src={luminKey80} className="carouselImages" />
           <Carousel.Caption>
-            <h3>Luminkey80</h3>
+            <h3>Varon80</h3>
             <p>80% layout, meets your daily needs.</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -41,7 +43,6 @@ const Home = () => {
         return (
           <div className="keyboardIntroSection" key={index}>
             <img className="keyboardImage" src={KeyboardItem.image} />
-
             <div className="keyboardDescContainer">
               <div className="keyboardName">{KeyboardItem.name}</div>
               <div className="keyboardDescLayout">{KeyboardItem.description.layout}</div>
