@@ -10,7 +10,9 @@ import { IProduct } from '../../type/product.interface';
 
 const Checkout = () => {
   const { cart } = useAppSelector((state) => state.cartSlice);
-  const { state } = useLocation();
+  // const { state } = useLocation();
+
+  console.log(cart);
 
   useEffect(() => {
     handleSubTotalCost();
@@ -101,7 +103,7 @@ const Checkout = () => {
           <div className="orderSummaryText">Order summary</div>
           <div className="subTotalAndPrice">
             <div>Subtotal</div>
-            <div>${state}</div>
+            {/* <div>${state}</div> */}
             {/* 카트에서 Checkout눌렀을떄 나오는 총가격 */}
             <div>${subTotalCost}</div>
             {/* 상품페이지에서 Proceed To Checkout 눌렀을떄 나오는 총가격 */}

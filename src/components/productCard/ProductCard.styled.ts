@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import { colors, fontSize } from '../../GlobalStyles';
 
 export const Createkeyboard = styled.section`
   /* border: 1px solid red; */
   min-width: 180px;
-  min-height: 500px;
+  min-height: 300px;
   padding: 20px 0px;
   border-radius: 5px;
   margin-bottom: 20px;
   position: relative;
-  color: #333;
+  color: ${colors.fontMainColor};
+  font-size: ${fontSize.md};
 
   .cardMain {
     /* border: 1px solid red; */
@@ -38,7 +40,6 @@ export const Createkeyboard = styled.section`
 
   .cardName {
     /* border: 1px solid red; */
-    font-size: 30px;
     margin-bottom: 10px;
   }
 
@@ -50,6 +51,5 @@ export const Createkeyboard = styled.section`
 
   .cardPrice {
     /* border: 1px solid red; */
-    font-size: 30px;
   }
 `;

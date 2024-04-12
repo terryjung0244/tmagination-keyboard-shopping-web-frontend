@@ -8,7 +8,9 @@ export const globalPadding = {
   web: '50px',
 };
 
-export const colors = {};
+export const colors = {
+  fontMainColor: '#d3d3d3',
+};
 
 export const globalCustomizedStyle = {
   btnBorderRadius: '10px',
@@ -22,7 +24,10 @@ export const globalCustomizedStyle = {
 };
 
 export const fontSize = {
-  sm: '10px',
+  xl: '30px',
+  lg: '25px',
+  md: '15px',
+  sm: '13px',
 };
 
 export const responsiveSize = {

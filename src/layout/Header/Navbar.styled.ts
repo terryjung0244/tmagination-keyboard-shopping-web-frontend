@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { fontSize } from '../../GlobalStyles';
 
 export const Navbar = styled.section`
   /* border: 1px solid red; */
@@ -6,6 +7,8 @@ export const Navbar = styled.section`
   justify-content: center;
   background-color: #2c3c6b;
   padding: 0px 30px;
+  height: 80px;
+  font-size: ${fontSize.md};
 
   .navbarTop {
     /* border: 1px solid red; */
@@ -19,7 +22,6 @@ export const Navbar = styled.section`
       color: transparent;
       border: 2px solid white;
       padding: 3px 6px;
-      /* border: transparent; */
     }
 
     .navbarTop-toggle {
@@ -29,7 +31,6 @@ export const Navbar = styled.section`
     }
 
     .navbarCollapse {
-      /* border: 1px solid red; */
       width: 100%;
 
       .navbarCollapse-nav {
@@ -38,10 +39,14 @@ export const Navbar = styled.section`
         justify-content: space-evenly;
         align-items: center;
 
+        .dashboardImage {
+          width: 23px;
+          filter: opacity(0.5) drop-shadow(0 0 0 #d3d3d3);
+        }
+
         .navbarCollapse-nav-navLink {
           font-weight: 600;
-          font-size: 20px;
-          color: whitesmoke;
+          color: #d3d3d3;
         }
       }
     }

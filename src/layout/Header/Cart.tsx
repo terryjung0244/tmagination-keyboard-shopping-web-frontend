@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../service/store';
 import { loadInitialCart } from '../../service/slice/cartSlice';
@@ -6,6 +7,7 @@ import { Cart as CartICon } from 'react-bootstrap-icons';
 const Cart = () => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cartSlice);
+  console.log(cart);
   useEffect(() => {
     const cartLocalStorage = localStorage.getItem('cart');
     if (cartLocalStorage) {
@@ -17,20 +19,20 @@ const Cart = () => {
   return (
     <>
       <div style={{ position: 'relative' }}>
-        <CartICon size={35} />
+        <CartICon size={23} />
         <div
           style={{
             position: 'absolute',
-            top: '-10px',
-            right: '-10px',
-            width: '25px',
-            height: '25px',
+            top: '-8px',
+            right: '-8px',
+            width: '17px',
+            height: '17px',
             fontSize: '15px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            color: 'white',
-            backgroundColor: 'red',
+            color: 'black',
+            backgroundColor: '#58FF33',
             borderRadius: '50%',
           }}
         >

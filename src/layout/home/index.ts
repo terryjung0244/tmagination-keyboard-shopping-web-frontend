@@ -4,7 +4,7 @@ import luminKey80 from '../../assets/luminkey80.png';
 
 export const introKeyboardInfo = [
   {
-    name: 'Luminkey65',
+    name: 'Varon65',
     image: luminKey65,
     description: {
       layout: '65% layout, compact and refined.',
@@ -13,7 +13,7 @@ export const introKeyboardInfo = [
     },
   },
   {
-    name: 'Luminkey75',
+    name: 'Varon75',
     image: luminKey75,
     description: {
       layout: '75% layout, balancing practicality and compact design.',
@@ -22,7 +22,7 @@ export const introKeyboardInfo = [
     },
   },
   {
-    name: 'Luminkey80',
+    name: 'Varon80',
     image: luminKey80,
     description: {
       layout: '80% layout, meets your daily needs.',
