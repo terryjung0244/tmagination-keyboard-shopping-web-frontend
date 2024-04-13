@@ -22,9 +22,4 @@ export const AllProducts = styled.section`
     margin-bottom: 15px;
     border-bottom: 2px solid #dedede;
   }
-
-  .SortMainBox {
-    /* border: 1px solid red; */
-    padding: 0px;
-  }
 `;

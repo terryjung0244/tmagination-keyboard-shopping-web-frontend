@@ -5,9 +5,9 @@ export const Navbar = styled.section`
   /* border: 1px solid red; */
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #2c3c6b;
   padding: 0px 30px;
-  height: 80px;
   font-size: ${fontSize.md};
 
   .navbarTop {

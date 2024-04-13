@@ -26,8 +26,9 @@ export const globalCustomizedStyle = {
 export const fontSize = {
   xl: '30px',
   lg: '25px',
-  md: '15px',
+  md: '16px',
   sm: '13px',
+  xs: '11px',
 };
 
 export const responsiveSize = {

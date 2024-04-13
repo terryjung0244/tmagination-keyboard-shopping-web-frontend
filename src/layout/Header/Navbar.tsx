@@ -18,6 +18,13 @@ const Navbar = () => {
             <Nav.Link className="navbarCollapse-nav-navLink" href="/dashboard">
               <img src={control} alt="control" className="dashboardImage" />
             </Nav.Link>
+            <Nav.Link
+              className="navbarCollapse-nav-navLink"
+              href="https://www.youtube.com/@tmagination6083"
+              target="_blank"
+            >
+              Youtube
+            </Nav.Link>
             <Nav.Link className="navbarCollapse-nav-navLink" href="/allproducts">
               All Products
             </Nav.Link>

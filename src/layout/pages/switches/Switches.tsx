@@ -39,7 +39,7 @@ const Switches = () => {
       <Row className="rowContainer">
         {switches.map((product: IProduct) => {
           return (
-            <Col xs={12} md={4} key={product.id}>
+            <Col xs={12} sm={6} md={4} lg={3} key={product.id}>
               <Link to={`/switches/${product.id}`} state={{ product }}>
                 <ProductCard product={product} />
               </Link>

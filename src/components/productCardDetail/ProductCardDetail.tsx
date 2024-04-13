@@ -54,9 +54,6 @@ const ProductCardDetail = ({
 
   const clickFeature = (feature: string, type: string) => {
     handleSelectedFeatures(feature, type);
-    // // setIsClicked(!isClicked);
-    // dispatch(addCart(keyboardColor));
-    // console.log(keyboardColor);
   };
 
   return (
