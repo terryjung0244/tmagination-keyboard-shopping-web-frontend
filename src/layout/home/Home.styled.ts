@@ -1,13 +1,15 @@
 import styled from 'styled-components';
-import { fontSize, getResponsiveMediaQuery } from './../../GlobalStyles';
+import { colors, fontSize, getResponsiveMediaQuery } from './../../GlobalStyles';
 
 export const Home = styled.section`
+  border: 1px solid red;
+  color: ${colors.fontMainColor};
   width: 70%;
 
   .carouselImages {
     /* border: 1px solid red; */
     width: 100%;
-    height: 400px;
+    height: 450px;
     object-fit: cover;
   }
 
@@ -67,6 +69,7 @@ export const Home = styled.section`
       }
 
       .keyboardLearnMoreButton {
+        color: black;
         font-weight: 600;
         padding: 0;
         border-radius: 10px;

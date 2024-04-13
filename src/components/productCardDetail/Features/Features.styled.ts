@@ -1,11 +1,13 @@
 import styled from 'styled-components';
+import { fontSize } from '../../../GlobalStyles';
 
 export const Features = styled.section`
-  font-size: 15px;
+  font-size: ${fontSize.sm};
   border-bottom: 2px solid #dedede;
   margin-bottom: 30px;
 
   .keyboardFeatureText {
+    font-size: ${fontSize.xs};
     font-weight: 600;
     margin-bottom: 10px;
   }
@@ -14,9 +16,10 @@ export const Features = styled.section`
     display: flex;
 
     .keyboardselectFeaturesItem {
-      border: 1px solid black;
-      width: 100px;
-      padding: 7px 0px;
+      border: 1px solid #d3d3d3;
+      background-color: aqua;
+      width: 70px;
+      padding: 5px 0px;
       display: flex;
       justify-content: center;
       align-items: center;

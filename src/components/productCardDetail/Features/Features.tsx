@@ -22,14 +22,14 @@ const Features = ({ productFeatures, selectedFeatures, clickFeature }: FeaturesP
         <div className="keyboardFeatureText">Color</div>
         <div className="keyboardselectFeaturesContainer">
           {productFeatures.color.map((keyboardColor: string, index) => {
-            // console.log(keyboardColor);
             return (
               <div key={index} onClick={() => clickFeature(keyboardColor, 'color')}>
                 <div
                   className="keyboardselectFeaturesItem"
                   style={{
+                    color: selectedFeatures.color === keyboardColor ? 'white' : 'black',
                     backgroundColor:
-                      selectedFeatures.color === keyboardColor ? 'yellow' : 'transparent',
+                      selectedFeatures.color === keyboardColor ? '#bfbfbf' : 'whitesmoke',
                   }}
                 >
                   {keyboardColor}
@@ -53,8 +53,9 @@ const Features = ({ productFeatures, selectedFeatures, clickFeature }: FeaturesP
                 <div
                   className="keyboardselectFeaturesItem"
                   style={{
+                    color: selectedFeatures.color === keyboardSwitch ? 'white' : 'black',
                     backgroundColor:
-                      selectedFeatures.switch === keyboardSwitch ? 'yellow' : 'transparent',
+                      selectedFeatures.switch === keyboardSwitch ? '#bfbfbf' : 'whitesmoke',
                   }}
                 >
                   {keyboardSwitch}

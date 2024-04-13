@@ -1,36 +1,42 @@
 import styled from 'styled-components';
+import { colors, fontSize } from '../../GlobalStyles';
 
 export const ProductCardDetail = styled.section`
-  /* border: 2px solid #dedede; */
   border: 2px solid #dedede;
+  font-size: ${fontSize.md};
+  color: ${colors.fontMainColor};
   display: flex;
 
   .imageMainBox {
+    /* border: 1px solid red; */
+    background-color: #2c3c6b;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 600px;
+    width: 100%;
     padding: 30px;
 
     .imageBox {
-      width: 450px;
+      width: 350px;
       border-radius: 5px;
       margin-bottom: 40px;
     }
 
     .descBox {
-      font-size: 20px;
+      color: whitesmoke;
     }
   }
 
   .rightSideMainBox {
-    border-left: 2px solid #dedede;
-    width: 100%;
+    /* border: 1px solid red; */
+    background-color: #2c3c6b;
     padding: 30px;
+    color: whitesmoke;
 
     .categoryBox {
-      font-size: 20px;
+      font-size: ${fontSize.sm};
+
       font-weight: 600;
       margin-bottom: 20px;
     }
@@ -41,31 +47,30 @@ export const ProductCardDetail = styled.section`
       border-bottom: 2px solid #dedede;
       font-weight: 600;
       .nameBox {
-        font-size: 30px;
+        font-size: ${fontSize.md};
         margin-bottom: 10px;
       }
       .priceWithoutDiscountBox {
-        font-size: 30px;
         margin-bottom: 20px;
       }
       .priceBox {
-        font-size: 30px;
+        font-size: ${fontSize.md};
         margin-bottom: 20px;
         .discountPriceBox {
         }
 
         .saleImageBox {
-          width: 50px;
+          width: 30px;
         }
         .originalPriceBox {
-          font-size: 20px;
+          font-size: ${fontSize.sm};
           margin-left: 10px;
           text-decoration: line-through;
         }
       }
       .instockBox {
-        font-size: 20px;
-        color: #dc143c;
+        font-size: ${fontSize.sm};
+        color: black;
         margin-bottom: 20px;
       }
     }

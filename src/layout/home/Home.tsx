@@ -1,9 +1,9 @@
 import React from 'react';
 import * as Styles from './Home.styled';
 import Carousel from 'react-bootstrap/Carousel';
-import luminKey65 from '../../assets/luminkey65.jpg';
-import luminKey75 from '../../assets/luminkey75.png';
-import luminKey80 from '../../assets/luminkey80.png';
+import hyper from '../../assets/hyper.png';
+import apex7 from '../../assets/apex7.png';
+import redragon from '../../assets/redragon.png';
 import { introKeyboardInfo } from '.';
 import VideoClip from './videoClip/VideoClip';
 
@@ -17,21 +17,21 @@ const Home = () => {
       <VideoClip />
       <Carousel>
         <Carousel.Item interval={2500}>
-          <img src={luminKey65} className="carouselImages" onClick={handleNavigatePage} />
+          <img src={hyper} className="carouselImages" onClick={handleNavigatePage} />
           <Carousel.Caption>
             <h3>Varon65</h3>
             <p>65% layout, compact and refined.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={2500}>
-          <img src={luminKey75} className="carouselImages" />
+          <img src={apex7} className="carouselImages" />
           <Carousel.Caption>
             <h3>Varon75</h3>
             <p>75% layout, balancing practicality and compact design.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img src={luminKey80} className="carouselImages" />
+          <img src={redragon} className="carouselImages" />
           <Carousel.Caption>
             <h3>Varon80</h3>
             <p>80% layout, meets your daily needs.</p>
