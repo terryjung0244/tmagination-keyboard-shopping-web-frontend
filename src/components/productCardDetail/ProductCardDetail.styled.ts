@@ -1,29 +1,58 @@
 import styled from 'styled-components';
-import { colors, fontSize } from '../../GlobalStyles';
+import { colors, fontSize, getResponsiveMediaQuery } from '../../GlobalStyles';
 
 export const ProductCardDetail = styled.section`
   border: 2px solid #dedede;
   font-size: ${fontSize.md};
   color: ${colors.fontMainColor};
   display: flex;
+  width: 800px;
+
+  ${getResponsiveMediaQuery('lg')} {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c3c6b;
+    width: 500px;
+  }
+
+  ${getResponsiveMediaQuery('sm')} {
+    flex-direction: column;
+    width: 380px;
+  }
 
   .imageMainBox {
-    /* border: 1px solid red; */
+    /* border: 1px solid yellow; */
     background-color: #2c3c6b;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
     padding: 30px;
+    width: 50%;
+
+    ${getResponsiveMediaQuery('xs')} {
+      padding: 30px;
+    }
 
     .imageBox {
-      width: 350px;
+      /* border: 1px solid red; */
+      width: 340px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 5px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+
+      ${getResponsiveMediaQuery('lg')} {
+      }
+
+      ${getResponsiveMediaQuery('xs')} {
+        height: 150px;
+      }
     }
 
     .descBox {
+      /* border: 1px solid red; */
       color: whitesmoke;
     }
   }
@@ -33,6 +62,11 @@ export const ProductCardDetail = styled.section`
     background-color: #2c3c6b;
     padding: 30px;
     color: whitesmoke;
+    width: 50%;
+
+    ${getResponsiveMediaQuery('lg')} {
+      width: 100%;
+    }
 
     .categoryBox {
       font-size: ${fontSize.sm};
@@ -70,7 +104,7 @@ export const ProductCardDetail = styled.section`
       }
       .instockBox {
         font-size: ${fontSize.sm};
-        color: black;
+        color: #14e323;
         margin-bottom: 20px;
       }
     }
@@ -106,23 +140,24 @@ export const ProductCardDetail = styled.section`
     }
 
     .quantityAndCartBox {
-      height: 50px;
+      height: 40px;
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
 
       .cartBox {
-        border: 2px solid black;
+        font-size: ${fontSize.md};
+        border: 1px solid white;
+        color: white;
         width: 55%;
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 20px;
         font-weight: 600;
       }
 
       .quantityMainBox {
-        border: 2px solid black;
+        border: 2px solid whitesmoke;
         width: 40%;
         margin-bottom: 20px;
         height: 100%;
@@ -132,11 +167,14 @@ export const ProductCardDetail = styled.section`
           height: 100%;
 
           .quantityStockBox {
+            /* border: 1px solid red; */
+            background-color: white;
+            color: black;
             width: 35%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
+            font-size: ${fontSize.md};
           }
 
           .quantityControlBox {
@@ -147,7 +185,7 @@ export const ProductCardDetail = styled.section`
             background-color: white;
 
             .quantityImageBox {
-              width: 15px;
+              width: 12px;
             }
           }
         }
@@ -157,15 +195,15 @@ export const ProductCardDetail = styled.section`
     .checkoutBtnMainBox {
       .checkoutBtnBox {
         width: 100%;
-        height: 50px;
-        font-size: 20px;
+        height: 40px;
+        font-size: ${fontSize.md};
         font-weight: 600;
-        background-color: #ffd300;
+        background-color: #14e323;
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: inherit;
+        color: black;
       }
     }
   }

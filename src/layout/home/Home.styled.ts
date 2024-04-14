@@ -2,15 +2,23 @@ import styled from 'styled-components';
 import { colors, fontSize, getResponsiveMediaQuery } from './../../GlobalStyles';
 
 export const Home = styled.section`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   color: ${colors.fontMainColor};
-  width: 70%;
+  width: 65%;
+
+  ${getResponsiveMediaQuery('lg')} {
+    width: 80%;
+  }
+
+  ${getResponsiveMediaQuery('sm')} {
+    width: 100%;
+  }
 
   .carouselImages {
     /* border: 1px solid red; */
     width: 100%;
-    height: 450px;
-    object-fit: cover;
+    height: 270px;
+    object-fit: scale-down;
   }
 
   .keyboardIntroSection {
@@ -24,33 +32,29 @@ export const Home = styled.section`
     }
 
     .keyboardImage {
+      /* border: 1px solid red; */
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+
       ${getResponsiveMediaQuery('lg')} {
         width: 100%;
       }
-      width: 60%;
-      height: 300px;
-      object-fit: cover;
     }
 
     .keyboardDescContainer {
-      border: 1px solid red;
+      /* border: 1px solid red; */
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-      padding-left: 15px;
+      /* padding-left: 15px; */
 
       ${getResponsiveMediaQuery('lg')} {
         margin-top: 40px;
-        flex-direction: column;
         align-items: center;
-      }
-
-      ${getResponsiveMediaQuery('sm')} {
-        margin-top: 40px;
-        flex-direction: column;
-        align-items: flex-start;
+        padding-left: 0;
       }
 
       .keyboardName {
@@ -59,13 +63,18 @@ export const Home = styled.section`
       }
 
       & div {
-        ${getResponsiveMediaQuery('sm')} {
-          padding-left: 5px;
-        }
         /* border: 1px solid red; */
         padding-left: 30px;
         font-size: ${fontSize.sm};
         margin-bottom: 10px;
+
+        ${getResponsiveMediaQuery('lg')} {
+          padding-left: 0;
+        }
+
+        ${getResponsiveMediaQuery('sm')} {
+          padding-left: 5px;
+        }
       }
 
       .keyboardLearnMoreButton {
@@ -81,6 +90,13 @@ export const Home = styled.section`
         align-items: center;
         justify-content: center;
         background-color: #f9f8eb;
+
+        ${getResponsiveMediaQuery('lg')} {
+          margin-left: 0px;
+        }
+
+        ${getResponsiveMediaQuery('sm')} {
+        }
       }
     }
   }

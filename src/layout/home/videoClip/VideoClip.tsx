@@ -6,7 +6,7 @@ const VideoClip = () => {
     <Styles.VideoClip>
       <iframe
         width="100%"
-        height="420"
+        height="300"
         src="https://www.youtube.com/embed/yGS6jLlEJjs?si=Cak4trId6sAN6GS1"
         title="YouTube video player"
         // frameBorder="0"
