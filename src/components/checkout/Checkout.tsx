@@ -94,7 +94,7 @@ const Checkout = () => {
             </div>
           </div>
           <div className="secureText">
-            After cliking "Pay with Paypal", you will be redirected to PayPal to complete your
+            After clicking "Pay with Paypal", you will be redirected to PayPal to complete your
             purchase securely.
           </div>
         </div>

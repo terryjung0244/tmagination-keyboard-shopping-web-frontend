@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <Styles.Home>
       <VideoClip />
-      <Carousel>
+      <Carousel style={{}}>
         <Carousel.Item interval={2500}>
           <img src={hyper} className="carouselImages" onClick={handleNavigatePage} />
           <Carousel.Caption>

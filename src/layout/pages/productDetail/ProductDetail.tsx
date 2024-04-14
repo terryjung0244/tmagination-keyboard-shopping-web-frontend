@@ -116,7 +116,16 @@ const ProductDetail = () => {
   return (
     <div>
       <div onClick={handlePreviousPage}>
-        <img src={arrowImage} alt="arrowImage" style={{ width: '50px', marginBottom: '20px' }} />
+        <img
+          src={arrowImage}
+          alt="arrowImage"
+          style={{
+            width: '40px',
+            marginBottom: '20px',
+            filter:
+              'invert(100%) sepia(0%) saturate(1%) hue-rotate(298deg) brightness(109%) contrast(101%)',
+          }}
+        />
       </div>
 
       <ProductCardDetail

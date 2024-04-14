@@ -32,7 +32,7 @@ export const fontSize = {
 };
 
 export const responsiveSize = {
-  xs: '576px',
+  xs: '430px',
   sm: '576px',
   md: '768px',
   lg: '992px',

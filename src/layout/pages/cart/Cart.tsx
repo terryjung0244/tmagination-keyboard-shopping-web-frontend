@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Cart.styled';
 import { useAppDispatch, useAppSelector } from '../../../service/store';
@@ -40,7 +37,7 @@ const Cart = () => {
     //   //   return;
     //   // }
 
-    const totalPriceSum = cart.reduce((accumulator, currentObjectValue): any => {
+    const totalPriceSum = cart.reduce((accumulator, currentObjectValue): number => {
       console.log(currentObjectValue);
       return accumulator + handlePrice(currentObjectValue);
     }, 0);
@@ -104,13 +101,29 @@ const Cart = () => {
           <div className="leftSideCartSection">
             {cart.map((cartItem: IProduct, index: number) => {
               return (
-                <Row className="cartSection_imageAndDetails_container" key={index}>
-                  <Col xs={12} lg={5}>
+                <Row
+                  style={
+                    {
+                      // border: '2px solid red',
+                    }
+                  }
+                  className="cartSection_imageAndDetails_container"
+                  key={index}
+                >
+                  <Col
+                    style={{
+                      // border: '2px solid red',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                    md={6}
+                    sm={12}
+                  >
                     <img className="cartSection_image_container" src={cartItem.imageUrl} alt="" />
                   </Col>
-                  <Col xs={12} lg={1}></Col>
-                  <Col xs={12} lg={6}>
-                    <div className="mt-5 mt-lg-0">
+                  <Col md={6} sm={12} className="detailCartSection">
+                    <div>
                       <div className="cartSection_name_container">{cartItem.name}</div>
                       {cartItem.discountRate !== '0' ? (
                         <div className="cartSection_price_container">
@@ -131,7 +144,6 @@ const Cart = () => {
                           Switches: {cartItem.features.switch}
                         </div>
                       )}
-                      <div className="cartSection_quantity_container">Stock: {cartItem.stock}</div>
                       <div className="quantityContorlBoxAndRemoveButton">
                         <div className="quantityControlBox">
                           <div onClick={() => handleDecreaseQuantity(cartItem)}>

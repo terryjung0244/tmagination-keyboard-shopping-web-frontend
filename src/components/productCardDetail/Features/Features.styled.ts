@@ -1,30 +1,52 @@
 import styled from 'styled-components';
-import { fontSize } from '../../../GlobalStyles';
+import { fontSize, getResponsiveMediaQuery } from '../../../GlobalStyles';
 
 export const Features = styled.section`
   font-size: ${fontSize.sm};
   border-bottom: 2px solid #dedede;
   margin-bottom: 30px;
 
-  .keyboardFeatureText {
+  .featureText {
     font-size: ${fontSize.xs};
     font-weight: 600;
     margin-bottom: 10px;
   }
 
-  .keyboardselectFeaturesContainer {
+  .selectFeaturesContainer {
     display: flex;
+    margin-bottom: 30px;
 
-    .keyboardselectFeaturesItem {
-      border: 1px solid #d3d3d3;
-      background-color: aqua;
+    ${getResponsiveMediaQuery('xs')} {
+      flex-direction: column;
+    }
+
+    .selectFeaturesColorItem {
       width: 70px;
-      padding: 5px 0px;
+      padding: 6px 0px;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-right: 10px;
-      margin-bottom: 30px;
+
+      ${getResponsiveMediaQuery('xs')} {
+        margin-top: 10px;
+        width: 100px;
+      }
+    }
+
+    .selectFeaturesSwitchItem {
+      /* border: 1px solid red; */
+      width: 70px;
+      padding: 6px 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+
+      ${getResponsiveMediaQuery('xs')} {
+        margin-top: 10px;
+        width: 100px;
+      }
     }
   }
 `;

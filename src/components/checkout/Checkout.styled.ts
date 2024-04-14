@@ -1,10 +1,24 @@
 import styled from 'styled-components';
-import { getResponsiveMediaQuery } from '../../GlobalStyles';
+import { fontSize, getResponsiveMediaQuery } from '../../GlobalStyles';
 
 export const Checkout = styled.section`
   /* border: 1px solid red; */
-  font-size: 35px;
+  font-size: ${fontSize.md};
   font-weight: 600;
+  width: 60%;
+  color: whitesmoke;
+
+  ${getResponsiveMediaQuery('lg')} {
+    width: 80%;
+  }
+
+  ${getResponsiveMediaQuery('sm')} {
+    width: 100%;
+  }
+
+  ${getResponsiveMediaQuery('xs')} {
+    width: 100%;
+  }
 
   // Express Checkout Section
   .expressCheckoutSection {
@@ -16,9 +30,9 @@ export const Checkout = styled.section`
 
     .expressCheckoutText {
       /* border: 1px solid red; */
-      font-size: 25px;
+      font-size: ${fontSize.lg};
       margin-bottom: 40px;
-      color: gray;
+      color: whitesmoke;
     }
 
     .paypalAndCreditCard {
@@ -30,14 +44,14 @@ export const Checkout = styled.section`
 
       .paypal {
         /* border: 1px solid red; */
-        border-radius: 10px 10px 0px 0px;
+        border-radius: 5px 5px 0px 0px;
         width: 100%;
         display: flex;
         justify-content: center;
         background-color: #ffdf00;
 
         .paypalImage {
-          width: 80px;
+          width: 45px;
         }
       }
       .creditCard {
@@ -49,7 +63,7 @@ export const Checkout = styled.section`
         border-radius: 0px 0px 10px 10px;
 
         .creditCardImage {
-          width: 80px;
+          width: 45px;
         }
       }
     }
@@ -58,18 +72,17 @@ export const Checkout = styled.section`
   // Contact Section
   .contactAndEmailMobileInputSection {
     /* border: 1px solid red; */
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     .contactText {
       /* border: 1px solid red; */
       margin: 20px 0px;
     }
     .emailMobileInput {
-      border: 2px solid lightgray;
-      border-radius: 10px;
+      border-radius: 5px;
       width: 100%;
-      padding: 10px 10px 40px 10px;
+      padding: 5px 5px 20px 10px;
       font-size: 20px;
-      padding-left: 20px;
+      font-size: ${fontSize.sm};
     }
   }
 
@@ -80,10 +93,9 @@ export const Checkout = styled.section`
       margin: 20px 0px;
     }
     .countryRegionInput {
-      font-size: 20px;
-      border: 2px solid lightgray;
-      border-radius: 10px;
-      padding: 10px 10px 40px 10px;
+      font-size: ${fontSize.sm};
+      border-radius: 5px;
+      padding: 5px 5px 20px 10px;
       width: 100%;
       margin-bottom: 20px;
     }
@@ -103,36 +115,32 @@ export const Checkout = styled.section`
           width: 100%;
         }
         width: 48%;
-        font-size: 20px;
-        border: 2px solid lightgray;
-        border-radius: 10px;
-        padding: 10px 10px 40px 10px;
+        font-size: ${fontSize.sm};
+        border-radius: 5px;
+        padding: 5px 5px 20px 10px;
       }
       .lastNameInput {
         ${getResponsiveMediaQuery('sm')} {
           width: 100%;
         }
         width: 48%;
-        font-size: 20px;
-        border: 2px solid lightgray;
-        border-radius: 10px;
-        padding: 10px 10px 40px 10px;
+        font-size: ${fontSize.sm};
+        border-radius: 5px;
+        padding: 5px 5px 20px 10px;
       }
     }
     .addressInput {
       width: 100%;
-      font-size: 20px;
-      border: 2px solid lightgray;
-      border-radius: 10px;
-      padding: 10px 10px 40px 10px;
+      font-size: ${fontSize.sm};
+      border-radius: 5px;
+      padding: 5px 5px 20px 10px;
       margin-bottom: 20px;
     }
     .optionalApartmentInput {
       width: 100%;
-      font-size: 20px;
-      border: 2px solid lightgray;
-      border-radius: 10px;
-      padding: 10px 10px 40px 10px;
+      font-size: ${fontSize.sm};
+      border-radius: 5px;
+      padding: 5px 5px 20px 10px;
       margin-bottom: 20px;
     }
 
@@ -143,64 +151,61 @@ export const Checkout = styled.section`
       /* border: 1px solid red; */
       display: flex;
       justify-content: space-between;
-      margin-bottom: 20px;
 
       .cityInput {
         ${getResponsiveMediaQuery('sm')} {
           width: 100%;
         }
-        font-size: 20px;
-        border: 2px solid lightgray;
-        border-radius: 10px;
-        padding: 10px 10px 40px 10px;
+        font-size: ${fontSize.sm};
+        border-radius: 5px;
+        padding: 5px 5px 20px 10px;
         margin-bottom: 20px;
-        width: 30%;
+        width: 31%;
       }
       .provinceInput {
         ${getResponsiveMediaQuery('sm')} {
           width: 100%;
         }
-        font-size: 20px;
-        border: 2px solid lightgray;
-        border-radius: 10px;
-        padding: 10px 10px 40px 10px;
-        width: 30%;
+        font-size: ${fontSize.sm};
+        border-radius: 5px;
+        padding: 5px 5px 20px 10px;
+        margin-bottom: 20px;
+        width: 31%;
         margin-bottom: 20px;
       }
       .postalCodeInput {
         ${getResponsiveMediaQuery('sm')} {
           width: 100%;
         }
-        font-size: 20px;
-        border: 2px solid lightgray;
-        border-radius: 10px;
-        padding: 10px 10px 40px 10px;
+        font-size: ${fontSize.sm};
+        border-radius: 5px;
+        padding: 5px 5px 20px 10px;
         margin-bottom: 20px;
-        width: 30%;
+        width: 31%;
       }
     }
     .phoneInput {
-      font-size: 20px;
-      border: 2px solid lightgray;
-      border-radius: 10px;
-      padding: 10px 10px 40px 10px;
-      margin-bottom: 60px;
+      font-size: ${fontSize.sm};
+      border-radius: 5px;
+      padding: 5px 5px 20px 10px;
+      margin-bottom: 40px;
       width: 100%;
     }
 
     .shippingAndExpressDeliverySection {
       /* border: 1px solid red; */
-      margin-bottom: 60px;
+      margin-bottom: 40px;
       .shippingMethodText {
         margin-bottom: 20px;
       }
       .expressDeliveryAndPrice {
+        color: black;
         background-color: #ebf3ff;
         border: 2px solid #0476bf;
-        font-size: 25px;
+        font-size: ${fontSize.md};
         font-weight: 500;
-        padding: 30px;
-        border-radius: 10px;
+        padding: 10px;
+        border-radius: 5px;
         display: flex;
         justify-content: space-between;
         .expressDeliveryText {
@@ -211,38 +216,41 @@ export const Checkout = styled.section`
     }
   }
   .paymentSection {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     .paymentText {
       margin-bottom: 20px;
     }
     .paypalTextAndLogo {
       border: 2px solid #0476bf;
-      font-size: 25px;
+      font-size: ${fontSize.md};
       font-weight: 500;
-      border-radius: 10px 10px 0px 0px;
+      border-radius: 5px 5px 0px 0px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0px 30px 0px 30px;
+      padding: 0px 15px 0px 15px;
       background-color: #ebf3ff;
       .paypalText {
+        color: black;
       }
       .paypalLogoText {
         .paypalImage {
           /* border: 1px solid red; */
-          width: 100px;
+          width: 45px;
         }
       }
     }
     .secureText {
+      color: black;
       ${getResponsiveMediaQuery('sm')} {
-        font-size: 20px;
+        font-size: ${fontSize.sm};
       }
-      font-size: 25px;
+      font-size: ${fontSize.sm};
       font-weight: 500;
-      border: 2px 2px 0px 2px solid #0476bf;
-      border-radius: 0px 0px 10px 10px;
-      padding: 50px;
+      border: 2px solid #0476bf;
+      border-top: 0px;
+      border-radius: 0px 0px 5px 5px;
+      padding: 12px;
       text-align: center;
       background-color: #f5f5f5;
     }
@@ -257,7 +265,6 @@ export const Checkout = styled.section`
     .subTotalAndPrice {
       display: flex;
       justify-content: space-between;
-      font-size: 25px;
       font-weight: 500;
       margin-bottom: 20px;
     }
@@ -265,7 +272,6 @@ export const Checkout = styled.section`
     .shippingAndCost {
       display: flex;
       justify-content: space-between;
-      font-size: 25px;
       font-weight: 500;
       margin-bottom: 20px;
     }
@@ -274,15 +280,15 @@ export const Checkout = styled.section`
       margin-bottom: 60px;
       display: flex;
       justify-content: space-between;
+      font-size: ${fontSize.lg};
     }
 
     .clickToPay {
-      border-radius: 10px;
+      border-radius: 5px;
       text-align: center;
       color: #ebf3ff;
-      border: 2px solid #0476bf;
-      padding: 20px;
-      background-color: #0476bf;
+      padding: 10px;
+      background-color: #18c424;
     }
   }
 `;
