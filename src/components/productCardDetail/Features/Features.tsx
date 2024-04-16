@@ -47,7 +47,7 @@ const Features = ({ productFeatures, selectedFeatures, clickFeature }: FeaturesP
               <div
                 className="selectFeaturesSwitchItem"
                 style={{
-                  color: selectedFeatures.color === keyboardSwitch ? 'white' : 'black',
+                  color: selectedFeatures.switch === keyboardSwitch ? 'white' : 'black',
                   backgroundColor:
                     selectedFeatures.switch === keyboardSwitch ? '#bfbfbf' : 'whitesmoke',
                 }}

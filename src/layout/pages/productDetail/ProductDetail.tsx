@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 import { IProduct } from '../../../type/product.interface';
 import ProductCardDetail from '../../../components/productCardDetail/ProductCardDetail';
 import arrowImage from '../../../assets/previous.png';
@@ -26,6 +27,21 @@ const ProductDetail = () => {
     color: '',
     switch: '',
   });
+  const [alertState, setAlertState] = useState<{
+    message: string;
+    toggle: boolean;
+  }>({
+    message: '',
+    toggle: false,
+  });
+
+  useEffect(() => {
+    if (alertState.toggle) {
+      setTimeout(() => {
+        setAlertState({ ...alertState, message: '', toggle: false });
+      }, 1500);
+    }
+  }, [alertState]);
 
   const handleDisocuntPrice = () => {
     return (
@@ -66,14 +82,16 @@ const ProductDetail = () => {
     switch (product.category) {
       case 'KEYBOARD':
         if (!selectedFeatures.color || !selectedFeatures.switch) {
-          alert('Please select color and switch');
+          // alert('Please select color and switch');
+          setAlertState({ ...alertState, message: 'Please select color and switch', toggle: true });
           return;
         }
         break;
 
       case 'SWITCH':
         if (!selectedFeatures.color) {
-          alert('Please select color');
+          // alert('Please select color');
+          setAlertState({ ...alertState, message: 'Please select color', toggle: true });
           return;
         }
         break;
@@ -114,7 +132,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <div onClick={handlePreviousPage}>
         <img
           src={arrowImage}
@@ -138,6 +156,12 @@ const ProductDetail = () => {
         handleDisocuntPrice={handleDisocuntPrice}
         handleAddToCart={handleAddToCart}
       />
+
+      {alertState.toggle && (
+        <div style={{ position: 'absolute', bottom: '-80px', left: 0, right: 0 }}>
+          <Alert variant={'light'}>{alertState.message}</Alert>
+        </div>
+      )}
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Cart = () => {
             right: '-8px',
             width: '17px',
             height: '17px',
-            fontSize: '15px',
+            fontSize: '12px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
