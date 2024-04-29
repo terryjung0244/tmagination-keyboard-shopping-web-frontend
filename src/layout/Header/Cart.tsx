@@ -7,7 +7,7 @@ import { Cart as CartICon } from 'react-bootstrap-icons';
 const Cart = () => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cartSlice);
-  console.log(cart);
+
   useEffect(() => {
     const cartLocalStorage = localStorage.getItem('cart');
     if (cartLocalStorage) {

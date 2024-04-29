@@ -44,18 +44,13 @@ const UpdateKeycap = ({
   // };
 
   const handleImageUrl = (file: File) => {
-    const fileName = file.name.split('.')[0]; // purple.webp에서 .webp을 뺀부분
+    const fileName = file.name.split('.')[0];
     const imagePath = `tmKeyboards/keycap/${fileName}_${getUuid()}`;
     setImageInfo({ ...imageInfo, imageFile: file, imagePath: imagePath });
-    // imagePath & file
   };
 
   const handleUpdateKeycap = async () => {
-    // 수정할 이미지가 있을때.
     if (imageInfo.imageFile && updateKeycapInput.keycapImagePath) {
-      console.log('수정할 이미지가 있다');
-
-      // 기존에 있던 이미지를 지우고, 새로운 사진을 firebase, mongodb and backend
       // FireBase
       const storage = getStorage();
       const deleteRef = ref(storage, updateKeycapInput.keycapImagePath);
@@ -72,8 +67,6 @@ const UpdateKeycap = ({
 
         if (uploadResponse) {
           uploadedImageUrl = await getDownloadURL(uploadResponse.ref);
-          console.log(uploadedImageUrl);
-          console.log('이미지 추가 완료');
         }
       } catch (err) {
         console.log(err);
@@ -99,7 +92,6 @@ const UpdateKeycap = ({
       return;
     }
 
-    console.log('이미지 수정 안됨');
     const response = await fetch('http://localhost:8070/api/keycap/updateKeycap', {
       method: 'PUT',
       headers: {

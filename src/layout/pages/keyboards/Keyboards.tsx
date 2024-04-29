@@ -20,7 +20,6 @@ const Keyboards = () => {
         },
       });
       const result = await response.json();
-      console.log(result);
       setKeyboards(result.result);
     };
     getAllKeyboards();

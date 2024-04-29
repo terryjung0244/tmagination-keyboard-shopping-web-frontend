@@ -28,10 +28,6 @@ const ShowKeyboard = ({
   deletedKeyboardFromKeyboard,
   handleShowKeyboard,
 }: IKeyboardProps) => {
-  console.log(keyboardInfo);
-  // const [showSearchedKeyboard, setShowSearchedKeyboard] = useState<IProduct[]>([]);
-  // const [searchedInput, setSearchedInput] = useState<string>('');
-
   const [showModal, setShowModal] = useState<IModalStateType>({
     deleteBtn: 'deleteBtn',
     updateBtn: 'updateBtn',

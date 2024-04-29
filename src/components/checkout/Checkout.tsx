@@ -10,9 +10,6 @@ import { IProduct } from '../../type/product.interface';
 
 const Checkout = () => {
   const { cart } = useAppSelector((state) => state.cartSlice);
-  // const { state } = useLocation();
-
-  console.log(cart);
 
   useEffect(() => {
     handleSubTotalCost();
@@ -31,7 +28,6 @@ const Checkout = () => {
   };
 
   const handleSubTotalCost = () => {
-    console.log('1');
     const totalPriceSum = cart.reduce((accumulator, currentObjectValue): any => {
       return accumulator + handlePrice(currentObjectValue); // discount rate 적용해야함.
     }, 0);

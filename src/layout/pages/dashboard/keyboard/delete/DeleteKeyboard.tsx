@@ -25,7 +25,7 @@ const DeleteKeyboard = ({
     } catch (err) {
       console.log(err);
     }
-    // mongoDB 지우기
+
     try {
       await fetch(`http://localhost:8070/api/keyboard/deleteKeyboard?keyboardId=${keyboardId}`, {
         method: 'DELETE',

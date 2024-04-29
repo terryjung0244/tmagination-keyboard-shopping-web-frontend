@@ -35,22 +35,6 @@ const ProductCardDetail = ({
   handleAddToCart,
 }: IProductCardDetailProps) => {
   const dispatch = useAppDispatch();
-  // useEffect(() => {
-  //   handleShowFeatures();
-  // }, []);
-
-  // const handleShowFeatures = async () => {
-  //   const response = await fetch(
-  //     `http://localhost:8070/api/keyboard/getKeyboardById?keyboardId=${productDetail.id}`,
-  //     {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     },
-  //   );
-  //   const result = await response.json();
-  //   console.log(result);
-  // };
 
   const clickFeature = (feature: string, type: string) => {
     handleSelectedFeatures(feature, type);

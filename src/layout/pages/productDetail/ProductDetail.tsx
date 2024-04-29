@@ -20,8 +20,6 @@ const ProductDetail = () => {
   const { state }: { state: IStateProps } = useLocation();
   const { product } = state;
 
-  console.log(state);
-
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedFeatures, setSelectedFeatures] = useState<{ color: string; switch?: string }>({
     color: '',
@@ -58,23 +56,15 @@ const ProductDetail = () => {
     if (quantity < parseInt(state.product.stock)) {
       setQuantity(quantity + 1);
     }
-    console.log('Inc');
   };
 
   const handleDecreaseQuantity = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
-    console.log('Dec');
   };
 
   const handleSelectedFeatures = (feature: string, type: string) => {
-    console.log(feature, type);
-    // if (type === 'color') {
-    //   setSelectedFeatures({ ...selectedFeatures, color: feature });
-    // } else {
-    //   setSelectedFeatures({ ...selectedFeatures, switch: feature });
-    // }
     setSelectedFeatures({ ...selectedFeatures, [type]: feature });
   };
 

@@ -18,8 +18,6 @@ const Cart = () => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cartSlice);
 
-  console.log(cart);
-
   useEffect(() => {
     handleSubtotalPrice();
   }, [cart]);
@@ -27,25 +25,12 @@ const Cart = () => {
   const [subtotalPrice, setSubtotalPrice] = useState<number>(0);
 
   const handleSubtotalPrice = () => {
-    console.log(cart);
-
-    // const result = cart.map((carItem: IProduct) => {
-    //   // if (carItem.discountRate !== '0') {
-    //   //   Object.entries(carItem).map((item) => console.log(item));
-    //   //   console.log(carItem);
-    //   //        // setSubtotalPrice(handleDisocuntPrice(carItem)); //
-    //   //   return;
-    //   // }
-
     const totalPriceSum = cart.reduce((accumulator, currentObjectValue): number => {
-      console.log(currentObjectValue);
       return accumulator + handlePrice(currentObjectValue);
     }, 0);
-    // });
+
     setSubtotalPrice(totalPriceSum);
   };
-
-  console.log(subtotalPrice);
 
   const handlePrice = (cartItem: IProduct) => {
     // quantity saleprice
@@ -89,7 +74,7 @@ const Cart = () => {
     if (parseInt(cartItem.quantity as string) >= parseInt(cartItem.stock)) {
       return;
     }
-    console.log(cartItem);
+
     dispatch(cartQuantityIncrease(cartItem));
   };
 
@@ -183,21 +168,9 @@ const Cart = () => {
             Checkout
           </Link>
         </div>
-
-        {/* <Practice /> */}
       </div>
     </Styles.Cart>
   );
 };
 
 export default Cart;
-
-// const names = {
-//   color: ['black'],
-//   switch: ['yellow', 'red'],
-// };
-
-// Object.entries(names).map((name) => {
-//   console.log(name[0]);
-//   console.log(name[1]);
-// });

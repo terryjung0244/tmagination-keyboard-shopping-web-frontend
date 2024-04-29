@@ -19,14 +19,9 @@ export const cartSlice = createSlice({
       state.cart = action.payload;
     },
     addCart: (state, action) => {
-      console.log(action.payload);
       state.cart.push(action.payload);
     },
     cartQuantityIncrease: (state, action) => {
-      // console.log(action.payload);
-      // const index = state.cart.findIndex((cart) => cart.id === action.payload.id);
-      // (state.cart[index].quantity as string) += 1;
-      // console.log(index);
       const newCart = state.cart.map((item: IProduct) => {
         if (action.payload.cartId === item.cartId) {
           return {

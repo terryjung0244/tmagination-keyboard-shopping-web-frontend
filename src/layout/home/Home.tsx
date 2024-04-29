@@ -8,9 +8,7 @@ import { introKeyboardInfo } from '.';
 import VideoClip from './videoClip/VideoClip';
 
 const Home = () => {
-  const handleNavigatePage = () => {
-    console.log('1');
-  };
+  const handleNavigatePage = () => {};
 
   return (
     <Styles.Home>
@@ -39,7 +37,6 @@ const Home = () => {
         </Carousel.Item>
       </Carousel>
       {introKeyboardInfo.map((KeyboardItem, index) => {
-        console.log(KeyboardItem);
         return (
           <div className="keyboardIntroSection" key={index}>
             <img className="keyboardImage" src={KeyboardItem.image} />

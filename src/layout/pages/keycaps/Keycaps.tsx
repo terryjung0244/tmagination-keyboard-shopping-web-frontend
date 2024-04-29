@@ -32,7 +32,6 @@ const Keycaps = () => {
     setKeycaps(handleProductSort(sortType, tempKeycaps));
   };
 
-  console.log(keycaps);
   return (
     <Styles.Keycap>
       <div className="keycapsText">Keycaps</div>
