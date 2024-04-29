@@ -45,7 +45,6 @@ const CreateSwitch = () => {
       if (uploadResponse) {
         // 3. get image url
         uploadedImageUrl = await getDownloadURL(uploadResponse.ref);
-        console.log('Successfully uploaded image');
       }
     } catch (err) {
       JSON.stringify(err);
@@ -57,7 +56,7 @@ const CreateSwitch = () => {
     }
 
     // 4. backend로 보내기 (input + imageurl)
-    console.log(createSwitchInput);
+
     const response = await fetch('http://localhost:8070/api/switch/createSwitch', {
       method: 'POST',
       headers: {

@@ -10,8 +10,6 @@ const Practice = () => {
     setSelectedName(name);
   };
 
-  console.log(selectedName);
-
   return (
     <Styled.Practice>
       {nameList.map((name) => {

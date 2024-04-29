@@ -32,7 +32,6 @@ const CreateKeyboard = () => {
       switch: [],
     },
   });
-  console.log(createKeyboardInput);
 
   const handleCreateKeyboard = async () => {
     let uploadedImageUrl;
@@ -43,7 +42,6 @@ const CreateKeyboard = () => {
       if (uploadResponse) {
         // 2. get image url
         uploadedImageUrl = await getDownloadURL(uploadResponse.ref);
-        console.log('Successfully uploaded image');
       }
     } catch (err) {
       JSON.stringify(err);
@@ -100,7 +98,6 @@ const CreateKeyboard = () => {
 
   const handleKeyboardSelectFeature = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
-    console.log(name, value);
 
     if (value) {
       if (name === 'color') {

@@ -4,6 +4,7 @@ export const Dashboard = styled.section`
   /* border: 1px solid red; */
   min-height: 500px;
   margin-bottom: 50px;
+  color: whitesmoke;
 
   .dashboardText {
     font-size: 50px;

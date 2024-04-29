@@ -286,7 +286,7 @@ export const Checkout = styled.section`
     .clickToPay {
       border-radius: 5px;
       text-align: center;
-      color: #ebf3ff;
+      color: black;
       padding: 10px;
       background-color: #18c424;
     }

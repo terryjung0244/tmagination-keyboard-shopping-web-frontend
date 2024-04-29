@@ -7,7 +7,7 @@ import { Cart as CartICon } from 'react-bootstrap-icons';
 const Cart = () => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cartSlice);
-  console.log(cart);
+
   useEffect(() => {
     const cartLocalStorage = localStorage.getItem('cart');
     if (cartLocalStorage) {
@@ -27,7 +27,7 @@ const Cart = () => {
             right: '-8px',
             width: '17px',
             height: '17px',
-            fontSize: '15px',
+            fontSize: '12px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

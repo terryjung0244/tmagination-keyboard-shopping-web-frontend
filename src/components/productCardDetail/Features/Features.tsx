@@ -14,7 +14,6 @@ interface FeaturesProps {
 }
 
 const Features = ({ productFeatures, selectedFeatures, clickFeature }: FeaturesProps) => {
-  console.log(selectedFeatures);
   return (
     <Styles.Features>
       <div className="featureText">Color</div>
@@ -41,13 +40,12 @@ const Features = ({ productFeatures, selectedFeatures, clickFeature }: FeaturesP
       <div className="featureText">Switch</div>
       <div className="selectFeaturesContainer">
         {productFeatures.switch?.map((keyboardSwitch: string, index) => {
-          console.log(keyboardSwitch);
           return (
             <div key={index} onClick={() => clickFeature(keyboardSwitch, 'switch')}>
               <div
                 className="selectFeaturesSwitchItem"
                 style={{
-                  color: selectedFeatures.color === keyboardSwitch ? 'white' : 'black',
+                  color: selectedFeatures.switch === keyboardSwitch ? 'white' : 'black',
                   backgroundColor:
                     selectedFeatures.switch === keyboardSwitch ? '#bfbfbf' : 'whitesmoke',
                 }}

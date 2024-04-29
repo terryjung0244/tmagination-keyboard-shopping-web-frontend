@@ -22,7 +22,7 @@ const AllProducts = () => {
         },
       });
       const result = await response.json();
-      console.log(result);
+
       setShowAllProducts(result.result);
     };
     getAllProductsFunc();

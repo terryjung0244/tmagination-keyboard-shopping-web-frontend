@@ -10,7 +10,6 @@ const SearchKeyboard = ({ handleSearchKeyboardInfo }: ISearchKeyboardProps) => {
   const [searchKeyboardInput, setSearchKeyboardInput] = useState<string>('');
 
   const handleSearchKeyboard = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.name, e.target.value);
     setSearchKeyboardInput(e.target.value);
   };
 

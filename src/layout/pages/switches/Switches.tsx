@@ -20,7 +20,6 @@ const Switches = () => {
         },
       });
       const result = await response.json();
-      console.log(switches);
       setSwitches(result.result);
     };
     getAllSwitches();

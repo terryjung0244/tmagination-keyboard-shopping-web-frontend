@@ -46,7 +46,6 @@ const SwitchIndex = () => {
   };
 
   const closeUpdateModal = () => {
-    console.log('1');
     setShow({ ...show, updateToggle: false });
   };
 
