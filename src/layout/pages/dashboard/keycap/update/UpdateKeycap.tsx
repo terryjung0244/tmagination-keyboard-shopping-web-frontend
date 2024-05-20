@@ -86,7 +86,6 @@ const UpdateKeycap = ({
       });
 
       const result = await response.json();
-      console.log(result);
       closeUpdateModal();
       handleSearchKeycap();
       return;
@@ -99,8 +98,8 @@ const UpdateKeycap = ({
       },
       body: JSON.stringify(updateKeycapInput),
     });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const result = await response.json();
-    console.log(result);
     closeUpdateModal();
     handleSearchKeycap();
   };

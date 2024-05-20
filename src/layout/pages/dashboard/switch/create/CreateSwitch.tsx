@@ -68,8 +68,8 @@ const CreateSwitch = () => {
         uploadedImagePath: imageInfo.imagePath,
       }),
     });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const result = await response.json();
-    console.log(result);
     alert('Switch is added successfully!');
   };
 

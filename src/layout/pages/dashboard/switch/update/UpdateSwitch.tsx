@@ -77,8 +77,8 @@ const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateS
         }),
       });
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const result = await response.json();
-      console.log(result);
       closeModal();
       handleShowSwitch();
       return;
@@ -91,8 +91,8 @@ const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateS
       },
       body: JSON.stringify(updateSwitchInput),
     });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const result = await response.json();
-    console.log(result);
     closeModal();
     handleShowSwitch();
   };

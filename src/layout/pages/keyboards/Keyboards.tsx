@@ -4,22 +4,18 @@ import { Link } from 'react-router-dom';
 import * as Styles from './Keyboards.styled';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { IProduct } from '../../../type/product.interface';
+import { IProduct, IProductResponse } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
 import { handleProductSort } from '../../../util/sortProduct';
 import SortBox from '../../../components/sortBox/SortBox';
+import { getAllKeyboardsAPI } from '../../../service/api/keyboards';
 
 const Keyboards = () => {
   const [keyboards, setKeyboards] = useState<IProduct[]>([]);
 
   useEffect(() => {
     const getAllKeyboards = async () => {
-      const response = await fetch('http://localhost:8070/api/keyboard/getAllKeyboards', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const result = await response.json();
+      const result: IProductResponse = await getAllKeyboardsAPI();
       setKeyboards(result.result);
     };
     getAllKeyboards();

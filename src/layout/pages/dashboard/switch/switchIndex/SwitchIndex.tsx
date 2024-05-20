@@ -30,7 +30,6 @@ const SwitchIndex = () => {
     );
 
     const result = await response.json();
-    console.log(result);
 
     setShowSearchedSwitch(result.filteredSwitches);
     setSearchedInput(searchInput);

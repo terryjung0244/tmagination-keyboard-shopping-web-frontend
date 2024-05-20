@@ -10,6 +10,7 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../../../../../firebase';
 import { useNavigate } from 'react-router-dom';
 import { keyboardColors, keyboardSwitches } from '.';
+import { createKeyboardAPI } from '../../../../../service/api/keyboards';
 
 const CreateKeyboard = () => {
   const navigate = useNavigate();
@@ -63,19 +64,10 @@ const CreateKeyboard = () => {
 
     // 4. backend로 보내기 (input + imageurl)
 
-    const response = await fetch('http://localhost:8070/api/keyboard/createKeyboard', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        ...createKeyboardInput,
-        uploadedImageUrl,
-        uploadedImagePath: imageInfo.imagePath,
-      }),
-    });
-    const result = await response.json();
-    alert('Keyboard is added successfully!');
+    const result = await createKeyboardAPI(createKeyboardInput, uploadedImageUrl, imageInfo);
+    if (result) {
+      alert('Keyboard is added successfully!');
+    }
   };
 
   const handleCloseCreateKeyboard = () => {
