@@ -21,7 +21,6 @@ const KeyboardIndex = () => {
       },
     );
     const result = await response.json();
-    console.log(result);
     setSearchedKeyboardResult(result.searchKeyboard);
   };
 
