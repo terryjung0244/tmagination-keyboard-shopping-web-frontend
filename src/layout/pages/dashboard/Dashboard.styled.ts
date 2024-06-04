@@ -1,15 +1,15 @@
 import styled from 'styled-components';
+import { colors, fontSize } from '../../../GlobalStyles';
 
 export const Dashboard = styled.section`
-  /* border: 1px solid red; */
+  min-width: 1000px;
   min-height: 500px;
   margin-bottom: 50px;
-  color: whitesmoke;
+  color: ${colors.fontMainColor};
 
   .dashboardText {
-    font-size: 50px;
+    font-size: ${fontSize.xl};
     font-weight: 600;
-    padding-left: 15px;
     padding-bottom: 15px;
     margin-bottom: 30px;
     border-bottom: 2px solid #dedede;
@@ -28,7 +28,8 @@ export const Dashboard = styled.section`
     color: #2eff2e;
     border: 1px solid black;
     padding: 15px 30px;
-    margin-left: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 8px;
     background-color: #084298;
   }

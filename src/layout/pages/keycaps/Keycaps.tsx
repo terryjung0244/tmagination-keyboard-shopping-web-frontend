@@ -1,24 +1,22 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import * as Styles from './Keycap.styled';
 import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { IProduct, IProductResponse } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
 import SortBox from '../../../components/sortBox/SortBox';
 import { handleProductSort } from '../../../util/sortProduct';
-import { getAllKeycapsApi } from '../../../service/api/keycaps';
+import { getAllKeycapsAPI } from '../../../service/api/keycaps';
 
 const Keycaps = () => {
   const [keycaps, setKeycaps] = useState<IProduct[]>([]);
 
   useEffect(() => {
     const getAllKeycaps = async () => {
-      const keycaps: IProductResponse = await getAllKeycapsApi();
+      const result: IProductResponse = await getAllKeycapsAPI();
       console.log(keycaps);
-      setKeycaps(keycaps.result);
+      setKeycaps(result.result);
     };
     getAllKeycaps();
   }, []);
@@ -49,24 +47,3 @@ const Keycaps = () => {
 };
 
 export default Keycaps;
-
-// props {}
-
-// const student = {
-//   id: 1,
-//   name: 'hong',
-// };
-
-// const newStudent = student;
-// newStudent.name = 'terry';
-
-// newStudent.name => 'terry';
-// student.name => 'terry';
-
-//////////////////////////////////////////////////////////
-
-// const newStudent = { ...student };
-// newStudent.name = 'terry';
-
-// newStudent.name => 'terry';
-// student.name => 'hong';

@@ -2,6 +2,7 @@ import React from 'react';
 import * as Styles from './DeleteKeycap.styled';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
 import { IProduct } from '../../../../../type/product.interface';
+import { deleteKeycapAPI } from '../../../../../service/api/keycaps';
 
 interface IDeleteKeycapProps {
   closeDeleteModal: () => void;
@@ -21,15 +22,7 @@ const DeleteKeycap = ({ closeDeleteModal, keycap, handleDeleteKeycap }: IDeleteK
     }
     // MongoDB
     try {
-      await fetch(
-        `http://localhost:8070/api/keycap/deleteKeycap?keycapId=${keycap.id}&keycapName=${keycap.name}`,
-        {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      );
+      await deleteKeycapAPI(keycap);
     } catch (err) {
       console.log(err);
     }

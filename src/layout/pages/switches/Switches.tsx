@@ -15,8 +15,8 @@ const Switches = () => {
 
   useEffect(() => {
     const getAllSwitches = async () => {
-      const switches: IProductResponse = await getAllSwitchesAPI();
-      setSwitches(switches.result);
+      const result: IProductResponse = await getAllSwitchesAPI();
+      setSwitches(result.result);
     };
     getAllSwitches();
   }, []);
