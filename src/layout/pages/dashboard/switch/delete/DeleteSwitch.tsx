@@ -2,6 +2,7 @@ import React from 'react';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
 import * as Styles from './DeleteSwitch.styled';
 import { IProduct } from '../../../../../type/product.interface';
+import { deleteSwitchesAPI } from '../../../../../service/api/switches';
 
 export interface IDeleteSwitchProps {
   // switchId: string;
@@ -35,18 +36,9 @@ const DeleteSwitch = ({
     }
 
     // 2. MongoDB
-    const response = await fetch(
-      `http://localhost:8070/api/switch/deleteSwitch?selectedSwitchId=${selectedSwitch.id}&selectedSwitchName=${selectedSwitch.name}`,
-      {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const result = await response.json();
+    await deleteSwitchesAPI(selectedSwitch);
     handleShowSwitch();
+    closeModal();
   };
 
   const handleCancelModal = () => {

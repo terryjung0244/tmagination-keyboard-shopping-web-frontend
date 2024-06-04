@@ -2,6 +2,7 @@
 import React from 'react';
 import * as Styles from './DeleteKeyboard.styled';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
+import { deleteKeyboardAPI } from '../../../../../service/api/keyboards';
 
 interface IDeleteKeyboardProps {
   keyboardId: string;
@@ -27,12 +28,7 @@ const DeleteKeyboard = ({
     }
 
     try {
-      await fetch(`http://localhost:8070/api/keyboard/deleteKeyboard?keyboardId=${keyboardId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      await deleteKeyboardAPI(keyboardId); // Delete
     } catch (err) {
       console.log(err);
     }

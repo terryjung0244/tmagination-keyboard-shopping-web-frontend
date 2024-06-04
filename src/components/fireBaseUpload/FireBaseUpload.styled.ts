@@ -17,6 +17,7 @@ export const FireBaseUpload = styled.section`
   }
 
   .uploadImageLabel {
+    color: black;
     padding: 5px 15px;
     border-radius: 4px;
     background-color: #f1efe5;

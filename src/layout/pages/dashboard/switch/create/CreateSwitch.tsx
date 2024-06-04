@@ -6,6 +6,7 @@ import { IImageInfoStateType, ISwitchInputStateType } from './CreateSwitch.inter
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../../../../../firebase';
 import { useNavigate } from 'react-router-dom';
+import { createSwitchesAPI } from '../../../../../service/api/switches';
 
 const CreateSwitch = () => {
   const navigate = useNavigate();
@@ -57,20 +58,11 @@ const CreateSwitch = () => {
 
     // 4. backend로 보내기 (input + imageurl)
 
-    const response = await fetch('http://localhost:8070/api/switch/createSwitch', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...createSwitchInput,
-        uploadedImageUrl,
-        uploadedImagePath: imageInfo.imagePath,
-      }),
-    });
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const result = await response.json();
-    alert('Switch is added successfully!');
+    const result = await createSwitchesAPI(createSwitchInput, uploadedImageUrl, imageInfo);
+
+    if (result) {
+      alert('Switch is added successfully!');
+    }
   };
 
   const handleCloseCreateSwitch = () => {

@@ -32,3 +32,12 @@ export const createKeyboardAPI = async (
   const result = await response.json();
   return result;
 };
+
+export const deleteKeyboardAPI = async (keyboardId: string) => {
+  await fetch(`http://localhost:8070/api/keyboard/deleteKeyboard?keyboardId=${keyboardId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};

@@ -7,6 +7,8 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpload';
 import { getUuid } from '../../../../../util/uuid';
 import { useNavigate } from 'react-router-dom';
+import { IProductResponse } from '../../../../../type/product.interface';
+import { createKeycapsAPI } from '../../../../../service/api/keycaps';
 
 const CreateKeycap = () => {
   const navigate = useNavigate();
@@ -77,18 +79,13 @@ const CreateKeycap = () => {
       return;
     }
     // Send (input data + image) to backend
-    const response = await fetch('http://localhost:8070/api/keycap/createKeycap', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...createNewKeycapInput,
-        uploadedImageUrl, // 한개로 uploadedImageUrl로 사용가능
-        uploadedImagePath: imageInfo.imagePath,
-      }),
-    });
-    const result = await response.json();
+
+    const result: IProductResponse = await createKeycapsAPI(
+      createNewKeycapInput,
+      uploadedImageUrl,
+      imageInfo,
+    );
+
     if (result) {
       alert('Successfully created keycap');
     }

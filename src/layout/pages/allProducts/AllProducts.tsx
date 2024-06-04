@@ -4,26 +4,20 @@ import * as Styles from './AllProducts.styled';
 // import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { IProduct } from '../../../type/product.interface';
+import { IProduct, IProductResponse } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
 import SortBox from '../../../components/sortBox/SortBox';
 import { Link } from 'react-router-dom';
 import { handleProductSort } from '../../../util/sortProduct';
+import { getAllProductsApi } from '../../../service/api/allProducts';
 
 const AllProducts = () => {
   const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
     const getAllProductsFunc = async () => {
-      const response = await fetch('http://localhost:8070/api/allProducts/getAllProducts', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const result = await response.json();
-
-      setShowAllProducts(result.result);
+      const allProducts: IProductResponse = await getAllProductsApi();
+      setShowAllProducts(allProducts.result);
     };
     getAllProductsFunc();
   }, []);

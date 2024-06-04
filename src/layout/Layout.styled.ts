@@ -2,10 +2,7 @@ import styled from 'styled-components';
 import { globalMaxWidth, globalPadding } from '../GlobalStyles';
 
 export const Layout = styled.section`
-  /* border: 1px solid red; */
-
   .layout-section-max-width {
-    /* border: 1px solid red; */
     max-width: ${globalMaxWidth};
     padding: 0 ${globalPadding.web}; //50px;
     background-color: #11182a;
