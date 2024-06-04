@@ -67,8 +67,6 @@ const CreateKeycap = () => {
       const uploadResponse = await uploadBytes(imageRef, imageInfo.imageFile as File);
       if (uploadResponse) {
         uploadedImageUrl = await getDownloadURL(uploadResponse.ref);
-        console.log(uploadedImageUrl);
-        console.log('Successfully uploaded image');
       }
     } catch (err) {
       JSON.stringify(err);
@@ -79,7 +77,6 @@ const CreateKeycap = () => {
       return;
     }
     // Send (input data + image) to backend
-    console.log(createNewKeycapInput);
     const response = await fetch('http://localhost:8070/api/keycap/createKeycap', {
       method: 'POST',
       headers: {
@@ -92,8 +89,9 @@ const CreateKeycap = () => {
       }),
     });
     const result = await response.json();
-    console.log(result);
-    alert('Keycap is added without issue');
+    if (result) {
+      alert('Successfully created keycap');
+    }
   };
 
   const handleImageUrl = (file: File) => {

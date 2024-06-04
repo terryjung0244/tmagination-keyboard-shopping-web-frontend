@@ -17,3 +17,8 @@ export interface IProduct {
   stock: string;
   updatedAt: string;
 }
+
+export interface IProductResponse {
+  message: string;
+  result: IProduct[];
+}

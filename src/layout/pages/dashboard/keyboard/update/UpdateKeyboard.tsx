@@ -94,7 +94,6 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
       });
 
       const result = await response.json();
-      console.log(result);
       closeModal();
       handleShowKeyboard(); // refresh
     }
@@ -107,7 +106,6 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
       body: JSON.stringify(updateKeyboardInput),
     });
     const result = await response.json();
-    console.log(result);
     closeModal();
     handleShowKeyboard(); // refresh
   };

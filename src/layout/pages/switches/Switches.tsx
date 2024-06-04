@@ -2,25 +2,21 @@ import React, { useEffect, useState } from 'react';
 import * as Styles from './Switches.styled';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { IProduct } from '../../../type/product.interface';
+import { IProduct, IProductResponse } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
 import { Link } from 'react-router-dom';
 import SortBox from '../../../components/sortBox/SortBox';
 import { handleProductSort } from '../../../util/sortProduct';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { getAllSwitchesAPI } from '../../../service/api/switches';
 
 const Switches = () => {
   const [switches, setSwitches] = useState<IProduct[]>([]);
 
   useEffect(() => {
     const getAllSwitches = async () => {
-      const response = await fetch('http://localhost:8070/api/switch/getAllSwitches', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const result = await response.json();
-      setSwitches(result.result);
+      const switches: IProductResponse = await getAllSwitchesAPI();
+      setSwitches(switches.result);
     };
     getAllSwitches();
   }, []);

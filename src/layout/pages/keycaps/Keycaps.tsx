@@ -5,24 +5,20 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { IProduct } from '../../../type/product.interface';
+import { IProduct, IProductResponse } from '../../../type/product.interface';
 import ProductCard from '../../../components/productCard/ProductCard';
 import SortBox from '../../../components/sortBox/SortBox';
 import { handleProductSort } from '../../../util/sortProduct';
+import { getAllKeycapsApi } from '../../../service/api/keycaps';
 
 const Keycaps = () => {
   const [keycaps, setKeycaps] = useState<IProduct[]>([]);
 
   useEffect(() => {
     const getAllKeycaps = async () => {
-      const response = await fetch('http://localhost:8070/api/keycap/getAllKeycaps', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const result = await response.json();
-      setKeycaps(result.result);
+      const keycaps: IProductResponse = await getAllKeycapsApi();
+      console.log(keycaps);
+      setKeycaps(keycaps.result);
     };
     getAllKeycaps();
   }, []);
