@@ -56,3 +56,15 @@ Backend
 3. Run the development server: `yarn start`
 
 # Challenges and Learnings
+
+- Integration of Technologies :
+  Understanding how to integrate frontend technologies with backend technologies initially posed a challenge, but gaining proficiency in seamless communication between these components was a valuable learning experience.
+
+- State Management Complexity :
+  I tackled the challenges of structuring the Redux store, handling asynchronous actions, and maintaining clean code while implementing state management with Redux Slice.
+
+- Project Structure and Scalability :
+  I learned about modular code design, separation of concerns, and the importance of organizing the project structure for scalability.
+
+- Reflections :
+  Throughout this project, I gained valuable insights into the significance of continuous learning, effective collaboration, and unwavering perseverance. As a developer, I proactively tackled challenges and sought opportunities for growth.
