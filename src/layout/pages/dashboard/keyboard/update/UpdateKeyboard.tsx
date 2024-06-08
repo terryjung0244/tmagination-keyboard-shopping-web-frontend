@@ -6,6 +6,10 @@ import { IImageInfoStateType, IKeyboardInputStateType } from '../create/CreateKe
 import { getUuid } from '../../../../../util/uuid';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpload';
+import {
+  updateKeyboardImageAPI,
+  updateKeyboardInputAPI,
+} from '../../../../../service/api/keyboards';
 
 interface IKeyboardProps {
   closeModal: () => void;
@@ -81,31 +85,12 @@ const UpdateKeyboard = ({ closeModal, selectedKeyboard, handleShowKeyboard }: IK
         console.log(err);
       }
 
-      const response = await fetch('http://localhost:8070/api/keyboard/updateKeyboard', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...updateKeyboardInput,
-          keyboardImageUrl: uploadedImageUrl,
-          keyboardImagePath: imageInfo.imagePath,
-        }),
-      });
-
-      const result = await response.json();
+      await updateKeyboardImageAPI(updateKeyboardInput, uploadedImageUrl, imageInfo);
       closeModal();
       handleShowKeyboard(); // refresh
     }
 
-    const response = await fetch('http://localhost:8070/api/keyboard/updateKeyboard', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updateKeyboardInput),
-    });
-    const result = await response.json();
+    await updateKeyboardInputAPI(updateKeyboardInput);
     closeModal();
     handleShowKeyboard(); // refresh
   };

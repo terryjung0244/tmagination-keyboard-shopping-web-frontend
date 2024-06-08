@@ -5,6 +5,7 @@ import CreateKeyboard from '../create/CreateKeyboard';
 import SearchKeyboard from '../search/SearchKeyboard';
 import { IProduct } from '../../../../../type/product.interface';
 import ShowKeyboard from '../show/ShowKeyboard';
+import { searchKeyboardAPI } from '../../../../../service/api/keyboards';
 
 const KeyboardIndex = () => {
   const [searchedKeyboardResult, setSearchedKeyboardResult] = useState<IProduct[]>([]);
@@ -12,15 +13,7 @@ const KeyboardIndex = () => {
 
   const handleSearchKeyboardInfo = async (keyboardInfo: string) => {
     setSearchKeyboardInfo(keyboardInfo); // Search Input에서 입력한 값
-    const response = await fetch(
-      `http://localhost:8070/api/keyboard/searchKeyboards?keyboardInfo=${keyboardInfo}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      },
-    );
-    const result = await response.json();
+    const result = await searchKeyboardAPI(keyboardInfo);
     setSearchedKeyboardResult(result.searchKeyboard);
   };
 

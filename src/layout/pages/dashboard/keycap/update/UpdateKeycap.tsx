@@ -5,6 +5,7 @@ import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpl
 import { IImageInfoStateType } from '../../switch/create/CreateSwitch.interface';
 import { getUuid } from '../../../../../util/uuid';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import { updateKeycapImageAPI, updateKeycapInputAPI } from '../../../../../service/api/keycaps';
 
 const UpdateKeycap = ({
   closeUpdateModal,
@@ -73,33 +74,14 @@ const UpdateKeycap = ({
       }
 
       // Backend에 보내기
-      const response = await fetch('http://localhost:8070/api/keycap/updateKeycap', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...updateKeycapInput,
-          keycapImageUrl: uploadedImageUrl,
-          keycapImagePath: imageInfo.imagePath,
-        }),
-      });
 
-      const result = await response.json();
+      await updateKeycapImageAPI(updateKeycapInput, uploadedImageUrl, imageInfo);
       closeUpdateModal();
       handleSearchKeycap();
       return;
     }
 
-    const response = await fetch('http://localhost:8070/api/keycap/updateKeycap', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updateKeycapInput),
-    });
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const result = await response.json();
+    await updateKeycapInputAPI(updateKeycapInput);
     closeUpdateModal();
     handleSearchKeycap();
   };
