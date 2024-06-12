@@ -7,6 +7,7 @@ export const SortBox = styled.section`
   margin-bottom: 30px;
   padding-bottom: 15px;
   display: flex;
+  justify-content: space-between;
   color: ${colors.fontMainColor};
   border-bottom: 2px solid #dedede;
 
@@ -64,5 +65,13 @@ export const SortBox = styled.section`
 
   .selectBoxContainer .selectBox:focus + .downArrowContainer img {
     transform: rotate(180deg);
+  }
+
+  .deleteAllProductsBtn {
+    /* border: 1px solid red; */
+    padding: 0 15px 0 15px;
+    border-radius: 5px;
+    background-color: #2c3c6b;
+    cursor: pointer;
   }
 `;

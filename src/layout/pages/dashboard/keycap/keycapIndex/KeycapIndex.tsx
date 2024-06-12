@@ -6,6 +6,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import CreateKeycap from '../createKeycap/CreateKeycap';
 import { IProduct } from '../../../../../type/product.interface';
 import ShowKeycap from '../show/ShowKeycap';
+import { searchKeycapAPI } from '../../../../../service/api/keycaps';
 
 const KeycapIndex = () => {
   const [searchedResult, setShowSearchedResult] = useState<IProduct[]>([]);
@@ -14,10 +15,7 @@ const KeycapIndex = () => {
 
   const handleSearchKeycap = async (searchInput: string = searchInputFromSearchKeycap) => {
     // Search Api
-    const response = await fetch(
-      `http://localhost:8070/api/keycap/searchKeycaps?searchInput=${searchInput}`,
-    );
-    const result = await response.json();
+    const result = await searchKeycapAPI(searchInput);
     setShowSearchedResult(result.filteredResult);
     setSearchInputFromSearchKeycap(searchInput);
     setSearchInput('');

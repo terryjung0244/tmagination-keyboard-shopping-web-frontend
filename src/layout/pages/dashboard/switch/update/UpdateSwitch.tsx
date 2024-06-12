@@ -5,6 +5,7 @@ import FireBaseUpload from '../../../../../components/fireBaseUpload/FireBaseUpl
 import { getUuid } from '../../../../../util/uuid';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { IProduct } from '../../../../../type/product.interface';
+import { updateSwitchImageAPI, updateSwitchInputAPI } from '../../../../../service/api/switches';
 
 interface IUpdateSwitchProps {
   selectedSwitch: IProduct;
@@ -65,34 +66,13 @@ const UpdateSwitch = ({ selectedSwitch, closeModal, handleShowSwitch }: IUpdateS
         console.log(err);
       }
 
-      const response = await fetch('http://localhost:8070/api/switch/updateSwitch', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...updateSwitchInput,
-          switchImageUrl: uploadedImageUrl,
-          switchImagePath: imageInfo.imagePath,
-        }),
-      });
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const result = await response.json();
+      await updateSwitchImageAPI(updateSwitchInput, uploadedImageUrl, imageInfo);
       closeModal();
       handleShowSwitch();
       return;
     }
 
-    const response = await fetch('http://localhost:8070/api/switch/updateSwitch', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(updateSwitchInput),
-    });
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const result = await response.json();
+    await updateSwitchInputAPI(updateSwitchInput);
     closeModal();
     handleShowSwitch();
   };

@@ -9,14 +9,14 @@ import ProductCard from '../../../components/productCard/ProductCard';
 import SortBox from '../../../components/sortBox/SortBox';
 import { Link } from 'react-router-dom';
 import { handleProductSort } from '../../../util/sortProduct';
-import { getAllProductsApi } from '../../../service/api/allProducts';
+import { getAllProductsAPI } from '../../../service/api/allProducts';
 
 const AllProducts = () => {
   const [showAllProducts, setShowAllProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
     const getAllProductsFunc = async () => {
-      const allProducts: IProductResponse = await getAllProductsApi();
+      const allProducts: IProductResponse = await getAllProductsAPI();
       setShowAllProducts(allProducts.result);
     };
     getAllProductsFunc();
@@ -31,7 +31,9 @@ const AllProducts = () => {
     <Styles.AllProducts>
       <div className="allProductsText">All Products</div>
       <div className="collectionText">All Products Collection</div>
+
       <SortBox handleSort={handleSort} />
+
       <Row className="rowContainer">
         {showAllProducts.map((product: IProduct) => {
           return (

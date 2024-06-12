@@ -32,7 +32,7 @@ const Layout = () => {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </Styles.Layout>
   );
 };

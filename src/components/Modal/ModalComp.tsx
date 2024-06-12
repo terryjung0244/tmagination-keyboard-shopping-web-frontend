@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import { SwitchModal } from '../../layout/pages/dashboard/switch/switchIndex/SwitchIndex.interface';
-import { IModalStateType } from '../../layout/pages/dashboard/keyboard/show/ShowKeyboard';
+// import { SwitchModal } from '../../layout/pages/dashboard/switch/switchIndex/SwitchIndex.interface';
+// import { IModalStateType } from '../../layout/pages/dashboard/keyboard/show/ShowKeyboard';
 
 // import {
 //   DeleteSwitchModal,
@@ -12,7 +12,7 @@ import { IModalStateType } from '../../layout/pages/dashboard/keyboard/show/Show
 interface IModalCompProps {
   updateBtn?: string;
   deleteBtn?: string;
-  show: SwitchModal | IModalStateType;
+  show: any;
   closeModal: () => void;
   children: JSX.Element | JSX.Element[];
 }

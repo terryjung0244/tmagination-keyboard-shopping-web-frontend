@@ -45,7 +45,6 @@ const Home = () => {
               <div className="keyboardDescLayout">{KeyboardItem.description.layout}</div>
               <div className="keyboardDescDesign">{KeyboardItem.description.design}</div>
               <div className="keyboardDescWeight">{KeyboardItem.description.weight}</div>
-              <div className="keyboardLearnMoreButton">Learn more</div>
             </div>
           </div>
         );

@@ -8,14 +8,14 @@ export const SearchKeycap = styled.section`
   /* border: 1px solid red; */
 
   .searchInput {
+    width: 70%;
     padding: 5px 15px;
     border-radius: 5px 0px 0px 5px;
     border: 1px solid #dedede;
   }
 
   .searchBtn {
-    width: 100%;
-    /* border: 1px solid red; */
+    width: 30%;
     padding: 5px 15px;
     background-color: #f1efe5;
     color: black;

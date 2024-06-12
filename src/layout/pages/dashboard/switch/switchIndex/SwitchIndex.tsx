@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card';
 import { IProduct } from '../../../../../type/product.interface';
 import DeleteSwitch from '../delete/DeleteSwitch';
 import { SwitchModal } from './SwitchIndex.interface';
+import { searchSwitchesAPI } from '../../../../../service/api/switches';
 
 const SwitchIndex = () => {
   const [showSearchedSwitch, setShowSearchedSwitch] = useState<IProduct[]>([]);
@@ -25,12 +26,7 @@ const SwitchIndex = () => {
 
   // Search API
   const searchInputSwitchValue = async (searchInput: string) => {
-    const response = await fetch(
-      `http://localhost:8070/api/switch/searchSwitches?searchInput=${searchInput}`,
-    );
-
-    const result = await response.json();
-
+    const result = await searchSwitchesAPI(searchInput);
     setShowSearchedSwitch(result.filteredSwitches);
     setSearchedInput(searchInput);
   };

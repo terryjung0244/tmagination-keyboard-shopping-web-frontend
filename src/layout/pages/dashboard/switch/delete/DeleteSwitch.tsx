@@ -24,6 +24,7 @@ const DeleteSwitch = ({
   selectedSwitch,
   handleShowSwitch,
 }: IDeleteSwitchProps) => {
+  console.log(selectedSwitch);
   // Delete
   const handleDeleteSwitch = async () => {
     // 1. Firebase
