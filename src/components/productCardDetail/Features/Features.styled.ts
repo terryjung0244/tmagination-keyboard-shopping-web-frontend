@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { fontSize, getResponsiveMediaQuery } from '../../../GlobalStyles';
 
 export const Features = styled.section`
+  /* border: 1px solid red; */
   font-size: ${fontSize.sm};
   border-bottom: 2px solid #dedede;
   margin-bottom: 30px;

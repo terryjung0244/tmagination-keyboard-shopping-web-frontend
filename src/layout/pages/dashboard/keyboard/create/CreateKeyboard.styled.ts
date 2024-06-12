@@ -69,6 +69,7 @@ export const Createkeyboard = styled.section`
   .selectSwitch {
     text-align: center;
     width: 50%;
+    height: 100px;
     padding: 2px 0px;
     border-radius: 4px;
     border: 1px solid #d6d4c8;

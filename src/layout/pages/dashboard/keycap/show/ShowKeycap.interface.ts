@@ -10,9 +10,9 @@ export interface IShowKeycapPropsType {
 }
 
 export interface IModalStateType {
-  updateBtn: string;
+  updateBtn?: string;
   deleteBtn: string;
-  updateToggle: boolean;
+  updateToggle?: boolean;
   deleteToggle: boolean;
-  selectedSwitch: IProduct | null;
+  selectedSwitch?: IProduct | null;
 }

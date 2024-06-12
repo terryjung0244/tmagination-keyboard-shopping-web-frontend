@@ -25,7 +25,7 @@ const CreateSwitch = () => {
     switchImageUrl: '',
     switchImagePath: '',
     switchFeatures: {
-      color: ['Black', 'Blue', 'Brown', 'Red', 'Yellow'],
+      color: ['Yellow', 'Blue', 'Brown', 'Red'],
     },
   });
 

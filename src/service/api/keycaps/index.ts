@@ -41,6 +41,7 @@ export const createKeycapsAPI = async (
 
 // Delete Keycaps
 export const deleteKeycapAPI = async (keycap: IProduct) => {
+  console.log(keycap);
   await fetch(
     `http://localhost:8070/api/keycap/deleteKeycap?keycapId=${keycap.id}&keycapName=${keycap.name}`,
     {

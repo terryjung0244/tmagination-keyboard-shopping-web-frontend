@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const KeyboardIndex = styled.section`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 300px;
   margin-top: 50px;
   margin-left: 20px;
@@ -9,6 +9,7 @@ export const KeyboardIndex = styled.section`
   .createBtnMain {
     margin-top: 20px;
     /* border: 1px solid red; */
+    width: 300px;
     display: flex;
     border-radius: 4px;
   }
