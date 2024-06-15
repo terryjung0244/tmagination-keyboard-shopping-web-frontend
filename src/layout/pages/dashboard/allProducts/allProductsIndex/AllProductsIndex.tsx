@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import * as Styled from './AllProductsIndex.Styled';
-import { getAllProductsAPI } from '../../../../../service/api/allProducts';
+import { deleteAllProductsAPI, getAllProductsAPI } from '../../../../../service/api/allProducts';
 import { Col, Row } from 'react-bootstrap';
 import { IProduct } from '../../../../../type/product.interface';
 import { Link } from 'react-router-dom';
@@ -31,7 +32,6 @@ const AllProductsIndex = () => {
     const result = showAllProducts.map((product) => {
       return product.imagePath;
     });
-
     // Firebase
     const storage = getStorage();
     const desertRef = result.map((path) => {
@@ -39,11 +39,12 @@ const AllProductsIndex = () => {
     });
 
     desertRef.map(async (ref) => {
+      console.log(ref);
       await deleteObject(ref);
     });
 
     // MongoDB
-    // await deleteAllProductsAPI();
+    await deleteAllProductsAPI();
   };
 
   // const closeDeleteModal = () => {
