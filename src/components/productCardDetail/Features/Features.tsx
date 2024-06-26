@@ -17,7 +17,7 @@ const Features = ({ productFeatures, selectedFeatures, clickFeature }: FeaturesP
   console.log(productFeatures.color);
   return (
     <Styles.Features>
-      <div className="featureText">Color</div>
+      <div className="featureText">Colors</div>
 
       <div className="selectFeaturesContainer">
         {productFeatures.color.map((keyboardColor: string, index) => {
